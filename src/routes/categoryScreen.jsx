@@ -111,7 +111,7 @@ const CategoryScreen = () => {
     setCategories(updatedData);
   };
   return (
-    <Box sx={{padding:"40px"}} height={"100vh"} maxWidth={"1300px"} width={"1300px"}>
+    <Box sx={{padding:"40px"}} bgcolor={"#EBF1FDE5"} height={"100vh"} maxWidth={"1300px"} width={"1300px"}>
       <Header
         filteredCategories={filteredCategories}
         searchTerm={searchTerm}

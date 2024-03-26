@@ -16,6 +16,17 @@ const VariantPage = () => {
   const [sku, setSku] = useState("");
   const [productStock, setProductStock] = useState(0);
 
+  const handleQuantityChange = (event) => {
+    const newQuantity = event.target.value;
+    setQuantity(newQuantity);
+    calculatePrice();
+  };
+
+  const handlePriceChange = (event) => {
+    const newPrice = event.target.value;
+    setPrice(newPrice);
+  };
+
   const handleValueChange = (event) => {
     setValue(event.target.value);
   };
@@ -24,12 +35,12 @@ const VariantPage = () => {
     setColor(event.target.value);
   };
 
-  const handleQuantityChange = (event) => {
-    setQuantity(event.target.value);
-  };
-  const handlePriceChange = (event) => {
-    setPrice(event.target.value);
-  };
+  // const handleQuantityChange = (event) => {
+  //   setQuantity(event.target.value);
+  // };
+  // const handlePriceChange = (event) => {
+  //   setPrice(event.target.value);
+  // };
   const handleChange = (event) => {
     setProductStock(event.target.value); // Update stock state when selection changes
   };
@@ -42,7 +53,7 @@ const VariantPage = () => {
   };
 
   const generateSku = () => {
-    let generatedSku = "pro-001-" + color.toLowerCase() + "-" + value;
+    let generatedSku = "Pro-001-" + color.toLowerCase() + "-" + value;
     setSku(generatedSku);
   };
 
@@ -56,166 +67,123 @@ const VariantPage = () => {
   };
 
   return (
-    <Box
-      bgcolor={"white"}
-      maxWidth={"1024px"}
-      width={"1024px"}
-      boxShadow={"0px 12px 32px #1E20261A"}
-      padding={"40px"}
-      borderRadius={"5px"}
-    >
-      <Typography fontSize={"25px"} fontWeight={600}>
-        Product Variant
-      </Typography>
+    <Box height={"100vh"}>
       <Box
-        sx={{
-          display: "flex",
-          gap: "100px",
-          paddingTop: "20px",
-        }}
+        bgcolor={"white"}
+        maxWidth={"1024px"}
+        width={"1024px"}
+        boxShadow={"0px 12px 32px #1E20261A"}
+        padding={"40px"}
+        borderRadius={"5px"}
       >
-        <Box
-          sx={{
-            display: "flex",
-            gap: "5px",
-            alignItems: "center",
-          }}
-        >
-          <Typography fontSize={"16px"}>Color:</Typography>
-          <Select
-            size="small"
-            value={color}
-            onChange={handleColorChange}
-            displayEmpty
-            inputProps={{ "aria-label": "Select color" }}
-            sx={{
-              height: "40px",
-            }}
-          >
-            <MenuItem value="" disabled>
-              Select color
-            </MenuItem>
-            <MenuItem value="Red">Red</MenuItem>
-            <MenuItem value="Blue">Blue</MenuItem>
-            <MenuItem value="Green">Green</MenuItem>
-          </Select>
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            gap: "5px",
-          }}
-        >
-          <Typography>value:</Typography>
-          <Select
-            size="small"
-            value={value}
-            onChange={handleValueChange}
-            aria-label="Select value"
-            sx={{
-              width: "80px",
-              height: "40px",
-            }}
-          >
-            {[...Array(11).keys()].map((value) => (
-              <MenuItem key={value} value={value}>
-                {value}
+        <Typography fontSize={"25px"} fontWeight={600}>
+          Product Variant
+        </Typography>
+        <Box sx={{ display: "flex", gap: "30px", mt: "20px" }}>
+          <Box>
+            <Typography fontSize={"16px"}>Color:</Typography>
+            <Select
+              size="small"
+              value={color}
+              onChange={handleColorChange}
+              displayEmpty
+              inputProps={{ "aria-label": "Select color" }}
+              sx={{
+                width: "300px",
+              }}
+            >
+              <MenuItem value="" disabled>
+                Select color
               </MenuItem>
-            ))}
-          </Select>
+              <MenuItem value="Red">Red</MenuItem>
+              <MenuItem value="Blue">Blue</MenuItem>
+              <MenuItem value="Green">Green</MenuItem>
+            </Select>
+          </Box>
+
+          <Box>
+            <Typography>value:</Typography>
+            <Select
+              size="small"
+              value={value}
+              onChange={handleValueChange}
+              aria-label="Select value"
+              sx={{ width: "300px" }}
+              displayEmpty
+            >
+              <MenuItem value="0" disabled>
+                0
+              </MenuItem>
+              {[...Array(11).keys()].map((value) => (
+                <MenuItem key={value} value={value}>
+                  {value}
+                </MenuItem>
+              ))}
+            </Select>
+          </Box>
+        </Box>
+        <Box sx={{ display: "flex", gap: "30px", mt: "10px" }}>
+          <Box>
+            <Typography>Quantity:</Typography>
+            <TextField
+              id="outlined-basic"
+              size="small"
+              variant="outlined"
+              value={quantity}
+              onChange={handleQuantityChange}
+              sx={{ width: "300px" }}
+            />
+          </Box>
+
+          <Box>
+            <Typography>Price:</Typography>
+            <TextField
+              size="small"
+              id="outlined-basic"
+              variant="outlined"
+              value={price}
+              onChange={handlePriceChange}
+              sx={{ width: "300px" }}
+            />
+          </Box>
+        </Box>
+        <Box sx={{ display: "flex", gap: "30px", mt: "10px" }}>
+          <Box>
+            <Typography>SKU:</Typography>
+            <TextField
+              size="small"
+              variant="outlined"
+              value={sku}
+              InputProps={{
+                readOnly: true,
+              }}
+              sx={{ width: "300px" }}
+            />
+          </Box>
+
+          <Box>
+            <Typography>Stock:</Typography>
+            <TextField
+              size="small"
+              id="outlined-basic"
+              variant="outlined"
+              onChange={handleChange}
+              value={productStock}
+              sx={{ width: "300px" }} // Removed readOnly from here
+            />
+          </Box>
+        </Box>
+        <Box display={"flex"} justifyContent={"end"}>
+          <Button
+            sx={{ mt: "30px" }}
+            variant="contained"
+            color="primary"
+            onClick={handleAddToCart}
+          >
+            Add to Cart
+          </Button>
         </Box>
       </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          py: "30px",
-          gap: "5px",
-        }}
-      >
-        <Typography>Quantity:</Typography>
-        <TextField
-          id="outlined-basic"
-          size="small"
-          variant="outlined"
-          value={quantity} // Display selected quantity in the textbox
-          style={{ marginLeft: "10px" }} // Adjust styling as needed
-          sx={{
-            width: "80px",
-          }}
-        />
-      </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          paddingBottom: "20px",
-          gap: "5px",
-        }}
-      >
-        <Typography>Price:</Typography>
-        <TextField
-          size="small"
-          id="outlined-basic"
-          variant="outlined"
-          value={`$`}
-          style={{ marginLeft: "10px" }}
-          sx={{
-            width: "80px",
-            height: "40px",
-          }}
-        />
-      </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          gap: "10px",
-        }}
-      >
-        <Typography>SKU: </Typography>
-        <TextField
-          size="small"
-          variant="outlined"
-          value={sku}
-          InputProps={{
-            readOnly: true,
-          }}
-          sx={{
-            width: "150px",
-            height: "40px",
-          }}
-        />
-      </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          py: "20px",
-          gap: "5px",
-        }}
-      >
-        <Typography>Stock:</Typography>
-
-        <TextField
-          size="small"
-          id="outlined-basic"
-          variant="outlined"
-          onChange={handleChange}
-          value={productStock}
-          InputProps={{ readOnly: true }}
-          style={{ marginLeft: "10px" }}
-          sx={{
-            width: "80px",
-            height: "40px",
-          }}
-        />
-      </Box>
-
-      <Button variant="contained" color="primary" onClick={handleAddToCart}>
-        Add to Cart
-      </Button>
     </Box>
   );
 };

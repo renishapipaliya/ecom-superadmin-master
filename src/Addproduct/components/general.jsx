@@ -38,7 +38,9 @@ const General = () => {
     setAge(event.target.value);
   };
   return (
-    <Box sx={{ display: "flex", gap: "25px" ,maxWidth:"1024px" , width:"1024px" }}>
+    <Box
+      sx={{ display: "flex", gap: "25px", maxWidth: "1024px", width: "1024px" }}
+    >
       <Box
         bgcolor={"white"}
         borderRadius={"5px"}
@@ -50,7 +52,14 @@ const General = () => {
           <Typography sx={{ fontSize: "25px", fontWeight: 600 }}>
             Product information
           </Typography>
-          <Typography sx={{ fontSize: "15px", color: "black", mt: "20px" }}>
+          <Typography
+            sx={{
+              fontSize: "15px",
+              color: "black",
+              mt: "20px",
+              color: "#707888",
+            }}
+          >
             Name
           </Typography>
           <TextField
@@ -62,7 +71,14 @@ const General = () => {
             sx={{ mt: "2px" }}
           />
           <Box sx={{ mt: "15px" }}>
-            <Typography sx={{ fontSize: "15px", color: "black", mt: "2px" }}>
+            <Typography
+              sx={{
+                fontSize: "15px",
+                color: "black",
+                mt: "2px",
+                color: "#707888",
+              }}
+            >
               Description
             </Typography>
             <textarea
@@ -75,7 +91,14 @@ const General = () => {
             />
           </Box>
           <Box sx={{ mt: "10px" }}>
-            <Typography sx={{ fontSize: "15px", color: "black", mt: "2px" }}>
+            <Typography
+              sx={{
+                fontSize: "15px",
+                color: "black",
+                mt: "2px",
+                color: "#707888",
+              }}
+            >
               Points
             </Typography>
             <TextField
@@ -90,7 +113,14 @@ const General = () => {
             />
           </Box>
           <Box sx={{ mt: "15px" }}>
-            <Typography sx={{ fontSize: "15px", color: "black", mt: "2px" }}>
+            <Typography
+              sx={{
+                fontSize: "15px",
+                color: "black",
+                mt: "2px",
+                color: "#707888",
+              }}
+            >
               Categorys
             </Typography>
             <FormControl size="small" sx={{ mt: "2px", width: "100%" }}>
@@ -111,7 +141,14 @@ const General = () => {
             </FormControl>
           </Box>
           <Box sx={{ mt: "15px" }}>
-            <Typography sx={{ fontSize: "15px", color: "black", mt: "2px" }}>
+            <Typography
+              sx={{
+                fontSize: "15px",
+                color: "black",
+                mt: "2px",
+                color: "#707888",
+              }}
+            >
               Product For...
             </Typography>
             <FormControl size="small" sx={{ mt: "2px", width: "100%" }}>
@@ -135,7 +172,14 @@ const General = () => {
             </FormControl>
           </Box>
           <Box sx={{ mt: "15px" }}>
-            <Typography sx={{ fontSize: "15px", color: "black", mt: "2px" }}>
+            <Typography
+              sx={{
+                fontSize: "15px",
+                color: "black",
+                mt: "2px",
+                color: "#707888",
+              }}
+            >
               Image
             </Typography>
             <TextField
@@ -150,7 +194,7 @@ const General = () => {
             />
           </Box>
           <Box sx={{ mt: "15px" }}>
-            <Typography sx={{ fontSize: "15px", color: "black", mt: "2px" }}>
+            <Typography sx={{ fontSize: "15px", mt: "2px", color: "#707888" }}>
               Select Multiple images
             </Typography>
             <TextField
@@ -179,8 +223,8 @@ const General = () => {
           <Typography sx={{ fontWeight: 600, fontSize: "20px" }}>
             Pricing
           </Typography>
-          <Box sx={{ mt: "10px" }}>
-            <Typography sx={{ color: "black" }}>Base Price</Typography>
+          <Box sx={{ mt: "25px" }}>
+            <Typography sx={{ color: "#707888" }}>Base Price</Typography>
             <TextField
               size="small"
               id="outlined-basic"
@@ -190,8 +234,8 @@ const General = () => {
               sx={{ mt: "2px", width: "100%" }}
             />
           </Box>
-          <Box sx={{ mt: "10px" }}>
-            <Typography sx={{ color: "black" }}>Discount</Typography>
+          <Box sx={{ mt: "20px" }}>
+            <Typography sx={{ color: "#707888" }}>Discount</Typography>
             <TextField
               size="small"
               id="outlined-basic"
@@ -201,8 +245,8 @@ const General = () => {
               sx={{ mt: "2px", width: "100%" }}
             />
           </Box>
-          <Box sx={{ mt: "10px" }}>
-            <Typography sx={{ color: "black" }}>Discounted Price</Typography>
+          <Box sx={{ mt: "20px" }}>
+            <Typography sx={{ color: "#707888" }}>Discounted Price</Typography>
             <TextField
               size="small"
               id="outlined-basic"

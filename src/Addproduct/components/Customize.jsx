@@ -86,7 +86,7 @@ const Customize = () => {
     setSelectedCharms(e.target.value);
   };
   return (
-    <Box maxWidth={"1024px"} width={"1024px"} height={"100vh"}>
+    <Box maxWidth={"1440px"} width={"1024px"} height={"100vh"}>
       <Box
         sx={{
           display: "flex",

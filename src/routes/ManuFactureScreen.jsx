@@ -6,7 +6,7 @@ import { Box } from "@mui/material";
 
 const ManufactureScreen = () => {
   return (
-    <Box sx={{ p:"40px"}}>
+    <Box sx={{ p:"40px" ,bgcolor:"#EBF1FDE5"}}>
       <Box fontSize={"32px"} fontWeight={600}>
         Manufacture Details
       </Box>

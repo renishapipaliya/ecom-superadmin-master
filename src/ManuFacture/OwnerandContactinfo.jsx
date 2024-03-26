@@ -65,7 +65,7 @@ const OwnerandContactinfo = () => {
             <Typography pt={"2px"} fontSize={"25px"} fontWeight={700}>
               Owner and Contact Person Information
             </Typography>
-            <Typography sx={{ pt: "40px", fontWeight: 560 }}>
+            <Typography sx={{ pt: "40px", fontWeight: 560,fontSize:"20px" }}>
               Owner Information
             </Typography>
             <Box>
@@ -99,7 +99,7 @@ const OwnerandContactinfo = () => {
               </Box>
             </Box>
 
-            <Typography sx={{ pt: "40px", fontWeight: 560 }}>
+            <Typography sx={{ pt: "40px", fontWeight: 560 ,fontSize:"20px" }}>
               Contact Information
             </Typography>
             <Box>
@@ -150,7 +150,7 @@ const OwnerandContactinfo = () => {
               <Typography>Same as contact</Typography>
             </Box>
 
-            <Typography sx={{ fontWeight: 560, mt: "30px" }}>
+            <Typography sx={{ fontWeight: 560, mt: "30px" ,fontSize:"20px" }}>
               Contact Greeto Information
             </Typography>
             <Box>
@@ -208,7 +208,7 @@ const OwnerandContactinfo = () => {
           <Button
             type="submit"
             variant="contained"
-            sx={{ width: "450px", mx: "5px" }}
+            sx={{ width: "450px", mt: "25px" }}
           >
             submit
           </Button>

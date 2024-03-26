@@ -24,7 +24,7 @@ const AddProduct = () => {
           >
             Add Products
           </Typography>
-          <Box>
+          <Box sx={{ marginRight: "20px" }}>
             <Button sx={{ mx: "15px" }} variant="outlined">
               Cancel
             </Button>
