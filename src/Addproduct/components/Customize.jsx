@@ -15,6 +15,7 @@ import {
   TableBody,
   TableContainer,
   Checkbox,
+  Button,
 } from "@mui/material";
 import I1 from "./images/camera.jpg";
 import I2 from "./images/Airoplan.jpg";
@@ -72,7 +73,6 @@ const Customize = () => {
       name: "Plam",
     },
   ];
-
 
   useEffect(() => {
     setCombinedCharms([...selectedCharms, singleCharm].filter(Boolean));
@@ -178,9 +178,7 @@ const Customize = () => {
                 mt: "15px",
               }}
             >
-                <Typography sx={{ color: "#707888" }}>
-              Select Charms
-            </Typography>
+              <Typography sx={{ color: "#707888" }}>Select Charms</Typography>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -214,8 +212,8 @@ const Customize = () => {
               }}
             >
               <Typography sx={{ color: "#707888" }}>
-              Select Multiple Charms
-            </Typography>
+                Select Multiple Charms
+              </Typography>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -232,10 +230,15 @@ const Customize = () => {
                 {menu.map((item) => (
                   <MenuItem key={item.id} value={item.name}>
                     <ListItemIcon>
-                    <div className="from-check">
-                      <input type="checkbox" className="from-checkbox-input"/>
-                      <label className="from-checkbox-label ms-2">{menu.name}</label>
-                    </div>
+                      <div className="from-check">
+                        <input
+                          type="checkbox"
+                          className="from-checkbox-input"
+                        />
+                        <label className="from-checkbox-label ms-2">
+                          {menu.name}
+                        </label>
+                      </div>
                       <img
                         src={item.img}
                         alt={item.name}
@@ -260,7 +263,7 @@ const Customize = () => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    { combinedCharms.map((charm, index) => (
+                    {combinedCharms.map((charm, index) => (
                       <TableRow key={index}>
                         <TableCell>{index + 1}</TableCell>
                         <TableCell
@@ -278,6 +281,9 @@ const Customize = () => {
                   </TableBody>
                 </Table>
               </TableContainer>
+            </Box>
+            <Box sx={{ display: "flex", justifyContent: "end",mt:"30px" }}>
+              <Button variant="contained">Save</Button>
             </Box>
           </Box>
         </Box>

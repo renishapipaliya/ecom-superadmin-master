@@ -180,7 +180,7 @@ const VariantPage = () => {
             color="primary"
             onClick={handleAddToCart}
           >
-            Add to Cart
+            Save
           </Button>
         </Box>
       </Box>

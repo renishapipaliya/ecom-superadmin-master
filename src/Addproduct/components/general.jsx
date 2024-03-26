@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   FormControl,
   MenuItem,
   Select,
@@ -255,6 +256,9 @@ const General = () => {
               type="number"
               sx={{ mt: "2px", width: "100%" }}
             />
+          </Box>
+          <Box sx={{display:"flex" ,justifyContent:"end" , mt:"30px"}}>
+            <Button variant="contained">Save</Button>
           </Box>
         </Box>
       </Box>
