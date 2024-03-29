@@ -2,7 +2,6 @@ import {
   Box,
   Button,
   FormControl,
-  InputLabel,
   MenuItem,
   Select,
   TextField,
@@ -41,16 +40,12 @@ const Companyinfo = () => {
     const file = event.target.files[0];
     setUploadedFile3(file);
   };
-  
+
   return (
     <>
       <Box>
-        <Box sx={{ width: "650px", mt: "10px", fontFamily: "Poppins"}}>
-          <Box
-            sx={{ p: "40px"}}
-            bgcolor={"white"}
-            borderRadius={"8px"}
-          >
+        <Box sx={{ width: "650px", mt: "10px", fontFamily: "Poppins" }}>
+          <Box sx={{ p: "40px" }} bgcolor={"white"} borderRadius={"8px"}>
             <Typography mb={"20px"} fontSize={"25px"} fontWeight={600}>
               Company Information
             </Typography>

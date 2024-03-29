@@ -1,5 +1,4 @@
-// dialogbox.jsx
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
 import {
@@ -9,6 +8,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Snackbar,
   TextField,
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
@@ -23,6 +23,17 @@ const Dialogbox = ({
   handleConfirmDelete,
   open,
 }) => {
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
+  const handleAddCategoryWithSnackbar = () => {
+    handleAddCategory();
+    setSnackbarOpen(true);
+  };
+
   return (
     <div>
       <Dialog open={open} onClose={handleClose}>
@@ -64,12 +75,19 @@ const Dialogbox = ({
             <Button variant="outlined" onClick={handleClose}>
               Cancel
             </Button>
-            <Button variant="contained" onClick={handleAddCategory}>
+            <Button variant="contained" onClick={handleAddCategoryWithSnackbar}>
               Save
             </Button>
           </DialogActions>
         </form>
       </Dialog>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+        message="Category added successfully!"
+        anchorOrigin={{vertical: 'top', horizontal:"center"}}
+      />
       <Dialog open={deleteOpen} onClose={handleCloseDeleteDialog}>
         <DialogTitle> Delete Category</DialogTitle>
         <Button

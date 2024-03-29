@@ -17,7 +17,7 @@ const AddProduct = () => {
   };
   return (
     <>
-      <Box sx={{ padding: "40px" }}>
+      <Box sx={{ padding: "30px" }}>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography
             sx={{ fontSize: "32px", fontWeight: "bold", paddingX: "25px" }}

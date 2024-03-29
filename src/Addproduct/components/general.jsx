@@ -1,14 +1,16 @@
+import React, { useState } from "react";
 import {
   Box,
   Button,
   FormControl,
   MenuItem,
   Select,
+  Snackbar,
   TextField,
   Typography,
 } from "@mui/material";
-import * as React from "react";
 import { styled } from "@mui/material/styles";
+
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -20,32 +22,64 @@ const VisuallyHiddenInput = styled("input")({
   whiteSpace: "nowrap",
   width: 1,
 });
-import { useState } from "react";
 
 const General = () => {
-  const [age, setAge] = useState("");
+  const [productName, setProductName] = useState("");
+  const [description, setDescription] = useState("");
+  const [points, setPoints] = useState("");
+  const [category, setCategory] = useState("");
+  const [productFor, setProductFor] = useState("");
+  const [basePrice, setBasePrice] = useState("");
+  const [discount, setDiscount] = useState("");
+  const [discountedPrice, setDiscountedPrice] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
-  const handleFileInputChange1 = (event) => {
-    const file = event.target.files[0];
-    setUploadedFile1(file);
+  const handleSave = async (e) => {
+    e.preventDefault();
+    if (
+      !productName ||
+      !description ||
+      !points ||
+      !category ||
+      !productFor ||
+      !basePrice ||
+      !discount ||
+      !discountedPrice
+    ) {
+      setSnackbarMessage("Please fill all the fields");
+      setSnackbarOpen(true);
+
+      return;
+    }
+
+    setSnackbarMessage("Successfully saved");
+    setSnackbarOpen(true);
+    // setProductName("");
+    // setDescription("");
+    // setPoints("");
+    // setCategory("");
+    // setBasePrice("");
+    // setDiscountedPrice("");
+    // setDiscount("");
   };
 
-  const handleFileInputChange2 = (event) => {
-    const file = event.target.files[0];
-    setUploadedFile2(file);
-  };
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleCloseSnackbar = () => {
+    setSnackbarOpen(false);
   };
   return (
     <Box
-      sx={{ display: "flex", gap: "25px", maxWidth: "1024px", width: "1024px" }}
+      sx={{
+        display: "flex",
+        gap: "25px",
+        maxWidth: "1440px",
+        width: "1200px",
+      }}
     >
       <Box
         bgcolor={"white"}
         borderRadius={"5px"}
-        width={"550px"}
+        width={"650px"}
         p={"30px"}
         boxShadow={"0px 12px 32px 0px #1E20261A"}
       >
@@ -56,7 +90,6 @@ const General = () => {
           <Typography
             sx={{
               fontSize: "15px",
-              color: "black",
               mt: "20px",
               color: "#707888",
             }}
@@ -70,6 +103,9 @@ const General = () => {
             variant="outlined"
             maxRows={"4"}
             sx={{ mt: "2px" }}
+            value={productName}
+            onChange={(e) => setProductName(e.target.value)}
+            required
           />
           <Box sx={{ mt: "15px" }}>
             <Typography
@@ -89,6 +125,9 @@ const General = () => {
               className="border border-gray-300 w-[100%] rounded p-2"
               placeholder="Description"
               sx={{ mt: "2px" }}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
             />
           </Box>
           <Box sx={{ mt: "10px" }}>
@@ -108,9 +147,12 @@ const General = () => {
               maxRows={4}
               size="small"
               id="outlined-basic"
-              placeholder="Bullte Points"
+              placeholder="Bullet Points"
               variant="outlined"
               sx={{ mt: "2px", width: "100%" }}
+              value={points}
+              onChange={(e) => setPoints(e.target.value)}
+              required
             />
           </Box>
           <Box sx={{ mt: "15px" }}>
@@ -125,7 +167,11 @@ const General = () => {
               Categorys
             </Typography>
             <FormControl size="small" sx={{ mt: "2px", width: "100%" }}>
-              <Select value={age} onChange={handleChange} displayEmpty>
+              <Select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                displayEmpty
+              >
                 <MenuItem sx={{ bgcolor: "white" }} value="" disabled>
                   Select Categorys
                 </MenuItem>
@@ -145,7 +191,6 @@ const General = () => {
             <Typography
               sx={{
                 fontSize: "15px",
-                color: "black",
                 mt: "2px",
                 color: "#707888",
               }}
@@ -153,7 +198,11 @@ const General = () => {
               Product For...
             </Typography>
             <FormControl size="small" sx={{ mt: "2px", width: "100%" }}>
-              <Select value={age} onChange={handleChange} displayEmpty>
+              <Select
+                value={productFor}
+                onChange={(e) => setProductFor(e.target.value)}
+                displayEmpty
+              >
                 <MenuItem sx={{ bgcolor: "white" }} value="" disabled>
                   Product For...
                 </MenuItem>
@@ -166,7 +215,7 @@ const General = () => {
                 <MenuItem sx={{ bgcolor: "white" }} value={30}>
                   Brother
                 </MenuItem>
-                <MenuItem sx={{ bgcolor: "white" }} value={30}>
+                <MenuItem sx={{ bgcolor: "white" }} value={40}>
                   Other
                 </MenuItem>
               </Select>
@@ -176,7 +225,6 @@ const General = () => {
             <Typography
               sx={{
                 fontSize: "15px",
-                color: "black",
                 mt: "2px",
                 color: "#707888",
               }}
@@ -187,6 +235,7 @@ const General = () => {
               type="file"
               size="small"
               variant="outlined"
+              required
               sx={{
                 "& .css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input": {
                   height: "100%",
@@ -204,6 +253,7 @@ const General = () => {
               placeholder=""
               variant="outlined"
               inputProps={{ multiple: true }}
+              required
               sx={{
                 "& .css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input": {
                   height: "100%",
@@ -218,7 +268,7 @@ const General = () => {
           bgcolor={"white"}
           borderRadius={"5px"}
           p={"30px"}
-          width={"450px"}
+          width={"550px"}
           boxShadow={"0px 12px 32px 0px #1E20261A"}
         >
           <Typography sx={{ fontWeight: 600, fontSize: "20px" }}>
@@ -232,6 +282,9 @@ const General = () => {
               placeholder="Product Name"
               variant="outlined"
               type="number"
+              value={basePrice}
+              onChange={(e) => setBasePrice(e.target.value)}
+              required
               sx={{ mt: "2px", width: "100%" }}
             />
           </Box>
@@ -243,6 +296,9 @@ const General = () => {
               placeholder="Discounted"
               variant="outlined"
               type="number"
+              value={discount}
+              onChange={(e) => setDiscount(e.target.value)}
+              required
               sx={{ mt: "2px", width: "100%" }}
             />
           </Box>
@@ -254,11 +310,23 @@ const General = () => {
               placeholder="Discounted Price"
               variant="outlined"
               type="number"
+              value={discountedPrice}
+              onChange={(e) => setDiscountedPrice(e.target.value)}
+              required
               sx={{ mt: "2px", width: "100%" }}
             />
           </Box>
-          <Box sx={{display:"flex" ,justifyContent:"end" , mt:"30px"}}>
-            <Button variant="contained">Save</Button>
+          <Box sx={{ display: "flex", justifyContent: "end", mt: "30px" }}>
+            <Snackbar
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+              open={snackbarOpen}
+              autoHideDuration={6000} // Optional: Auto-close after 6 seconds
+              onClose={handleCloseSnackbar}
+              message={snackbarMessage}
+            />
+            <Button onClick={handleSave} variant="contained">
+              Save
+            </Button>
           </Box>
         </Box>
       </Box>

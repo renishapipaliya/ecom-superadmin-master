@@ -16,6 +16,7 @@ import {
   TableContainer,
   Checkbox,
   Button,
+  Snackbar,
 } from "@mui/material";
 import I1 from "./images/camera.jpg";
 import I2 from "./images/Airoplan.jpg";
@@ -30,6 +31,8 @@ const Customize = () => {
   const [selectedCharms, setSelectedCharms] = useState([]);
   const [singleCharm, setSingleCharm] = useState("");
   const [combinedCharms, setCombinedCharms] = useState([]);
+  const [snackbarOpen, setSnackbarOpen] = useState(false); // State for snackbar visibility
+  const [snackbarMessage, setSnackbarMessage] = useState(""); // State for snackbar message
 
   const menu = [
     {
@@ -85,24 +88,37 @@ const Customize = () => {
   const handleSelectedCharmsChange = (e) => {
     setSelectedCharms(e.target.value);
   };
+
+  const handleSave = () => {
+    // Perform save action here
+    setSnackbarMessage("Saved successfully!");
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
+
   return (
-    <Box maxWidth={"1440px"} width={"1024px"} height={"100vh"}>
+    <Box maxWidth={"1440px"} width={"1200px"} height={"100vh"}>
       <Box
         sx={{
           display: "flex",
           gap: "25px",
           width: "100%",
-          boxShadow: "0px 12px 32px 0px #1E20261A",
         }}
       >
         <Box
           sx={{
             p: "40px",
             width: "500px",
-            boxShadow: "0px 12px 32px 0x #1D20261A",
           }}
           bgcolor={"white"}
           borderRadius={"5px"}
+          boxShadow={"0px 12px 32px 0px #1E20261A"}
         >
           <Typography pt={"2px"} fontSize={"25px"} fontWeight={700}>
             Customize Name And Photo
@@ -162,7 +178,7 @@ const Customize = () => {
           </Box>
         </Box>
 
-        <Box sx={{ width: "550px" }}>
+        <Box sx={{ width: "550px",boxShadow: "0px 12px 32px 0px #1E20261A", }}>
           <Box
             sx={{ p: "40px", boxShadow: "0px 12px 32px 0x #1D20261A" }}
             bgcolor={"white"}
@@ -250,7 +266,7 @@ const Customize = () => {
                 ))}
               </Select>
             </FormControl>
-            <Box sx={{ mt: "15px" }}>
+            <Box sx={{ mt: "15px", }}>
               <Typography sx={{ pt: "40px", fontWeight: 560 }}>
                 Selected Charms List
               </Typography>
@@ -282,8 +298,18 @@ const Customize = () => {
                 </Table>
               </TableContainer>
             </Box>
-            <Box sx={{ display: "flex", justifyContent: "end",mt:"30px" }}>
-              <Button variant="contained">Save</Button>
+          
+            <Box  sx={{ display: "flex", justifyContent: "end", mt: "30px", }}>
+              <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={6000}
+                onClose={handleSnackbarClose}
+                message={snackbarMessage}
+                anchorOrigin={{ vertical: "top", horizontal: "middle" }}
+              />
+              <Button variant="contained" onClick={handleSave}>
+                Save
+              </Button>
             </Box>
           </Box>
         </Box>

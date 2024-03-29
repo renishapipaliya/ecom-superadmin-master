@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, TextField, Typography, Checkbox, Button } from "@mui/material";
+import { Box, TextField, Typography, Checkbox, Button, Snackbar } from "@mui/material";
 
 const OwnerandContactinfo = () => {
   const [contactInfo, setContactInfo] = useState({
@@ -15,6 +15,9 @@ const OwnerandContactinfo = () => {
     contactMobile: "",
     contactEmail: "",
   });
+
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const handleContactInfoChange = (e) => {
     const { name, value } = e.target;
@@ -51,6 +54,15 @@ const OwnerandContactinfo = () => {
     }));
   };
 
+  const handleSave = () => {
+    setSnackbarMessage("Saved successfully!");
+    setSnackbarOpen(true);
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbarOpen(false);
+  };
+
   return (
     <>
       <Box>
@@ -65,7 +77,7 @@ const OwnerandContactinfo = () => {
             <Typography pt={"2px"} fontSize={"25px"} fontWeight={700}>
               Owner and Contact Person Information
             </Typography>
-            <Typography sx={{ pt: "40px", fontWeight: 560,fontSize:"20px" }}>
+            <Typography sx={{ pt: "40px", fontWeight: 560, fontSize: "20px" }}>
               Owner Information
             </Typography>
             <Box>
@@ -99,7 +111,7 @@ const OwnerandContactinfo = () => {
               </Box>
             </Box>
 
-            <Typography sx={{ pt: "40px", fontWeight: 560 ,fontSize:"20px" }}>
+            <Typography sx={{ pt: "40px", fontWeight: 560, fontSize: "20px" }}>
               Contact Information
             </Typography>
             <Box>
@@ -150,7 +162,7 @@ const OwnerandContactinfo = () => {
               <Typography>Same as contact</Typography>
             </Box>
 
-            <Typography sx={{ fontWeight: 560, mt: "30px" ,fontSize:"20px" }}>
+            <Typography sx={{ fontWeight: 560, mt: "30px", fontSize: "20px" }}>
               Contact Greeto Information
             </Typography>
             <Box>
@@ -205,12 +217,20 @@ const OwnerandContactinfo = () => {
             mt: "5px",
           }}
         >
+          <Snackbar
+            open={snackbarOpen}
+            autoHideDuration={6000}
+            onClose={handleCloseSnackbar}
+            message={snackbarMessage}
+            anchorOrigin={{vertical:"top",horizontal:"middle"}}
+          />
           <Button
-            type="submit"
+            type="button" 
             variant="contained"
             sx={{ width: "450px", mt: "25px" }}
+            onClick={handleSave} 
           >
-            submit
+            Save
           </Button>
         </Box>
       </Box>
