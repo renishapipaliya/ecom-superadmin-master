@@ -68,7 +68,7 @@ const Customdropdown = () => {
       <Box sx={{ mt: "30px" }}>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-            <TableHead sx={{ bgcolor: "gray" }}>
+            <TableHead sx={{ bgcolor: "lightgray" }}>
               <TableRow>
                 <TableCell align="center"></TableCell>
                 <TableCell align="center">Lable</TableCell>

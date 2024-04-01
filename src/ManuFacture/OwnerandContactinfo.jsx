@@ -68,7 +68,7 @@ const OwnerandContactinfo = () => {
       <Box>
         <Box
           sx={{
-            width: "450px",
+            width: "600px",
             mt: "10px",
           }}
         >
@@ -210,7 +210,7 @@ const OwnerandContactinfo = () => {
         </Box>
         <Box
           sx={{
-            width: "450px",
+            width: "600px",
             display: "flex",
             justifyContent: "end",
             mt: "5px",
@@ -226,10 +226,10 @@ const OwnerandContactinfo = () => {
           <Button
             type="button" 
             variant="contained"
-            sx={{ width: "450px", mt: "25px" }}
+            sx={{ width: "600px", mt: "25px" }}
             onClick={handleSave} 
           >
-            Save
+            submit
           </Button>
         </Box>
       </Box>

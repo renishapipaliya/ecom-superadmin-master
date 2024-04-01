@@ -19,7 +19,7 @@ const Shipping = () => {
   };
 
   return (
-    <Box maxWidth={"1440px"} width={"1300px"} height={"100vh"}>
+    <Box maxWidth={"1440px"} width={"1200px"} height={"100vh"}>
       <Box
         sx={{
           bgcolor: "white",
@@ -100,14 +100,15 @@ const Shipping = () => {
               variant="filled"
               onClose={() => setOpenSnackbar(false)}
               severity="success"
-              sx={{bgcolor:"black",color:"white"}}
+              sx={{ bgcolor: "black", color: "white" }}
             >
               {snackbarMessage}
             </MuiAlert>
           </Snackbar>
 
-          <Button sx={{mt:"20px"}} variant="contained" onClick={handleSave}>Save</Button>
-
+          <Button sx={{ mt: "20px" }} variant="contained" onClick={handleSave}>
+            Save
+          </Button>
         </Box>
       </Box>
     </Box>

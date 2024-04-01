@@ -44,7 +44,7 @@ const Companyinfo = () => {
   return (
     <>
       <Box>
-        <Box sx={{ width: "650px", mt: "10px",  }}>
+        <Box sx={{ width: "600px" , mt: "10px",  }}>
           <Box sx={{ p: "40px" }} bgcolor={"white"} borderRadius={"8px"}>
             <Typography mb={"20px"} fontSize={"25px"} fontWeight={600}>
               Company Information
@@ -119,7 +119,7 @@ const Companyinfo = () => {
                   required
                   tabIndex={-1}
                   sx={{
-                    width: "273px",
+                    width: "249px",
                     height: "100px",
                     bgcolor: "white",
                     border: "1px solid lightgray",
@@ -146,7 +146,7 @@ const Companyinfo = () => {
                   role={undefined}
                   tabIndex={-1}
                   sx={{
-                    width: "273px",
+                    width: "249px",
                     color: "#707888",
                     height: "100px",
                     bgcolor: "white",
@@ -178,7 +178,7 @@ const Companyinfo = () => {
             </Box>
           </Box>
         </Box>
-        <Box sx={{ width: "650px", height: "547px", mt: "25px" }}>
+        <Box sx={{ width: "600px" , height: "547px", mt: "25px" }}>
           <Box
             sx={{ p: "40px", boxShadow: "0px 12px 32px 0x #1D20261A" }}
             bgcolor={"white"}
