@@ -7,7 +7,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import { Button, Typography } from "@mui/material";
 import General from "./general";
 import Shipping from "./shipping";
-import Customize from "./Customize";
+import Customize from "../Customize/Customize";
 import VariantPage from "./Variant";
 
 const AddProduct = () => {
