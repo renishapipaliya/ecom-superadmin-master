@@ -111,27 +111,31 @@ const VariantPage = () => {
           Product Variant
         </Typography>
       </Box>
-      <Box>
-        <TextField
-          sx={{ width: "600px" }}
-          size="small"
-          label={
-            <Box>
-              <SearchOutlined />
-              Search
-            </Box>
-          }
-          value={searchTerm}
-          onChange={handleSearch}
-        />
-        <Button
-          sx={{ height: "40px", marginLeft: "32%" }}
-          variant="outlined"
-          startIcon={<Add />}
-          onClick={handleAddVariant}
-        >
-          Add Variants
-        </Button>
+      <Box sx={{display:"flex",justifyContent:"space-between"}}>
+        <Box>
+          <TextField
+            sx={{ width: "550px" }}
+            size="small"
+            label={
+              <Box>
+                <SearchOutlined />
+                Search
+              </Box>
+            }
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+        </Box>
+        <Box>
+          <Button
+            sx={{ height: "40px" }}
+            variant="outlined"
+            startIcon={<Add />}
+            onClick={handleAddVariant}
+          >
+            Add Variants
+          </Button>
+        </Box>
       </Box>
       <TableContainer>
         <Table>
