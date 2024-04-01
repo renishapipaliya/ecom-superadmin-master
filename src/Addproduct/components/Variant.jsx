@@ -214,12 +214,9 @@ const VariantPage = () => {
                   )}
                 </TableCell>
                 <TableCell>
-                  <TextField size="small"/>
-                </TableCell>
-                <TableCell>
                   <TextField size="small" />
                 </TableCell>
-                <TableCell padding="0px" >
+                <TableCell padding="0px" width={"190px"} >
                   {"PRO-001-" + variant.variant + "-" + (variant.variant === "Color" ? variant.color : variant.value)}
                 </TableCell>
                 <TableCell>
