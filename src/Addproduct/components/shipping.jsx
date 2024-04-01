@@ -19,12 +19,13 @@ const Shipping = () => {
   };
 
   return (
-    <Box maxWidth={"1440px"} width={"1200px"} height={"100vh"}>
+    <Box width={"1200px"} height={"80vh"}>
       <Box
         sx={{
           bgcolor: "white",
           padding: "30px",
           borderRadius: "5px",
+          width:"99%"
         }}
         boxShadow={"0px 12px 32px 0px #1E20261A"}
       >

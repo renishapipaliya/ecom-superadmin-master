@@ -19,12 +19,7 @@ const Customimage = () => {
     }
   };
   return (
-    <Box
-      sx={{
-        display: "flex",
-        gap: "25px",
-      }}
-    >
+    <Box display={"flex"} flexDirection={"column"}>
       <Box sx={{ display: "flex", gap: "30px" }}>
         <Box
           sx={{
@@ -166,6 +161,9 @@ const Customimage = () => {
             </Box>
           </Box>
         </Box>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "end", mt: "20px" }}>
+        <Button variant="contained">save</Button>
       </Box>
     </Box>
   );

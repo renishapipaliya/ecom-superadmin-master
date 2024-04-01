@@ -6,16 +6,18 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DehazeIcon from "@mui/icons-material/Dehaze";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
 const Customdropdown = () => {
   const [rows, setRows] = useState([]);
-  const [defaultImage, setDefaultImage] = useState("./image/Icon.png");
+
+  const defaultImage = "./image/Icon.png";
   const handleAddVariant = () => {
     const newRow = {
-      id: rows.length + 1,
+      id: String(rows.length + 1),
       label: "",
       chams: "",
       price: "",
@@ -40,9 +42,23 @@ const Customdropdown = () => {
       reader.readAsDataURL(file);
     }
   };
+
+  const handleDragEnd = (result) => {
+    if (!result.destination) {
+      return;
+    }
+  };
+
   return (
     <Box>
-      <Box sx={{ display: "flex", gap: "30px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          gap: "30px",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         <Box>
           <Typography>Display lable</Typography>
           <TextField
@@ -54,37 +70,20 @@ const Customdropdown = () => {
             required
           />
         </Box>
-        <Box sx={{ mt: "28px" }}>
-          <Button
-            sx={{
-              height: "38px",
-              width: "200px",
-              marginLeft: "2%",
-              fontSize: "13px",
-              ml: "320px",
-            }}
-            variant="outlined"
-            startIcon={<AddIcon />}
-          >
-            Choose as Templet
-          </Button>
-        </Box>
-        <Box sx={{ mt: "28px" }}>
-          <Button
-            sx={{
-              height: "38px",
-              width: "200px",
-              marginLeft: "2%",
-              fontSize: "13px",
-            }}
-            variant="outlined"
-            startIcon={<AddIcon />}
-          >
-            Save as Templet
-          </Button>
+        <Box sx={{ display: "flex", gap: "15px" }}>
+          <Box>
+            <Button size="small" variant="outlined" startIcon={<AddIcon />}>
+              Choose as Templet
+            </Button>
+          </Box>
+          <Box>
+            <Button size="small" variant="outlined" startIcon={<AddIcon />}>
+              Save as Templet
+            </Button>
+          </Box>
         </Box>
       </Box>
-      <Box sx={{ display: "flex", gap: "30px", mt: "10px" }}>
+      <Box sx={{ display: "flex", gap: "15px", mt: "10px" }}>
         <Box>
           <Typography>Instruction</Typography>
           <TextField
@@ -92,18 +91,14 @@ const Customdropdown = () => {
             placeholder="Write instruction here..."
             size="small"
             variant="outlined"
-            sx={{ width: "900px", mt: "5px" }}
+            sx={{ width: "825px", mt: "5px" }}
             required
           />
         </Box>
-        <Box sx={{ mt: "28px" }}>
+        <Box sx={{ mt: "28px", display: "flex", alignItems: "center" }}>
           <Button
-            sx={{
-              height: "38px",
-              width: "150px",
-              marginLeft: "2%",
-              fontSize: "13px",
-            }}
+            sx={{ width: "160px" }}
+            size="small"
             variant="outlined"
             startIcon={<AddIcon />}
             onClick={handleAddVariant}
@@ -113,83 +108,120 @@ const Customdropdown = () => {
         </Box>
       </Box>
       <Box sx={{ mt: "30px" }}>
-        <TableContainer sx={{ tableLayout: "fixed" }}>
-          <Table
-            sx={{ minWidth: 650, tableLayout: "fixed" }}
-            size="small"
-            aria-label="a dense table"
-          >
-            <TableHead sx={{ bgcolor: "lightgray" }}>
-              <TableRow>
-                <TableCell
-                  align="left"
-                  sx={{ "&.css-fp0xi9-MuiTableCell-root": { width: "30%" } }}
-                ></TableCell>
-                <TableCell align="center">Lable</TableCell>
-                <TableCell align="center">Chams</TableCell>
-                <TableCell align="center">Price</TableCell>
-                <TableCell align="center">Action</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row, index) => (
-                <TableRow key={index} sx={{ alignItems: "center" }}>
+        <DragDropContext onDragEnd={handleDragEnd}>
+          <TableContainer sx={{ tableLayout: "fixed" }}>
+            <Table
+              sx={{ minWidth: 650, tableLayout: "fixed" }}
+              size="small"
+              aria-label="a dense table"
+            >
+              <TableHead sx={{ bgcolor: "lightgray" }}>
+                <TableRow>
                   <TableCell
-                    sx={{ "&.css-8fdh2x-MuiTableCell-root": { width: "30%" } }}
                     align="left"
-                  >
-                    <Box>
-                      <DehazeIcon />
-                    </Box>
-                  </TableCell>
-                  <TableCell align="left" sx={{ display: "flex", gap: "10px" }}>
-                    <Box>
-                      <TextField
-                        sx={{ py: "6px" }}
-                        size="small"
-                        placeholder="Enter Chams name.."
-                      ></TextField>
-                    </Box>
-                  </TableCell>
-                  <TableCell align="center">
-                    <label htmlFor={`upload-image-${row.id}`}>
-                      <input
-                        type="file"
-                        id={`upload-image-${row.id}`}
-                        accept="image/*"
-                        onChange={(event) => handleImageUpload(event, row.id)}
-                        style={{ display: "none" }}
-                      />
-                      <img
-                        src={row.image ? row.image : defaultImage}
-                        alt="image"
-                        style={{
-                          objectFit: "contain",
-                          height: "40%",
-                          width: "40%",
-                          cursor: "pointer",
-                          aspectRatio: "16/9",
-                        }}
-                      />
-                    </label>
-                  </TableCell>
-                  <TableCell align="center">
-                    <TextField
-                      size="small"
-                      placeholder="00"
-                      sx={{ width: "70px" }}
-                    />
-                  </TableCell>
-                  <TableCell align="center">
-                    <IconButton onClick={() => handleDeleteRow(row.id)}>
-                      <DeleteIcon />
-                    </IconButton>
-                  </TableCell>
+                    sx={{ "&.css-fp0xi9-MuiTableCell-root": { width: "30%" } }}
+                  ></TableCell>
+                  <TableCell align="center">Label</TableCell>
+                  <TableCell align="center">Chams</TableCell>
+                  <TableCell align="center">Price</TableCell>
+                  <TableCell align="center">Action</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <Droppable droppableId="rows">
+                {(provided) => (
+                  <TableBody
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                  >
+                    {rows.map((row, index) => (
+                      <Draggable
+                        key={row.id}
+                        draggableId={row.id}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <TableRow
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            sx={{ alignItems: "center" }}
+                          >
+                            <TableCell
+                              sx={{
+                                "&.css-8fdh2x-MuiTableCell-root": {
+                                  width: "30%",
+                                },
+                              }}
+                              align="left"
+                            >
+                              <Box>
+                                <DehazeIcon />
+                              </Box>
+                            </TableCell>
+                            <TableCell
+                              align="left"
+                              sx={{ display: "flex", gap: "10px" }}
+                            >
+                              <Box>
+                                <TextField
+                                  sx={{ py: "6px" }}
+                                  size="small"
+                                  placeholder="Enter Chams name.."
+                                ></TextField>
+                              </Box>
+                            </TableCell>
+                            <TableCell align="center">
+                              <label htmlFor={`upload-image-${row.id}`}>
+                                <input
+                                  type="file"
+                                  id={`upload-image-${row.id}`}
+                                  accept="image/*"
+                                  onChange={(event) =>
+                                    handleImageUpload(event, row.id)
+                                  }
+                                  style={{ display: "none" }}
+                                />
+                                <img
+                                  src={row.image ? row.image : defaultImage}
+                                  alt="image"
+                                  style={{
+                                    objectFit: "contain",
+                                    height: "40%",
+                                    width: "40%",
+                                    cursor: "pointer",
+                                    aspectRatio: "16/9",
+                                  }}
+                                />
+                              </label>
+                            </TableCell>
+                            <TableCell align="center">
+                              <TextField
+                                size="small"
+                                placeholder="00"
+                                sx={{ width: "70px" }}
+                              />
+                            </TableCell>
+                            <TableCell align="center">
+                              <IconButton
+                                onClick={() => handleDeleteRow(row.id)}
+                              >
+                                <DeleteIcon />
+                              </IconButton>
+                            </TableCell>
+                          </TableRow>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </TableBody>
+                )}
+              </Droppable>
+            </Table>
+          </TableContainer>
+        </DragDropContext>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "end", mt: "20px" }}>
+        <Button variant="contained">save</Button>
       </Box>
     </Box>
   );

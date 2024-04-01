@@ -17,10 +17,10 @@ const AddProduct = () => {
   };
   return (
     <>
-      <Box sx={{ padding: "30px" }} maxWidth={"1440px"} width={"1300px"}>
+      <Box sx={{ padding: "30px" }}  width={"1250px"}>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography
-            sx={{ fontSize: "32px", fontWeight: "bold", paddingX: "25px" }}
+            sx={{ fontSize: "32px", fontWeight: "bold" }}
           >
             Add Products
           </Typography>
@@ -33,7 +33,7 @@ const AddProduct = () => {
         </Box>
         <Box sx={{ width: "100%", typography: "body1", mt: "10px" }}>
           <TabContext value={value}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider", mx: "20px" }}>
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
               <TabList
                 sx={{ bgcolor: "white", borderRadius: "10px" }}
                 onChange={handleChange}
@@ -45,16 +45,16 @@ const AddProduct = () => {
                 <Tab label="shipping" value="4" />
               </TabList>
             </Box>
-            <TabPanel value="1">
+            <TabPanel sx={{p:0,pt:2}} value="1">
               <General />
             </TabPanel>
-            <TabPanel value="2">
+            <TabPanel sx={{p:0,pt:2}} value="2">
               <VariantPage />
             </TabPanel>
-            <TabPanel value="3">
+            <TabPanel sx={{p:0,pt:2}} value="3">
               <Customize />
             </TabPanel>
-            <TabPanel value="4">
+            <TabPanel sx={{p:0,pt:2}} value="4">
               <Shipping />
             </TabPanel>
           </TabContext>

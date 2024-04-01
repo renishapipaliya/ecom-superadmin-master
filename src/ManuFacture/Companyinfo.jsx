@@ -23,28 +23,41 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 const Companyinfo = () => {
-  const [uploadedFile1, setUploadedFile1] = useState(null);
-  const [uploadedFile2, setUploadedFile2] = useState(null);
-  const [uploadedFile3, setUploadedFile3] = useState(null);
+  const [image, setImage] = useState(null);
+  const [gstImage, setGstImage] = useState(null);
+  const [incorporationImage, setIncorporationImage] = useState(null);
 
-  const handleFileInputChange1 = (event) => {
+  const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    setUploadedFile1(file);
+    if (file) {
+      setImage(URL.createObjectURL(file));
+    }
   };
 
-  const handleFileInputChange2 = (event) => {
-    const file = event.target.files[0];
-    setUploadedFile2(file);
+  const handleCancelUpload = () => {
+    setImage(null);
   };
-  const handleFileInputChange3 = (event) => {
+
+  const handleGstImageUpload = (event) => {
     const file = event.target.files[0];
-    setUploadedFile3(file);
+    if (file) {
+      setGstImage(URL.createObjectURL(file));
+    }
   };
+
+  const handleIncorporationImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setIncorporationImage(URL.createObjectURL(file));
+    }
+  };
+
+  const defaultImage = "./image/Icon.png";
 
   return (
     <>
       <Box>
-        <Box sx={{ width: "600px" , mt: "10px",  }}>
+        <Box sx={{ width: "600px", mt: "10px" }}>
           <Box sx={{ p: "40px" }} bgcolor={"white"} borderRadius={"8px"}>
             <Typography mb={"20px"} fontSize={"25px"} fontWeight={600}>
               Company Information
@@ -110,57 +123,74 @@ const Companyinfo = () => {
             <Box sx={{ display: "flex", gap: "20px" }}>
               <Box sx={{ mt: "15px" }}>
                 <Typography sx={{ color: "#707888" }}>
-                  Upload GST.Certificate
+                  Upload GST Certificate
                 </Typography>
-                <Button
-                  bgcolor="white"
-                  component="label"
-                  role={undefined}
-                  required
-                  tabIndex={-1}
+                <Box
                   sx={{
-                    width: "249px",
-                    height: "100px",
-                    bgcolor: "white",
+                    height: "80%",
+                    width: "100%",
                     border: "1px solid lightgray",
-                    color: "#707888",
+                    borderRadius: "5px",
+                    mt:"5px"
                   }}
-                  startIcon={<CloudUploadIcon />}
                 >
-                  {uploadedFile1 ? uploadedFile1.name : "Upload file"}
-                  <VisuallyHiddenInput
-                    type="file"
-                    onChange={handleFileInputChange1}
-                  />
-                </Button>
+                  <label htmlFor="upload-gst-image">
+                    <input
+                      id="upload-gst-image"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleGstImageUpload}
+                      style={{ display: "none" }}
+                    />
+                    <img
+                      src={gstImage ? gstImage : defaultImage}
+                      alt="GST Certificate"
+                      style={{
+                        objectFit: "cover",
+                        height: "100%",
+                        width: "100%",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </label>
+                </Box>
               </Box>
 
               <Box sx={{ mt: "15px" }}>
                 <Typography sx={{ color: "#707888" }}>
-                  Upload Incorperation Certificate
+                  Upload Incorporation Certificate
                 </Typography>
-                <Button
-                  required
-                  bgcolor="white"
-                  component="label"
-                  role={undefined}
-                  tabIndex={-1}
+                <Box
                   sx={{
-                    width: "249px",
-                    color: "#707888",
-                    height: "100px",
-                    bgcolor: "white",
+                    mt:"5px",
+                    height: "80%",
+                    width: "100%",
                     border: "1px solid lightgray",
+                    borderRadius: "5px",
                   }}
-                  startIcon={<CloudUploadIcon />}
                 >
-                  {uploadedFile2 ? uploadedFile2.name : "Upload file"}
-                  <VisuallyHiddenInput
-                    type="file"
-                    multiple={true}
-                    onChange={handleFileInputChange2}
-                  />
-                </Button>
+                  <label htmlFor="upload-incorporation-image">
+                    <input
+                      id="upload-incorporation-image"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleIncorporationImageUpload}
+                      style={{ display: "none" }}
+                    />
+                    <img
+                      src={
+                        incorporationImage ? incorporationImage : defaultImage
+                      }
+                      alt="Incorporation Certificate"
+                      style={{
+                        objectFit: "cover",
+                        height: "100%",
+                        width: "100%",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </label>
+                </Box>
               </Box>
             </Box>
 
@@ -178,7 +208,7 @@ const Companyinfo = () => {
             </Box>
           </Box>
         </Box>
-        <Box sx={{ width: "600px" , height: "547px", mt: "25px" }}>
+        <Box sx={{ width: "600px", height: "547px", mt: "25px" }}>
           <Box
             sx={{ p: "40px", boxShadow: "0px 12px 32px 0x #1D20261A" }}
             bgcolor={"white"}
@@ -197,10 +227,7 @@ const Companyinfo = () => {
               />
             </Box>
             <Box mt="15px">
-              <Typography sx={{ color: "#707888" }}>
-                {" "}
-                Name of Account
-              </Typography>
+              <Typography sx={{ color: "#707888" }}>Name of Account</Typography>
               <TextField
                 fullWidth
                 size="small"
@@ -220,28 +247,36 @@ const Companyinfo = () => {
             </Box>
             <Box sx={{ mt: "15px" }}>
               <Typography sx={{ color: "#707888" }}>
-                Upload cancle check
+                Upload/Cancel Check
               </Typography>
-              <Button
-                bgcolor="white"
-                component="label"
-                role={undefined}
-                tabIndex={-1}
-                fullWidth
+              <Box
                 sx={{
-                  color: "#707888",
                   height: "100px",
-                  bgcolor: "white",
+                  width: "520px",
                   border: "1px solid lightgray",
+                  borderRadius: "5px",
                 }}
-                startIcon={<CloudUploadIcon />}
               >
-                {uploadedFile3 ? uploadedFile3.name : "Upload file"}
-                <VisuallyHiddenInput
-                  type="file"
-                  onChange={handleFileInputChange3}
-                />
-              </Button>
+                <label htmlFor="upload-image">
+                  <img
+                    src={image ? image : defaultImage}
+                    alt="Course Thumbnail"
+                    style={{
+                      objectFit: "contain",
+                      height: "100%",
+                      width: "100%",
+                      cursor: "pointer",
+                    }}
+                  />
+                  <input
+                    id="upload-image"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    style={{ display: "none" }}
+                  />
+                </label>
+              </Box>
             </Box>
           </Box>
         </Box>

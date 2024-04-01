@@ -1,11 +1,12 @@
 import React from "react";
-import { Box, Typography, TextField, InputAdornment } from "@mui/material";
+import { Box, Typography, TextField, InputAdornment, Button } from "@mui/material";
 
 const CustomText = () => {
   return (
     <Box
       sx={{
         width: "1200px",
+        "&.css-8r7lw3":{height:"100vh",}
       }}
     >
       <Box sx={{ display: "flex", gap: "30px" }}>
@@ -13,7 +14,7 @@ const CustomText = () => {
           <Typography>Number of line</Typography>
           <TextField
             id="outlined-basic"
-            placeholder="00"
+            placeholder="1"
             size="small"
             variant="outlined"
             sx={{ width: "345px", mt: "10px" }}
@@ -92,12 +93,12 @@ const CustomText = () => {
         </Box>
       </Box>
 
-      <Box sx={{ display: "flex", gap: "30px", mt: "20px"}}>
+      <Box sx={{ display: "flex", gap: "30px", mt: "20px" }}>
         <Box>
           <Typography>Instruction</Typography>
           <textarea
             id="outlined-basic"
-            rows={"5"}
+            rows={"4"}
             className="border border-gray-300 w-[1100px] rounded p-2 mt-3"
             size="small"
             variant="outlined"
@@ -107,6 +108,9 @@ const CustomText = () => {
           />
         </Box>
       </Box>
+        <Box sx={{display:"flex",justifyContent:"end",mt:"20px"}}>
+          <Button variant="contained">save</Button>
+        </Box>
     </Box>
   );
 };
