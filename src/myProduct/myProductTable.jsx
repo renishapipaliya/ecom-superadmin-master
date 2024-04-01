@@ -10,7 +10,6 @@ import { Box, IconButton, TextField, Typography } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
 const MyProductTable = () => {
   const [openRow, setOpenRow] = React.useState(null);
@@ -98,7 +97,8 @@ const MyProductTable = () => {
                   <TableRow>
                     <TableCell colSpan={4}>
                       <Box sx={{padding:"10px",height:"100%"}}>
-                        <Grid container spacing={4}>
+                        <Typography>10</Typography>
+                        {/* <Grid container spacing={4}>
                           <Grid xs={3}>
                             <Box>
                               <Typography>1</Typography>
@@ -119,17 +119,7 @@ const MyProductTable = () => {
                               <Typography>4</Typography>
                             </Box>
                           </Grid>
-                        </Grid>
-                        {/* <Table>
-                          <TableBody>
-                            <TableRow>
-                              <TableCell>Red Wallet</TableCell>
-                              <TableCell align="rigth">erg</TableCell>
-                              <TableCell align="right">qerg</TableCell>
-                              <TableCell align="right">qger</TableCell>
-                            </TableRow>
-                          </TableBody>
-                        </Table> */}
+                        </Grid> */}
                       </Box>
                     </TableCell>
                   </TableRow>

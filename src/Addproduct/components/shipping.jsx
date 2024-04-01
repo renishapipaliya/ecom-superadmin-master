@@ -19,7 +19,7 @@ const Shipping = () => {
   };
 
   return (
-    <Box maxWidth={"1440px"} width={"1200px"} height={"100vh"}>
+    <Box maxWidth={"1440px"} width={"1300px"} height={"100vh"}>
       <Box
         sx={{
           bgcolor: "white",

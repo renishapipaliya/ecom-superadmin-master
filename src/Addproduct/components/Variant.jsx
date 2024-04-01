@@ -96,7 +96,7 @@ const VariantPage = () => {
       <Box
         bgcolor={"white"}
         maxWidth={"1440px"}
-        width={"1200px"}
+        width={"1300px"}
         boxShadow={"0px 12px 32px #1E20261A"}
         padding={"40px"}
         borderRadius={"5px"}

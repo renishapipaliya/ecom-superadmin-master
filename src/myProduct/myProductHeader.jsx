@@ -15,12 +15,12 @@ const MyProductHeader = () => {
         <Typography sx={{ fontSize: "30px", fontWeight: 600 }}>
           My Product
         </Typography>
-        <Box sx={{bgcolor:"white"}}>
+        <Box>
           <Box
             sx={{
               display: "flex",
               mt: "40px",
-              p:"20px",
+              p: "20px",
               justifyContent: "space-between",
             }}
           >
@@ -43,8 +43,9 @@ const MyProductHeader = () => {
           <Box
             sx={{
               display: "flex",
-              padding:"20px",
+              padding: "20px",
               justifyContent: "space-between",
+              bgcolor:"white"
             }}
           >
             <Box>

@@ -73,7 +73,7 @@ const General = () => {
         display: "flex",
         gap: "25px",
         maxWidth: "1440px",
-        width: "1200px",
+        width: "1300px",
       }}
     >
       <Box

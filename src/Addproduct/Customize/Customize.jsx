@@ -40,7 +40,7 @@ const Customize = () => {
   };
 
   return (
-    <Box maxWidth={"1440px"} width={"1200px"} height={"100vh"}>
+    <Box maxWidth={"1440px"} width={"1300px"} height={"100vh"}>
       <Box
         sx={{
           display: "flex",
@@ -60,15 +60,7 @@ const Customize = () => {
           justifyContent={"center"}
         >
           {!textVisible && !imageVisible && !dropdownVisible && (
-            <Button
-              variant="contained"
-              sx={{
-                bgcolor: "lightgray",
-                color: "black",
-                textAlign: "center",
-              }}
-              onClick={handleDialogOpen}
-            >
+            <Button variant="outlined" onClick={handleDialogOpen}>
               Add Customisation
             </Button>
           )}
