@@ -42,7 +42,7 @@ const AddProduct = () => {
                 <Tab label="general" value="1" />
                 <Tab label="variant" value="2" />
                 <Tab label="Customize" value="3" />
-                <Tab label="shopping" value="4" />
+                <Tab label="shipping" value="4" />
               </TabList>
             </Box>
             <TabPanel value="1">
