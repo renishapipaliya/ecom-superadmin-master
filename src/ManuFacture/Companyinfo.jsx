@@ -44,7 +44,7 @@ const Companyinfo = () => {
   return (
     <>
       <Box>
-        <Box sx={{ width: "650px", mt: "10px", fontFamily: "Poppins" }}>
+        <Box sx={{ width: "650px", mt: "10px",  }}>
           <Box sx={{ p: "40px" }} bgcolor={"white"} borderRadius={"8px"}>
             <Typography mb={"20px"} fontSize={"25px"} fontWeight={600}>
               Company Information
@@ -157,6 +157,7 @@ const Companyinfo = () => {
                   {uploadedFile2 ? uploadedFile2.name : "Upload file"}
                   <VisuallyHiddenInput
                     type="file"
+                    multiple={true}
                     onChange={handleFileInputChange2}
                   />
                 </Button>

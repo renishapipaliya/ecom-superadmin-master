@@ -73,7 +73,7 @@ const General = () => {
         display: "flex",
         gap: "25px",
         maxWidth: "1440px",
-        width: "1200px",
+        width: "1300px",
       }}
     >
       <Box
@@ -111,7 +111,6 @@ const General = () => {
             <Typography
               sx={{
                 fontSize: "15px",
-                color: "black",
                 mt: "2px",
                 color: "#707888",
               }}
@@ -134,7 +133,7 @@ const General = () => {
             <Typography
               sx={{
                 fontSize: "15px",
-                color: "black",
+                // color: "black",
                 mt: "2px",
                 color: "#707888",
               }}
@@ -159,7 +158,6 @@ const General = () => {
             <Typography
               sx={{
                 fontSize: "15px",
-                color: "black",
                 mt: "2px",
                 color: "#707888",
               }}

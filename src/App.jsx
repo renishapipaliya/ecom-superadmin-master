@@ -7,7 +7,10 @@ import AddProductScreen from "./routes/AddProductScreen";
 import ManufactureScreen from "./routes/ManuFactureScreen";
 import PersonIcon from "@mui/icons-material/Person";
 import CategoryScreen from "./routes/categoryScreen";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import CategoryIcon from "@mui/icons-material/Category";
+import MyProductHeader from "./myProduct/myProductHeader";
+import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
+import MyProductList from "./routes/myProductList";
 
 const routePath = [
   {
@@ -18,12 +21,17 @@ const routePath = [
   {
     path: "categoryScreen",
     name: "Category",
-    icon: <ShoppingCartIcon />,
+    icon: <CategoryIcon />,
   },
   {
     path: "manufactureScreen",
     name: "Manufacture",
     icon: <Factory />,
+  },
+  {
+    path: "MyProductList",
+    name: "MyProduct",
+    icon: <PlaylistAddCheckIcon />,
   },
 ];
 
@@ -102,11 +110,12 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Box display={"flex"}>
         <Navbar />
-        <Box fontFamily={"Poppins"}>
+        <Box fontFamily={"Poppins"} maxWidth={"1440px"} width={"1300px"}>
           <Routes>
             <Route path="/" element={<AddProductScreen />} />
             <Route path="/manufactureScreen" element={<ManufactureScreen />} />
             <Route path="/categoryScreen" element={<CategoryScreen />} />
+            <Route path="/MyProductList" element={<MyProductList />} />
           </Routes>
         </Box>
       </Box>

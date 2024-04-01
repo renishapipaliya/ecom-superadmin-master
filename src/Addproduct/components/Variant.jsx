@@ -80,16 +80,17 @@ const VariantPage = () => {
   };
 
   return (
-    <Box
-      height={"100vh"}
-      bgcolor={"white"}
-      maxWidth={"1440px"}
-      width={"1200px"}
-      boxShadow={"0px 12px 32px #1E20261A"}
-      padding={"40px"}
-      borderRadius={"5px"}
-    >
-      <Box>
+
+    <Box height={"100vh"}>
+      <Box
+        bgcolor={"white"}
+        maxWidth={"1440px"}
+        width={"1300px"}
+        boxShadow={"0px 12px 32px #1E20261A"}
+        padding={"40px"}
+        borderRadius={"5px"}
+      >
+
         <Typography fontSize={"25px"} fontWeight={600}>
           Product Variant
         </Typography>

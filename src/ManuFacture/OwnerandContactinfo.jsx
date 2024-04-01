@@ -70,7 +70,6 @@ const OwnerandContactinfo = () => {
           sx={{
             width: "450px",
             mt: "10px",
-            fontFamily: "Poppins",
           }}
         >
           <Box sx={{ p: "40px" }} bgcolor={"white"} borderRadius={"8px"}>

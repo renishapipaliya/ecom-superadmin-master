@@ -7,7 +7,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import { Button, Typography } from "@mui/material";
 import General from "./general";
 import Shipping from "./shipping";
-import Customize from "./Customize";
+import Customize from "../Customize/Customize";
 import VariantPage from "./Variant";
 
 const AddProduct = () => {
@@ -17,7 +17,7 @@ const AddProduct = () => {
   };
   return (
     <>
-      <Box sx={{ padding: "30px" }}>
+      <Box sx={{ padding: "30px" }} maxWidth={"1440px"} width={"1300px"}>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography
             sx={{ fontSize: "32px", fontWeight: "bold", paddingX: "25px" }}
@@ -42,7 +42,7 @@ const AddProduct = () => {
                 <Tab label="general" value="1" />
                 <Tab label="variant" value="2" />
                 <Tab label="Customize" value="3" />
-                <Tab label="shopping" value="4" />
+                <Tab label="shipping" value="4" />
               </TabList>
             </Box>
             <TabPanel value="1">
