@@ -16,23 +16,19 @@ import {
 } from "@mui/material";
 import { Add, CurrencyRupee, Delete, Percent, SearchOutlined } from "@mui/icons-material";
 import { MuiColorInput } from 'mui-color-input';
-
 const VariantPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const [variants, setVariants] = useState([{ id: 1, variant: 'Color', value: '', color: '#000000', discountType: 'Percent', price: '', maxDiscount: '' }]); // Initial variant with ID
   const [nextVariantId, setNextVariantId] = useState(2); // ID for the next variant to be added
-
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
     // Add your logic for filtering variants based on search term
   };
-
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     setSelectedImage(file);
   };
-
   const handleDiscountTypeChange = (id, event) => {
     const updatedVariants = variants.map(variant => {
       if (variant.id === id) {
@@ -42,14 +38,11 @@ const VariantPage = () => {
     });
     setVariants(updatedVariants);
   };
-  
-
   const handleAddVariant = () => {
     const newVariant = { id: nextVariantId, variant: 'Color', value: '', color: '#000000', discountType: 'Percent', price: '', maxDiscount: '' };
     setVariants([...variants, newVariant]);
     setNextVariantId(nextVariantId + 1);
   };
-
   const handleVariantChange = (id, event) => {
     const selectedVariant = event.target.value;
     const updatedVariants = variants.map(variant => {
@@ -60,7 +53,6 @@ const VariantPage = () => {
     });
     setVariants(updatedVariants);
   };
-
   const handleValueChange = (id, field, value) => {
     const updatedVariants = variants.map(variant => {
       if (variant.id === id) {
@@ -70,7 +62,6 @@ const VariantPage = () => {
     });
     setVariants(updatedVariants);
   };
-
   const calculateDiscount = (price, maxDiscount) => {
     if (!price || !maxDiscount || isNaN(price) || isNaN(maxDiscount) || parseFloat(price) <= 0) {
       return '';
@@ -78,19 +69,17 @@ const VariantPage = () => {
     const discount = (maxDiscount / price) * 100;
     return discount.toFixed(2); // Assuming you want to display discount in percentage format with 2 decimal places
   };
-
   return (
-
-    <Box height={"100vh"}>
-      <Box
-        bgcolor={"white"}
-        maxWidth={"1440px"}
-        width={"1300px"}
-        boxShadow={"0px 12px 32px #1E20261A"}
-        padding={"40px"}
-        borderRadius={"5px"}
-      >
-
+    <Box
+      height={"100vh"}
+      bgcolor={"white"}
+      maxWidth={"1440px"}
+      width={"1200px"}
+      boxShadow={"0px 12px 32px #1E20261A"}
+      padding={"40px"}
+      borderRadius={"5px"}
+    >
+      <Box>
         <Typography fontSize={"25px"} fontWeight={600}>
           Product Variant
         </Typography>
@@ -231,6 +220,10 @@ const VariantPage = () => {
   );
 };
 export default VariantPage;
+
+
+
+
 
 
 
