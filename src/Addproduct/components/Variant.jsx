@@ -1,235 +1,229 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
+  InputLabel,
   MenuItem,
   Select,
-  Snackbar,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   TextField,
   Typography,
 } from "@mui/material";
-
+import { Add, CurrencyRupee, Delete, Percent, SearchOutlined } from "@mui/icons-material";
+import { MuiColorInput } from 'mui-color-input';
 const VariantPage = () => {
-  const [value, setValue] = useState("");
-  const [color, setColor] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(0);
-  const [sku, setSku] = useState("");
-  const [productStock, setProductStock] = useState(0);
-  const [allInputsFilled, setAllInputsFilled] = useState(false);
-  const [showSnackbar, setShowSnackbar] = useState(false);
-  const [saveSnackbar, setSaveSnackbar] = useState(false);
-
-  const handleSnackbarClose = () => {
-    setShowSnackbar(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [variants, setVariants] = useState([{ id: 1, variant: 'Color', value: '', color: '#000000', discountType: 'Percent', price: '', maxDiscount: '' }]); // Initial variant with ID
+  const [nextVariantId, setNextVariantId] = useState(2); // ID for the next variant to be added
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+    // Add your logic for filtering variants based on search term
   };
-
-  const handleQuantityChange = (event) => {
-    const newQuantity = event.target.value;
-    if (newQuantity >= 0) {
-      setQuantity(newQuantity);
-      calculatePrice(newQuantity);
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    setSelectedImage(file);
+  };
+  const handleDiscountTypeChange = (id, event) => {
+    const updatedVariants = variants.map(variant => {
+      if (variant.id === id) {
+        return { ...variant, discountType: event.target.value };
+      }
+      return variant;
+    });
+    setVariants(updatedVariants);
+  };
+  const handleAddVariant = () => {
+    const newVariant = { id: nextVariantId, variant: 'Color', value: '', color: '#000000', discountType: 'Percent', price: '', maxDiscount: '' };
+    setVariants([...variants, newVariant]);
+    setNextVariantId(nextVariantId + 1);
+  };
+  const handleVariantChange = (id, event) => {
+    const selectedVariant = event.target.value;
+    const updatedVariants = variants.map(variant => {
+      if (variant.id === id) {
+        return { ...variant, variant: selectedVariant, discountType: selectedVariant === 'Color' ? 'Percent' : 'Currency' };
+      }
+      return variant;
+    });
+    setVariants(updatedVariants);
+  };
+  const handleValueChange = (id, field, value) => {
+    const updatedVariants = variants.map(variant => {
+      if (variant.id === id) {
+        return { ...variant, [field]: value };
+      }
+      return variant;
+    });
+    setVariants(updatedVariants);
+  };
+  const calculateDiscount = (price, maxDiscount) => {
+    if (!price || !maxDiscount || isNaN(price) || isNaN(maxDiscount) || parseFloat(price) <= 0) {
+      return '';
     }
+    const discount = (maxDiscount / price) * 100;
+    return discount.toFixed(2); // Assuming you want to display discount in percentage format with 2 decimal places
   };
-
-  const handlePriceChange = (event) => {
-    const newPrice = event.target.value;
-    setPrice(newPrice);
-  };
-
-  const handleValueChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  const handleColorChange = (event) => {
-    setColor(event.target.value);
-  };
-
-  const handleChange = (event) => {
-    const newStock = event.target.value;
-    if (newStock >= 0) {
-      setProductStock(newStock);
-    }
-  };
-
-  const calculatePrice = (newQuantity) => {
-    let basePrice = 10;
-    let additionalPrice = 10;
-    let totalPrice = basePrice + additionalPrice * (newQuantity - 1);
-    setPrice(totalPrice);
-  };
-
-  const generateSku = () => {
-    let generatedSku = "Pro-001-" + color.toLowerCase() + "-" + value;
-    setSku(generatedSku);
-  };
-
-  useEffect(() => {
-    calculatePrice(quantity);
-    generateSku();
-  }, [value, color, quantity]);
-
-  useEffect(() => {
-    if (value && color && quantity && price && sku && productStock) {
-      setAllInputsFilled(true);
-    } else {
-      setAllInputsFilled(false);
-    }
-  }, [value, color, quantity, price, sku, productStock]);
-
-  const handleSave = () => {
-    if (allInputsFilled) {
-      setSaveSnackbar(true);
-      // setValue("");
-      // setColor("");
-      // setQuantity("");
-      // setPrice("");
-      // setSku("");
-      // setProductStock("");
-    } else {
-      setShowSnackbar(true);
-    }
-  };
-
   return (
-    <Box height={"100vh"}>
-      <Box
-        bgcolor={"white"}
-        maxWidth={"1440px"}
-        width={"1300px"}
-        boxShadow={"0px 12px 32px #1E20261A"}
-        padding={"40px"}
-        borderRadius={"5px"}
-      >
+    <Box
+      height={"100vh"}
+      bgcolor={"white"}
+      maxWidth={"1440px"}
+      width={"1200px"}
+      boxShadow={"0px 12px 32px #1E20261A"}
+      padding={"40px"}
+      borderRadius={"5px"}
+    >
+      <Box>
         <Typography fontSize={"25px"} fontWeight={600}>
           Product Variant
         </Typography>
-        <Box sx={{ display: "flex", gap: "30px", mt: "20px" }}>
-          <Box>
-            <Typography fontSize={"16px"}>Color</Typography>
-            <Select
-              size="small"
-              value={color}
-              onChange={handleColorChange}
-              displayEmpty
-              inputProps={{ "aria-label": "Select color" }}
-              sx={{
-                width: "300px",
-              }}
-            >
-              <MenuItem value="" disabled>
-                Select color
-              </MenuItem>
-              <MenuItem value="Red">Red</MenuItem>
-              <MenuItem value="Blue">Blue</MenuItem>
-              <MenuItem value="Green">Green</MenuItem>
-            </Select>
-          </Box>
-
-          <Box>
-            <Typography>Value</Typography>
-            <Select
-              size="small"
-              value={value}
-              onChange={handleValueChange}
-              aria-label="Select value"
-              sx={{ width: "300px" }}
-              displayEmpty
-            >
-              <MenuItem value="0" disabled>
-                0
-              </MenuItem>
-              {[...Array(11).keys()].map((value) => (
-                <MenuItem key={value} value={value}>
-                  {value}
-                </MenuItem>
-              ))}
-            </Select>
-          </Box>
-        </Box>
-        <Box sx={{ display: "flex", gap: "30px", mt: "10px" }}>
-          <Box>
-            <Typography>Quantity</Typography>
-            <TextField
-              id="outlined-basic"
-              size="small"
-              variant="outlined"
-              value={quantity}
-              onChange={handleQuantityChange}
-              sx={{ width: "300px" }}
-              required
-            />
-          </Box>
-
-          <Box>
-            <Typography>Price</Typography>
-            <TextField
-              size="small"
-              id="outlined-basic"
-              variant="outlined"
-              value={price}
-              onChange={handlePriceChange}
-              sx={{ width: "300px" }}
-              required
-            />
-          </Box>
-        </Box>
-        <Box sx={{ display: "flex", gap: "30px", mt: "10px" }}>
-          <Box>
-            <Typography>SKU</Typography>
-            <TextField
-              size="small"
-              variant="outlined"
-              value={sku}
-              InputProps={{
-                readOnly: true,
-              }}
-              sx={{ width: "300px" }}
-              required
-            />
-          </Box>
-
-          <Box>
-            <Typography>Stock</Typography>
-            <TextField
-              size="small"
-              id="outlined-basic"
-              variant="outlined"
-              onChange={handleChange}
-              value={productStock}
-              sx={{ width: "300px" }}
-              required
-            />
-          </Box>
-        </Box>
-        <Box display={"flex"} justifyContent={"end"} mt={2}>
-          <Button variant="contained" onClick={handleSave}>
-            Save
-          </Button>
-        </Box>
-        <Snackbar
-          open={showSnackbar}
-          autoHideDuration={6000}
-          onClose={handleSnackbarClose}
-          message="Please fill all the fields."
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "middle",
-          }}
-        />
-        <Snackbar
-          open={saveSnackbar}
-          autoHideDuration={3000}
-          onClose={handleSnackbarClose}
-          message="Successfully saved"
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "middle",
-          }}
-        />
       </Box>
+      <Box>
+        <TextField
+          sx={{ width: "600px" }}
+          size="small"
+          label={
+            <Box>
+              <SearchOutlined />
+              Search
+            </Box>
+          }
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+        <Button
+          sx={{ height: "40px", marginLeft: "32%" }}
+          variant="outlined"
+          startIcon={<Add />}
+          onClick={handleAddVariant}
+        >
+          Add Variants
+        </Button>
+      </Box>
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>VARIANT</TableCell>
+              <TableCell>VALUE</TableCell>
+              <TableCell>IMAGE</TableCell>
+              <TableCell>PRICE</TableCell>
+              <TableCell>MAX DISCOUNT</TableCell>
+              <TableCell>DISCOUNT</TableCell>
+              <TableCell>STOCK</TableCell>
+              <TableCell>SKU</TableCell>
+              <TableCell>ACTION</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {variants.map(variant => (
+              <TableRow key={variant.id}>
+                <TableCell>
+                  <Select
+                    sx={{
+                      width: "90px",
+                      height: "30px"
+                    }}
+                    value={variant.variant}
+                    onChange={(e) => handleVariantChange(variant.id, e)}
+                  >
+                    <MenuItem value="Color">Color</MenuItem>
+                    <MenuItem value="Size">Size</MenuItem>
+                  </Select>
+                </TableCell>
+                <TableCell padding="0px" >
+                  {variant.variant === "Color" ? (
+                    <MuiColorInput
+                      format="hex"
+                      value={variant.color}
+                      onChange={(newValue) => handleValueChange(variant.id, 'color', newValue)}
+                    />
+                  ) : (
+                    <TextField sx={{
+                      padding: "0px",
+                      width: "90px",
+                      height: "30px"
+                    }}
+                      value={variant.value}
+                      onChange={(e) => handleValueChange(variant.id, 'value', e.target.value)}
+                    />
+                  )}
+                </TableCell>
+                <TableCell>
+                  <input
+                    accept="image/*"
+                    id={`image-upload-${variant.id}`}
+                    type="file"
+                    onChange={handleImageUpload}
+                    style={{ display: "none" }}
+                  />
+                  <label htmlFor={`image-upload-${variant.id}`}>
+                    <Button variant="contained" component="span">
+                      Upload
+                    </Button>
+                  </label>
+                  {selectedImage && (
+                    <Typography>{selectedImage.name}</Typography>
+                  )}
+                </TableCell>
+                <TableCell>
+                  <TextField
+                  size="small"
+                    value={variant.price}
+                    onChange={(e) => handleValueChange(variant.id, 'price', e.target.value)}
+                  />
+                </TableCell>
+                <TableCell >
+                  <Box display={"flex"} >
+                  <TextField size="small"
+                    value={variant.maxDiscount}
+                    onChange={(e) => handleValueChange(variant.id, 'maxDiscount', e.target.value)}
+                  />
+                  <Select
+                    size="small"
+                    value={variant.discountType}
+                    onChange={(e) => handleDiscountTypeChange(variant.id, e)}
+                  >
+                    <MenuItem value="Percent"><Percent sx={{ fontSize: "15px" }} /></MenuItem>
+                    <MenuItem value="Currency"><CurrencyRupee sx={{ fontSize: "15px" }} /></MenuItem>
+                  </Select></Box>
+                </TableCell>
+                <TableCell size="small">
+                  {variant.price && variant.maxDiscount && (
+                    <Typography >
+                      {calculateDiscount(parseFloat(variant.price), parseFloat(variant.maxDiscount))}%
+                    </Typography>
+                  )}
+                </TableCell>
+                <TableCell>
+                  <TextField size="small" />
+                </TableCell>
+                <TableCell padding="0px" width={"190px"} >
+                  {"PRO-001-" + variant.variant + "-" + (variant.variant === "Color" ? variant.color : variant.value)}
+                </TableCell>
+                <TableCell>
+                  <Delete />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Box>
   );
 };
-
 export default VariantPage;
+
+
+
+
+
+
+
+
