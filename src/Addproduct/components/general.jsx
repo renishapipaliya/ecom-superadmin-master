@@ -111,7 +111,6 @@ const General = () => {
             <Typography
               sx={{
                 fontSize: "15px",
-                color: "black",
                 mt: "2px",
                 color: "#707888",
               }}
