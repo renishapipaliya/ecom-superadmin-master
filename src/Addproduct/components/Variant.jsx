@@ -146,8 +146,8 @@ const VariantPage = () => {
               <TableCell>VALUE</TableCell>
               <TableCell>IMAGE</TableCell>
               <TableCell>PRICE</TableCell>
-              <TableCell>MAX DISCOUNT</TableCell>
               <TableCell>DISCOUNT</TableCell>
+              <TableCell>MAX DISCOUNT</TableCell>
               <TableCell>STOCK</TableCell>
               <TableCell>SKU</TableCell>
               <TableCell>ACTION</TableCell>
@@ -158,10 +158,14 @@ const VariantPage = () => {
               <TableRow key={variant.id}>
                 <TableCell>
                   <Select
+<<<<<<< HEAD
                     sx={{
                       width: "90px",
                       height: "30px",
                     }}
+=======
+                    size="small"
+>>>>>>> 689576a53b4ea4ded426444e61ffa7e4aca14c43
                     value={variant.variant}
                     onChange={(e) => handleVariantChange(variant.id, e)}
                   >
@@ -172,6 +176,7 @@ const VariantPage = () => {
                 <TableCell padding="0px">
                   {variant.variant === "Color" ? (
                     <MuiColorInput
+                      size="small"
                       format="hex"
                       value={variant.color}
                       onChange={(newValue) =>
@@ -180,11 +185,15 @@ const VariantPage = () => {
                     />
                   ) : (
                     <TextField
+<<<<<<< HEAD
                       sx={{
                         padding: "0px",
                         width: "90px",
                         height: "30px",
                       }}
+=======
+                      size="small"
+>>>>>>> 689576a53b4ea4ded426444e61ffa7e4aca14c43
                       value={variant.value}
                       onChange={(e) =>
                         handleValueChange(variant.id, "value", e.target.value)
@@ -211,6 +220,10 @@ const VariantPage = () => {
                 </TableCell>
                 <TableCell>
                   <TextField
+<<<<<<< HEAD
+=======
+                    placeholder="price"
+>>>>>>> 689576a53b4ea4ded426444e61ffa7e4aca14c43
                     size="small"
                     value={variant.price}
                     onChange={(e) =>
@@ -218,6 +231,7 @@ const VariantPage = () => {
                     }
                   />
                 </TableCell>
+<<<<<<< HEAD
                 <TableCell>
                   <Box display={"flex"}>
                     <TextField
@@ -230,10 +244,18 @@ const VariantPage = () => {
                           e.target.value
                         )
                       }
+=======
+                <TableCell >
+                  <Box display={"flex"} >
+                    <TextField size="small"
+                      placeholder="discount"
+                      
+>>>>>>> 689576a53b4ea4ded426444e61ffa7e4aca14c43
                     />
                     <Select
                       // sx={{ padding: "0px" }}
                       size="small"
+<<<<<<< HEAD
                       value={variant.discountType}
                       onChange={(e) => handleDiscountTypeChange(variant.id, e)}
                     >
@@ -256,9 +278,21 @@ const VariantPage = () => {
                       %
                     </Typography>
                   )}
+=======
+                      
+                    >
+                      <MenuItem value="Percent"><Percent sx={{ fontSize: "15px" }} /></MenuItem>
+                      <MenuItem value="Currency"><CurrencyRupee sx={{ fontSize: "15px" }} /></MenuItem>
+                    </Select></Box>
+                </TableCell>
+                <TableCell size="small">
+                  <TextField size="small" placeholder="max.discount"/>
+>>>>>>> 689576a53b4ea4ded426444e61ffa7e4aca14c43
                 </TableCell>
                 <TableCell>
-                  <TextField size="small" />
+                  <TextField size="small"
+                    placeholder="stock"
+                  />
                 </TableCell>
                 <TableCell padding="0px" width={"190px"}>
                   {"PRO-001-" +
@@ -276,6 +310,9 @@ const VariantPage = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      <Box display={"flex"} width={"100%"} marginTop={"20px"} justifyContent={"end"}>
+        <Button variant="contained" component="span" >SAVE</Button>
+      </Box>
     </Box>
   );
 };
