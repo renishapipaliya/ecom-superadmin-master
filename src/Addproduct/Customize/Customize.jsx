@@ -15,6 +15,7 @@ import {
 import ImageLogo from "../components/images/Imagelogo.png";
 import FontDownloadIcon from "@mui/icons-material/FontDownload";
 import { Add, SearchOutlined } from "@mui/icons-material";
+import ListAltIcon from "@mui/icons-material/ListAlt";
 
 const Customize = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -126,14 +127,14 @@ const Customize = () => {
             <Button onClick={handleText}>
               <Box
                 sx={{
-                  bgcolor: "#007F7380",
+                  bgcolor: "#8B93FF",
                   height: "150px",
                   width: "150px",
                   borderRadius: "5px",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
-                boxShadow={"0px 12px 32px #1E20261A"}
+                boxShadow={"10px 12px 12px #1E20261A"}
               >
                 <Typography
                   sx={{
@@ -141,12 +142,14 @@ const Customize = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     height: "100%",
-                    color: "white",
+                    color: "#000000",
                     flexDirection: "column",
                   }}
                 >
                   <FontDownloadIcon fontSize="large" />
-                  <Typography fontSize={"20px"} fontWeight={550} mt={"5px"}>
+                  <Typography
+                    sx={{ fontSize: "20px", fontWeight: 550, mt: "2px" }}
+                  >
                     Text
                   </Typography>
                 </Typography>
@@ -156,7 +159,7 @@ const Customize = () => {
             <Button onClick={handleimage}>
               <Box
                 sx={{
-                  bgcolor: "#D3D3D390",
+                  bgcolor: "#6196A6",
                   height: "150px",
                   width: "150px",
                   borderRadius: "5px",
@@ -167,8 +170,10 @@ const Customize = () => {
                 }}
                 boxShadow={"0px 12px 32px #1E20261A"}
               >
-                <img src={ImageLogo} alt="" className="w-16"></img>
-                <Typography sx={{ color: "black", fontWeight: 600 }}>
+                <img src={ImageLogo} alt="" className="w-10"></img>
+                <Typography
+                  sx={{ fontSize: "20px", fontWeight: 550, color: "black" }}
+                >
                   Image
                 </Typography>
               </Box>
@@ -177,11 +182,10 @@ const Customize = () => {
             <Button onClick={handledropdown}>
               <Box
                 sx={{
-                  bgcolor: "#E8751A50",
+                  bgcolor: "#50727B",
                   height: "150px",
                   width: "150px",
                   borderRadius: "5px",
-                  color: "white",
                 }}
                 boxShadow={"0px 12px 32px #1E20261A"}
               >
@@ -192,9 +196,12 @@ const Customize = () => {
                     alignItems: "center",
                     height: "100%",
                     color: "black",
-                    fontWeight: "550",
+                    fontSize:"17px",
+                    flexDirection: "column",
+                    fontWeight: 550,
                   }}
                 >
+                  <ListAltIcon fontSize="large" />
                   Dropdown
                 </Typography>
               </Box>
