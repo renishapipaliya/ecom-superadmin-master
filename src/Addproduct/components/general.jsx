@@ -68,16 +68,11 @@ const General = () => {
   const handleCloseSnackbar = () => {
     setSnackbarOpen(false);
   };
+
   return (
-    // <Box
-    //   sx={{
-    //     display: "flex",
-    //     gap: "25px",
-    //     width: "1200px",
-    //   }}
-    // >
+
     <Grid2 container spacing={2}>
-      <Grid2 xs={8}>
+      <Grid2 xs={7}>
         <Box
           bgcolor={"white"}
           borderRadius={"5px"}
@@ -134,7 +129,6 @@ const General = () => {
               <Typography
                 sx={{
                   fontSize: "15px",
-                  // color: "black",
                   mt: "2px",
                   color: "#707888",
                 }}
@@ -266,13 +260,12 @@ const General = () => {
         </Box>
       </Grid2>
 
-      <Grid2 xs={4}>
+      <Grid2 xs={5}>
         <Box>
           <Box
             bgcolor={"white"}
             borderRadius={"5px"}
             p={"30px"}
-            // width={"165%"}
             boxShadow={"0px 12px 32px 0px #1E20261A"}
           >
             <Typography sx={{ fontWeight: 600, fontSize: "20px" }}>
@@ -337,8 +330,6 @@ const General = () => {
           </Box>
         </Box>
       </Grid2>
-
-      {/* </Box> */}
     </Grid2>
   );
 };
