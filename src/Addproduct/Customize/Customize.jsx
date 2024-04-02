@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import ImageLogo from "../components/images/Imagelogo.png";
 import FontDownloadIcon from "@mui/icons-material/FontDownload";
+import { Add } from "@mui/icons-material";
 
 const Customize = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -42,32 +43,48 @@ const Customize = () => {
   };
 
   return (
-    <Box maxWidth={"1440px"} width={"1200px"} height={"80vh"}>
+    <Box maxWidth={"1440px"} width={"1200px"} height={"100vh"}>
       <Box
-        sx={{
-          display: "flex",
-          gap: "25px",
-        }}
+        bgcolor={"white"}
+        borderRadius={"5px"}
+        boxShadow={"0px 12px 32px 0px #1E20261A"}
+        display={"flex"}
+        flexDirection={"column"}
+        width={"99%"}
+        justifyContent={"space-between"}
+        padding={"30px"}
       >
-        <Box
-          padding={"100px"}
-          bgcolor={"white"}
-          borderRadius={"5px"}
-          boxShadow={"0px 12px 32px 0px #1E20261A"}
-          display={"flex"}
-          width={"99%"}
-          justifyContent={"center"}
-        >
-          {!textVisible && !imageVisible && !dropdownVisible && (
-            <Button variant="outlined" onClick={handleDialogOpen}>
+        <Box display={"flex"} justifyContent={"space-between"}>
+          <Box>
+            <Typography sx={{ fontSize: "25px", fontWeight: 600 }}>
+              Customize
+            </Typography>
+          </Box>
+          <Box sx={{ display: "flex", gap: "15px" }}>
+            <Button
+              startIcon={<Add />}
+              variant="outlined"
+              onClick={handleDialogOpen}
+            >
               Add Customisation
             </Button>
-          )}
-          {textVisible && <CustomText />}
+
+            <Button variant="contained">save</Button>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            my: "20px",
+            padding: "10px",
+            borderRadius: "10px",
+          }}
+        >
+          <Box sx={{ mb: "10px" }}>{textVisible && <CustomText />}</Box>
           {imageVisible && <Customimage />}
           {dropdownVisible && <Customdropdown />}
         </Box>
       </Box>
+      
       <Dialog open={openDialog} onClose={handleDialogClose}>
         <DialogTitle sx={{ width: 400 }}>Add Customisation</DialogTitle>
         <DialogContent>

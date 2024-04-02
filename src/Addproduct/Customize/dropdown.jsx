@@ -220,9 +220,6 @@ const Customdropdown = () => {
           </TableContainer>
         </DragDropContext>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "end", mt: "20px" }}>
-        <Button variant="contained">save</Button>
-      </Box>
     </Box>
   );
 };

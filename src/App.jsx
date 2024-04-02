@@ -2,13 +2,11 @@ import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import { Link, Route, Routes, useLocation } from "react-router-dom";
-import { Factory } from "@mui/icons-material";
+import { Add, Factory } from "@mui/icons-material";
 import AddProductScreen from "./routes/AddProductScreen";
 import ManufactureScreen from "./routes/ManuFactureScreen";
-import PersonIcon from "@mui/icons-material/Person";
 import CategoryScreen from "./routes/categoryScreen";
 import CategoryIcon from "@mui/icons-material/Category";
-import MyProductHeader from "./myProduct/myProductHeader";
 import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import MyProductList from "./routes/myProductList";
 
@@ -16,7 +14,7 @@ const routePath = [
   {
     path: "",
     name: "AddProduct",
-    icon: <PersonIcon />,
+    icon: <Add/>,
   },
   {
     path: "categoryScreen",

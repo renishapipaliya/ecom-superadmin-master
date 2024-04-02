@@ -1,14 +1,20 @@
 import React from "react";
-import { Box, Typography, TextField, InputAdornment, Button } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  InputAdornment,
+} from "@mui/material";
 
 const CustomText = () => {
   return (
     <Box
       sx={{
         width: "1200px",
-        "&.css-8r7lw3":{height:"100vh",}
+        "&.css-8r7lw3": { height: "100vh" },
       }}
     >
+      <Typography sx={{ fontSize: "20px", fontWeight: 550,paddingBottom:"20px" }}>Customize Text</Typography>
       <Box sx={{ display: "flex", gap: "30px" }}>
         <Box>
           <Typography>Number of line</Typography>
@@ -108,9 +114,6 @@ const CustomText = () => {
           />
         </Box>
       </Box>
-        <Box sx={{display:"flex",justifyContent:"end",mt:"20px"}}>
-          <Button variant="contained">save</Button>
-        </Box>
     </Box>
   );
 };
