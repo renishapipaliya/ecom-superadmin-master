@@ -127,7 +127,7 @@ const Customize = () => {
             <Button onClick={handleText}>
               <Box
                 sx={{
-                  bgcolor: "#8B93FF",
+                  bgcolor: "#BED7DC",
                   height: "150px",
                   width: "150px",
                   borderRadius: "5px",
@@ -159,7 +159,7 @@ const Customize = () => {
             <Button onClick={handleimage}>
               <Box
                 sx={{
-                  bgcolor: "#6196A6",
+                  bgcolor: "#BED7DC",
                   height: "150px",
                   width: "150px",
                   borderRadius: "5px",
@@ -182,7 +182,7 @@ const Customize = () => {
             <Button onClick={handledropdown}>
               <Box
                 sx={{
-                  bgcolor: "#50727B",
+                  bgcolor: "#BED7DC",
                   height: "150px",
                   width: "150px",
                   borderRadius: "5px",
