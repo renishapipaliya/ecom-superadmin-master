@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   Box,
   Button,
+  Divider,
   IconButton,
   MenuItem,
   Select,
@@ -21,51 +22,39 @@ import {
   Percent,
   SearchOutlined,
 } from "@mui/icons-material";
-import { MuiColorInput } from "mui-color-input";
+
 const VariantPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [nextVariantId, setNextVariantId] = useState(2);
   const [variants, setVariants] = useState([
     {
       id: 1,
       variant: "Color",
       value: "",
-      color: "#000000",
+      color: "",
       discountType: "Percent",
       price: "",
       maxDiscount: "",
+      image: null,
     },
   ]);
 
-  const [nextVariantId, setNextVariantId] = useState(2);
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    setSelectedImage(file);
-  };
-
-  const handleDiscountTypeChange = (id, event) => {
-    const updatedVariants = variants.map((variant) => {
-      if (variant.id === id) {
-        return { ...variant, discountType: event.target.value };
-      }
-      return variant;
-    });
-    setVariants(updatedVariants);
-  };
+  const defaultImage = "../../../public/image/Icon.png";
 
   const handleAddVariant = () => {
     const newVariant = {
       id: nextVariantId,
       variant: "Color",
       value: "",
-      color: "#000000",
+      color: "",
       discountType: "Percent",
       price: "",
       maxDiscount: "",
+      image: null,
     };
     setVariants([...variants, newVariant]);
     setNextVariantId(nextVariantId + 1);
@@ -97,12 +86,31 @@ const VariantPage = () => {
     setVariants(updatedVariants);
   };
 
+  const handleImageUpload = (event, id) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const updatedVariants = variants.map((variant) =>
+        variant.id === id ? { ...variant, image: reader.result } : variant
+      );
+      setVariants(updatedVariants);
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleDeleteVariant = (id) => {
+    const updatedVariants = variants.filter((variant) => variant.id !== id);
+    setVariants(updatedVariants);
+  };
+
   return (
     <Box
       bgcolor={"white"}
       height={"80vh"}
       boxShadow={"0px 12px 32px #1E20261A"}
-      padding={"40px"}
+      padding={"30px"}
       borderRadius={"5px"}
       width={"100%"}
     >
@@ -111,7 +119,13 @@ const VariantPage = () => {
           Product Variant
         </Typography>
       </Box>
-      <Box sx={{display:"flex",justifyContent:"space-between"}}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          paddingY: "20px",
+        }}
+      >
         <Box>
           <TextField
             sx={{ width: "550px" }}
@@ -137,118 +151,140 @@ const VariantPage = () => {
           </Button>
         </Box>
       </Box>
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>VARIANT</TableCell>
-              <TableCell>VALUE</TableCell>
-              <TableCell>IMAGE</TableCell>
-              <TableCell>PRICE</TableCell>
-              <TableCell>DISCOUNT</TableCell>
-              <TableCell>MAX DISCOUNT</TableCell>
-              <TableCell>STOCK</TableCell>
-              <TableCell>SKU</TableCell>
-              <TableCell>ACTION</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {variants.map((variant) => (
-              <TableRow key={variant.id}>
-                <TableCell>
-                  <Select
-                    size="small"
-                    value={variant.variant}
-                    onChange={(e) => handleVariantChange(variant.id, e)}
-                  >
-                    <MenuItem value="Color">Color</MenuItem>
-                    <MenuItem value="Size">Size</MenuItem>
-                  </Select>
-                </TableCell>
-                <TableCell padding="0px">
-                  {variant.variant === "Color" ? (
-                    <MuiColorInput
+      <Box
+        sx={{ mt: "10px", border: "1px solid lightgray", borderRadius: "5px" }}
+      >
+        <TableContainer>
+          <Table>
+            <TableHead sx={{ bgcolor: "#EBF1FDE5" }}>
+              <TableRow>
+                <TableCell>VARIANT</TableCell>
+                <TableCell>VALUE</TableCell>
+                <TableCell>IMAGE</TableCell>
+                <TableCell>PRICE</TableCell>
+                <TableCell>DISCOUNT</TableCell>
+                <TableCell>MAX DISCOUNT</TableCell>
+                <TableCell>STOCK</TableCell>
+                <TableCell>SKU</TableCell>
+                <TableCell>ACTION</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {variants.map((variant) => (
+                <TableRow key={variant.id}>
+                  <TableCell>
+                    <Select
                       size="small"
-                      format="hex"
-                      value={variant.color}
-                      onChange={(newValue) =>
-                        handleValueChange(variant.id, "color", newValue)
+                      value={variant.variant}
+                      onChange={(e) => handleVariantChange(variant.id, e)}
+                    >
+                      <MenuItem value="Color">Color</MenuItem>
+                      <MenuItem value="Size">Size</MenuItem>
+                    </Select>
+                  </TableCell>
+                  <TableCell>
+                    {variant.variant === "Color" ? (
+                      <TextField
+                        size="small"
+                        placeholder="Color"
+                        value={variant.color}
+                        onChange={(e) =>
+                          handleValueChange(variant.id, "color", e.target.value)
+                        }
+                      />
+                    ) : (
+                      <TextField
+                        size="small"
+                        placeholder="Size"
+                        value={variant.value}
+                        onChange={(e) =>
+                          handleValueChange(variant.id, "value", e.target.value)
+                        }
+                      />
+                    )}
+                  </TableCell>
+                  <TableCell align="center">
+                    <label htmlFor={`upload-image-${variant.id}`}>
+                      <input
+                        type="file"
+                        id={`upload-image-${variant.id}`}
+                        accept="image/*"
+                        onChange={(event) =>
+                          handleImageUpload(event, variant.id)
+                        }
+                        style={{ display: "none" }}
+                      />
+                      <img
+                        src={variant.image ? variant.image : defaultImage}
+                        alt="image"
+                        style={{
+                          objectFit: "contain",
+                          width: "90%",
+                          cursor: "pointer",
+                          aspectRatio: "16/9",
+                        }}
+                      />
+                    </label>
+                  </TableCell>
+                  <TableCell>
+                    <TextField
+                      type="number"
+                      placeholder="Price"
+                      size="small"
+                      sx={{ width: "80px" }}
+                      value={variant.price}
+                      onChange={(e) =>
+                        handleValueChange(variant.id, "price", e.target.value)
                       }
                     />
-                  ) : (
+                  </TableCell>
+                  <TableCell>
+                    <Box display={"flex"}>
+                      <TextField
+                        size="small"
+                        type="number"
+                        placeholder="Discount"
+                        sx={{ width: "80px" }}
+                      />
+                      <Select size="small">
+                        <MenuItem value="Percent">
+                          <Percent sx={{ fontSize: "15px" }} />
+                        </MenuItem>
+                        <MenuItem value="Currency">
+                          <CurrencyRupee sx={{ fontSize: "15px" }} />
+                        </MenuItem>
+                      </Select>
+                    </Box>
+                  </TableCell>
+                  <TableCell size="small">
                     <TextField
                       size="small"
-                      value={variant.value}
-                      onChange={(e) =>
-                        handleValueChange(variant.id, "value", e.target.value)
-                      }
+                      type="number"
+                      placeholder="Max.discount"
                     />
-                  )}
-                </TableCell>
-                <TableCell>
-                  <input
-                    accept="image/*"
-                    id={`image-upload-${variant.id}`}
-                    type="file"
-                    onChange={handleImageUpload}
-                    style={{ display: "none" }}
-                  />
-                  <label htmlFor={`image-upload-${variant.id}`}>
-                    <Button variant="contained" component="span">
-                      Upload
-                    </Button>
-                  </label>
-                  {selectedImage && (
-                    <Typography>{selectedImage.name}</Typography>
-                  )}
-                </TableCell>
-                <TableCell>
-                  <TextField
-                    placeholder="price"
-                    size="small"
-                    value={variant.price}
-                    onChange={(e) =>
-                      handleValueChange(variant.id, "price", e.target.value)
-                    }
-                  />
-                </TableCell>
-                <TableCell>
-                  <Box display={"flex"}>
-                    <TextField size="small" placeholder="discount" />
-                    <Select size="small">
-                      <MenuItem value="Percent">
-                        <Percent sx={{ fontSize: "15px" }} />
-                      </MenuItem>
-                      <MenuItem value="Currency">
-                        <CurrencyRupee sx={{ fontSize: "15px" }} />
-                      </MenuItem>
-                    </Select>
-                  </Box>
-                </TableCell>
-                <TableCell size="small">
-                  <TextField size="small" placeholder="max.discount" />
-                </TableCell>
-                <TableCell>
-                  <TextField size="small" placeholder="10" />
-                </TableCell>
-                <TableCell padding="0px" width={"190px"}>
-                  {"PRO-001-" +
-                    variant.variant +
-                    "-" +
-                    (variant.variant === "Color"
-                      ? variant.color
-                      : variant.value)}
-                </TableCell>
-                <TableCell>
-                  <IconButton>
-                    <Delete />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+                  </TableCell>
+                  <TableCell>
+                    <TextField size="small" type="number" placeholder="10" />
+                  </TableCell>
+                  <TableCell padding="0px" width={"190px"}>
+                    {"PRO-001-" +
+                      variant.variant +
+                      "-" +
+                      (variant.variant === "Color"
+                        ? variant.color
+                        : variant.value)}
+                  </TableCell>
+                  <TableCell>
+                    <IconButton onClick={() => handleDeleteVariant(variant.id)}>
+                      <Delete />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
       <Box
         display={"flex"}
         width={"100%"}

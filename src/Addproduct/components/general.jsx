@@ -25,19 +25,35 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 const General = () => {
-  const [productName, setProductName] = useState("");
-  const [description, setDescription] = useState("");
-  const [points, setPoints] = useState("");
-  const [category, setCategory] = useState("");
-  const [productFor, setProductFor] = useState("");
-  const [basePrice, setBasePrice] = useState("");
-  const [discount, setDiscount] = useState("");
-  const [discountedPrice, setDiscountedPrice] = useState("");
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [firstImage, setFirstImage] = useState(null);
+  const [secondImage, setSecondImage] = useState(null);
+
+  const [formData, setFormData] = useState({
+    productName: "",
+    description: "",
+    points: "",
+    category: "",
+    productFor: "",
+    basePrice: "",
+    discount: "",
+    discountedPrice: "",
+    snackbarOpen: false,
+    snackbarMessage: "",
+  });
 
   const handleSave = async (e) => {
     e.preventDefault();
+    const {
+      productName,
+      description,
+      points,
+      category,
+      productFor,
+      basePrice,
+      discount,
+      discountedPrice,
+    } = formData;
+
     if (
       !productName ||
       !description ||
@@ -48,29 +64,53 @@ const General = () => {
       !discount ||
       !discountedPrice
     ) {
-      setSnackbarMessage("Please fill all the fields");
-      setSnackbarOpen(true);
-
+      setFormData({
+        ...formData,
+        snackbarMessage: "Please fill all the fields",
+        snackbarOpen: true,
+      });
       return;
     }
 
-    setSnackbarMessage("Successfully saved");
-    setSnackbarOpen(true);
-    // setProductName("");
-    // setDescription("");
-    // setPoints("");
-    // setCategory("");
-    // setBasePrice("");
-    // setDiscountedPrice("");
-    // setDiscount("");
+    setFormData({
+      ...formData,
+      snackbarMessage: "Successfully saved",
+      snackbarOpen: true,
+    });
+
+    // Reset form fields
+    setFormData({
+      ...formData,
+      productName: "",
+      description: "",
+      points: "",
+      category: "",
+      basePrice: "",
+      discountedPrice: "",
+      discount: "",
+    });
   };
 
   const handleCloseSnackbar = () => {
-    setSnackbarOpen(false);
+    setFormData({
+      ...formData,
+      snackbarOpen: false,
+    });
+  };
+
+  const defaultImage = "../../../public/image/Icon.png";
+
+  const handleFirstImageUpload = (event) => {
+    const file = event.target.files[0];
+    setFirstImage(file);
+  };
+
+  const handleSecondImageUpload = (event) => {
+    const file = event.target.files[0];
+    setSecondImage(file);
   };
 
   return (
-
     <Grid2 container spacing={2}>
       <Grid2 xs={7}>
         <Box
@@ -99,7 +139,7 @@ const General = () => {
               variant="outlined"
               maxRows={"4"}
               sx={{ mt: "2px" }}
-              value={productName}
+              value={formData.productName}
               onChange={(e) => setProductName(e.target.value)}
               required
             />
@@ -120,7 +160,7 @@ const General = () => {
                 className="border border-gray-300 w-[100%] rounded p-2"
                 placeholder="Description"
                 sx={{ mt: "2px" }}
-                value={description}
+                value={formData.description}
                 onChange={(e) => setDescription(e.target.value)}
                 required
               />
@@ -144,7 +184,7 @@ const General = () => {
                 placeholder="Bullet Points"
                 variant="outlined"
                 sx={{ mt: "2px", width: "100%" }}
-                value={points}
+                value={formData.points}
                 onChange={(e) => setPoints(e.target.value)}
                 required
               />
@@ -161,7 +201,7 @@ const General = () => {
               </Typography>
               <FormControl size="small" sx={{ mt: "2px", width: "100%" }}>
                 <Select
-                  value={category}
+                  value={formData.category}
                   onChange={(e) => setCategory(e.target.value)}
                   displayEmpty
                 >
@@ -192,7 +232,7 @@ const General = () => {
               </Typography>
               <FormControl size="small" sx={{ mt: "2px", width: "100%" }}>
                 <Select
-                  value={productFor}
+                  value={formData.productFor}
                   onChange={(e) => setProductFor(e.target.value)}
                   displayEmpty
                 >
@@ -214,47 +254,77 @@ const General = () => {
                 </Select>
               </FormControl>
             </Box>
-            <Box sx={{ mt: "15px" }}>
-              <Typography
-                sx={{
-                  fontSize: "15px",
-                  mt: "2px",
-                  color: "#707888",
-                }}
-              >
-                Image
-              </Typography>
-              <TextField
-                type="file"
-                size="small"
-                variant="outlined"
-                required
-                sx={{
-                  "& .css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input": {
+            <Box sx={{ display: "flex", gap: "20px" }}>
+              <Box sx={{ my: "20px" }}>
+                <Typography
+                  sx={{ fontSize: "15px", mt: "2px", color: "#707888" }}
+                >
+                  Image
+                </Typography>
+                <Box
+                  sx={{
+                    border: "1px solid lightgray",
+                    width: "100%",
                     height: "100%",
-                  },
-                }}
-              />
-            </Box>
-            <Box sx={{ mt: "15px" }}>
-              <Typography
-                sx={{ fontSize: "15px", mt: "2px", color: "#707888" }}
-              >
-                Select Multiple images
-              </Typography>
-              <TextField
-                type="file"
-                size="small"
-                placeholder=""
-                variant="outlined"
-                inputProps={{ multiple: true }}
-                required
-                sx={{
-                  "& .css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input": {
-                    height: "100%",
-                  },
-                }}
-              />
+                    borderRadius: "10px",
+                  }}
+                >
+                  <label htmlFor={`upload-image-1`}>
+                    <input
+                      type="file"
+                      id={`upload-image-1`}
+                      accept="image/*"
+                      onChange={handleFirstImageUpload}
+                      style={{ display: "none" }}
+                    />
+                    <img
+                      src={
+                        firstImage
+                          ? URL.createObjectURL(firstImage)
+                          : defaultImage
+                      }
+                      alt="image"
+                      style={{
+                        objectFit: "contain",
+                        width: "100%",
+                        height: "100%",
+                        cursor: "pointer",
+                        aspectRatio: "16/9",
+                      }}
+                    />
+                  </label>
+                </Box>
+              </Box>
+              <Box sx={{ my: "20px" }}>
+                <Typography
+                  sx={{ fontSize: "15px", mt: "2px", color: "#707888" }}
+                >
+                  Select Multiple images
+                </Typography>
+                <label htmlFor={`upload-image-2`}>
+                  <input
+                    type="file"
+                    id={`upload-image-2`}
+                    accept="image/*"
+                    onChange={handleSecondImageUpload}
+                    style={{ display: "none" }}
+                  />
+                  <img
+                    src={
+                      secondImage
+                        ? URL.createObjectURL(secondImage)
+                        : defaultImage
+                    }
+                    alt="image"
+                    style={{
+                      objectFit: "contain",
+                      width: "90%",
+                      cursor: "pointer",
+                      aspectRatio: "16/9",
+                    }}
+                  />
+                </label>
+              </Box>
             </Box>
           </Box>
         </Box>
@@ -279,7 +349,7 @@ const General = () => {
                 placeholder="Product Name"
                 variant="outlined"
                 type="number"
-                value={basePrice}
+                value={formData.basePrice}
                 onChange={(e) => setBasePrice(e.target.value)}
                 required
                 sx={{ mt: "2px", width: "100%" }}
@@ -293,7 +363,7 @@ const General = () => {
                 placeholder="Discounted"
                 variant="outlined"
                 type="number"
-                value={discount}
+                value={formData.discount}
                 onChange={(e) => setDiscount(e.target.value)}
                 required
                 sx={{ mt: "2px", width: "100%" }}
@@ -309,7 +379,7 @@ const General = () => {
                 placeholder="Discounted Price"
                 variant="outlined"
                 type="number"
-                value={discountedPrice}
+                value={formData.discountedPrice}
                 onChange={(e) => setDiscountedPrice(e.target.value)}
                 required
                 sx={{ mt: "2px", width: "100%" }}
@@ -318,10 +388,10 @@ const General = () => {
             <Box sx={{ display: "flex", justifyContent: "end", mt: "30px" }}>
               <Snackbar
                 anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                open={snackbarOpen}
-                autoHideDuration={6000} // Optional: Auto-close after 6 seconds
+                open={formData.snackbarOpen}
+                autoHideDuration={3000}
                 onClose={handleCloseSnackbar}
-                message={snackbarMessage}
+                message={formData.snackbarMessage}
               />
               <Button onClick={handleSave} variant="contained">
                 Save
