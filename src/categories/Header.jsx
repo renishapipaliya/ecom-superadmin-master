@@ -15,14 +15,21 @@ const Header = ({
   handleRefresh,
   handleSearch,
   handleSwitch,
-  activeUser
+  activeUser,
 }) => {
   return (
-    <Box >
+    <Box boxShadow={"0px 12px 32px #1E20261A"}>
       <Box>
-        <Box sx={{display:"flex", justifyContent:"space-between" }}>
-          <Typography fontSize={"32px"} fontWeight={600}>Categories</Typography>
-          <Button size="small" variant="outlined" onClick={handleOpen} startIcon={<Add/>}>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography fontSize={"32px"} fontWeight={600}>
+            Categories
+          </Typography>
+          <Button
+            size="small"
+            variant="outlined"
+            onClick={handleOpen}
+            startIcon={<Add />}
+          >
             ADD CATEGORY
           </Button>
         </Box>
@@ -35,13 +42,13 @@ const Header = ({
               display: "flex",
               justifyContent: "space-between",
               bgcolor: "white",
-              boxShadow:"0px 12px 32px 0x #1D20261A"
+              boxShadow: "0px 12px 32px 0x #1D20261A",
             }}
           >
             <Box className="flex" alignItems={"center"}>
               <FilterAltOutlinedIcon sx={{ my: 2, mx: 1 }} />
               <TextField
-              size="small"
+                size="small"
                 label={
                   <Box>
                     <SearchOutlinedIcon />
@@ -51,8 +58,11 @@ const Header = ({
                 value={searchTerm}
                 onChange={handleSearch}
               />
-               <Switch sx={{ my: 1 }} onChange={handleSwitch}
-              checked={activeUser} />
+              <Switch
+                sx={{ my: 1 }}
+                onChange={handleSwitch}
+                checked={activeUser}
+              />
               <h1 className="my-auto">Active User</h1>
             </Box>
             <Box className="my-auto flex gap-3 items-center">

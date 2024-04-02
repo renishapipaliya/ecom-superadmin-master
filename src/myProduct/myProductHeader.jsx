@@ -15,14 +15,19 @@ const MyProductHeader = () => {
         <Typography sx={{ fontSize: "30px", fontWeight: 600 }}>
           My Product
         </Typography>
-        <Box>
+        <Box
+          sx={{
+            my: "20px",
+            bgcolor: "white",
+            borderRadius: "10px",
+            p: "20px",
+            boxShadow: "0px 12px 32px #1E20261A",
+          }}
+        >
           <Box
             sx={{
               display: "flex",
-              mt: "20px",
-              p: "20px",
               justifyContent: "space-between",
-              bgcolor: "white",
             }}
           >
             <TextField
@@ -41,27 +46,19 @@ const MyProductHeader = () => {
               Add Product
             </Button>
           </Box>
-
           <Box
             sx={{
+              mt: "20px",
               display: "flex",
-              paddingBottom: "20px",
-              paddingX: "20px",
               justifyContent: "space-between",
-              bgcolor: "white",
-              boxShadow: "0px 12px 32px #1E20261A",
             }}
           >
-            <Box>
-              <Button startIcon={<TuneIcon />} variant="outlined">
-                Filter
-              </Button>
-            </Box>
-            <Box>
-              <Button>
-                <FilterListIcon />
-              </Button>
-            </Box>
+            <Button startIcon={<TuneIcon />} variant="outlined">
+              Filter
+            </Button>
+            <Button>
+              <FilterListIcon />
+            </Button>
           </Box>
         </Box>
       </Box>

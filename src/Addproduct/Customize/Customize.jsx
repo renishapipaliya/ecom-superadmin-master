@@ -10,19 +10,29 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  TextField,
 } from "@mui/material";
 import ImageLogo from "../components/images/Imagelogo.png";
 import FontDownloadIcon from "@mui/icons-material/FontDownload";
-import { Add } from "@mui/icons-material";
+import { Add, SearchOutlined } from "@mui/icons-material";
 
 const Customize = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [textVisible, setTextVisible] = useState(false);
   const [imageVisible, setimageVisible] = useState(false);
   const [dropdownVisible, setdropdownVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleTextVisibility = () => {
+    setTextVisible(true);
+  };
 
   const handleDialogOpen = () => {
     setOpenDialog(true);
+  };
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
   };
 
   const handleDialogClose = () => {
@@ -32,6 +42,7 @@ const Customize = () => {
   const handleText = () => {
     setTextVisible(true);
     setOpenDialog(false);
+    handleTextVisibility();
   };
   const handleimage = () => {
     setimageVisible(true);
@@ -60,31 +71,51 @@ const Customize = () => {
               Customize
             </Typography>
           </Box>
-          <Box sx={{ display: "flex", gap: "15px" }}>
-            <Button
-              startIcon={<Add />}
-              variant="outlined"
-              onClick={handleDialogOpen}
-            >
-              Add Customisation
-            </Button>
-
-            <Button variant="contained">save</Button>
-          </Box>
         </Box>
         <Box
           sx={{
             my: "20px",
-            padding: "10px",
             borderRadius: "10px",
           }}
         >
-          <Box sx={{ mb: "10px" }}>{textVisible && <CustomText />}</Box>
-          {imageVisible && <Customimage />}
-          {dropdownVisible && <Customdropdown />}
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Box>
+              <TextField
+                sx={{ width: "550px" }}
+                size="small"
+                label={
+                  <Box>
+                    <SearchOutlined />
+                    Search
+                  </Box>
+                }
+                value={searchTerm}
+                onChange={handleSearch}
+              />
+            </Box>
+            <Box sx={{ display: "flex", gap: "15px" }}>
+              <Button
+                startIcon={<Add />}
+                variant="outlined"
+                onClick={handleDialogOpen}
+              >
+                Add Customisation
+              </Button>
+
+              <Button variant="contained">save</Button>
+            </Box>
+          </Box>
+
+          <Box sx={{ mb: "10px" }}>
+            {textVisible && <CustomText setVisible={setTextVisible} />}
+          </Box>
+          {imageVisible && <Customimage setVisible={setimageVisible} />}
+          {dropdownVisible && (
+            <Customdropdown setVisible={setdropdownVisible} />
+          )}
         </Box>
       </Box>
-      
+
       <Dialog open={openDialog} onClose={handleDialogClose}>
         <DialogTitle sx={{ width: 400 }}>Add Customisation</DialogTitle>
         <DialogContent>

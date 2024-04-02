@@ -10,9 +10,11 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DehazeIcon from "@mui/icons-material/Dehaze";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { Delete } from "@mui/icons-material";
 
-const Customdropdown = () => {
+const Customdropdown = ({ setVisible }) => {
   const [rows, setRows] = useState([]);
+  const [dropdownFileVisible, setDropdownFileVisible] = useState(true);
 
   const defaultImage = "./image/Icon.png";
   const handleAddVariant = () => {
@@ -49,8 +51,16 @@ const Customdropdown = () => {
     }
   };
 
+  const handleDelete = () => {
+    setDropdownFileVisible(false);
+    setVisible(false);
+  };
+
   return (
-    <Box>
+    <Box display={dropdownFileVisible ? "block" : "none"}>
+      <Typography sx={{ fontSize: "20px", fontWeight: 550, my: "20px" }}>
+        DropDown
+      </Typography>
       <Box
         sx={{
           display: "flex",
@@ -72,18 +82,25 @@ const Customdropdown = () => {
         </Box>
         <Box sx={{ display: "flex", gap: "15px" }}>
           <Box>
-            <Button size="small" variant="outlined" startIcon={<AddIcon />}>
+            <Button variant="outlined" startIcon={<AddIcon />}>
               Choose as Templet
             </Button>
           </Box>
           <Box>
-            <Button size="small" variant="outlined" startIcon={<AddIcon />}>
+            <Button variant="outlined" startIcon={<AddIcon />}>
               Save as Templet
             </Button>
           </Box>
         </Box>
       </Box>
-      <Box sx={{ display: "flex", gap: "15px", mt: "10px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          mt: "10px",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <Box>
           <Typography>Instruction</Typography>
           <TextField
@@ -91,14 +108,13 @@ const Customdropdown = () => {
             placeholder="Write instruction here..."
             size="small"
             variant="outlined"
-            sx={{ width: "825px", mt: "5px" }}
+            sx={{ width: "930px", mt: "5px" }}
             required
           />
         </Box>
         <Box sx={{ mt: "28px", display: "flex", alignItems: "center" }}>
           <Button
-            sx={{ width: "160px" }}
-            size="small"
+            sx={{ width: "180px" }}
             variant="outlined"
             startIcon={<AddIcon />}
             onClick={handleAddVariant}
@@ -219,6 +235,15 @@ const Customdropdown = () => {
             </Table>
           </TableContainer>
         </DragDropContext>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "end", mt: "20px" }}>
+        <Button
+          variant="contained"
+          onClick={handleDelete}
+          startIcon={<Delete />}
+        >
+          Delete
+        </Button>
       </Box>
     </Box>
   );

@@ -140,14 +140,16 @@ const VariantPage = () => {
             onChange={handleSearch}
           />
         </Box>
-        <Box>
+        <Box sx={{ display: "flex", gap: "15px" }}>
           <Button
-            sx={{ height: "40px" }}
             variant="outlined"
             startIcon={<Add />}
             onClick={handleAddVariant}
           >
             Add Variants
+          </Button>
+          <Button variant="contained" component="span">
+            SAVE
           </Button>
         </Box>
       </Box>
@@ -229,7 +231,7 @@ const VariantPage = () => {
                   <TableCell>
                     <TextField
                       type="number"
-                      placeholder="Price"
+                      placeholder="₹"
                       size="small"
                       sx={{ width: "80px" }}
                       value={variant.price}
@@ -244,9 +246,9 @@ const VariantPage = () => {
                         size="small"
                         type="number"
                         placeholder="Discount"
-                        sx={{ width: "80px" }}
-                      />
-                      <Select size="small">
+                        sx={{ width: "150px" }}
+                        InputProps={{
+                          endAdornment:<Select size="small">
                         <MenuItem value="Percent">
                           <Percent sx={{ fontSize: "15px" }} />
                         </MenuItem>
@@ -254,6 +256,8 @@ const VariantPage = () => {
                           <CurrencyRupee sx={{ fontSize: "15px" }} />
                         </MenuItem>
                       </Select>
+                        }}
+                      />
                     </Box>
                   </TableCell>
                   <TableCell size="small">
@@ -284,16 +288,6 @@ const VariantPage = () => {
             </TableBody>
           </Table>
         </TableContainer>
-      </Box>
-      <Box
-        display={"flex"}
-        width={"100%"}
-        marginTop={"20px"}
-        justifyContent={"end"}
-      >
-        <Button variant="contained" component="span">
-          SAVE
-        </Button>
       </Box>
     </Box>
   );
