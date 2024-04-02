@@ -37,7 +37,7 @@ const MyProductTable = () => {
   ];
 
   return (
-    <Box>
+    <Box sx={{ mt: "30px" }}>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} size="small">
           <TableHead>
@@ -96,30 +96,8 @@ const MyProductTable = () => {
                 {openRow === index && (
                   <TableRow>
                     <TableCell colSpan={4}>
-                      <Box sx={{padding:"10px",height:"100%"}}>
+                      <Box sx={{ padding: "10px", height: "100%" }}>
                         <Typography>10</Typography>
-                        {/* <Grid container spacing={4}>
-                          <Grid xs={3}>
-                            <Box>
-                              <Typography>1</Typography>
-                            </Box>
-                          </Grid>
-                          <Grid xs={3}>
-                            <Box>
-                              <Typography>2</Typography>
-                            </Box>
-                          </Grid>
-                          <Grid xs={3}>
-                            <Box>
-                              <Typography>3</Typography>
-                            </Box>
-                          </Grid>
-                          <Grid xs={3}>
-                            <Box>
-                              <Typography>4</Typography>
-                            </Box>
-                          </Grid>
-                        </Grid> */}
                       </Box>
                     </TableCell>
                   </TableRow>

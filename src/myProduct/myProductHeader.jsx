@@ -19,9 +19,10 @@ const MyProductHeader = () => {
           <Box
             sx={{
               display: "flex",
-              mt: "40px",
+              mt: "20px",
               p: "20px",
               justifyContent: "space-between",
+              bgcolor: "white",
             }}
           >
             <TextField
@@ -40,12 +41,15 @@ const MyProductHeader = () => {
               Add Product
             </Button>
           </Box>
+
           <Box
             sx={{
               display: "flex",
-              padding: "20px",
+              paddingBottom: "20px",
+              paddingX: "20px",
               justifyContent: "space-between",
-              bgcolor:"white"
+              bgcolor: "white",
+              boxShadow: "0px 12px 32px #1E20261A",
             }}
           >
             <Box>

@@ -51,13 +51,17 @@ const Navbar = () => {
   return (
     <Box
       sx={{
+        position: "fixed",
         width: "15%",
         display: "flex",
         flexDirection: "column",
+        height: "100vh",
         gap: 3,
         py: 5,
         px: 2,
         boxShadow: "5px 0px 32px #1E20261A",
+        top: "0px",
+        left: "0px",
       }}
     >
       <Typography
@@ -110,7 +114,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Box display={"flex"}>
         <Navbar />
-        <Box fontFamily={"Poppins"} maxWidth={"1440px"} width={"1300px"}>
+        <Box marginLeft={"15%"} fontFamily={"Poppins"} width={"1300px"}>
           <Routes>
             <Route path="/" element={<AddProductScreen />} />
             <Route path="/manufactureScreen" element={<ManufactureScreen />} />

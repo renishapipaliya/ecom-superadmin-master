@@ -11,6 +11,8 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
+import ImageLogo from "../components/images/Imagelogo.png";
+import FontDownloadIcon from "@mui/icons-material/FontDownload";
 
 const Customize = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -40,23 +42,20 @@ const Customize = () => {
   };
 
   return (
-    <Box maxWidth={"1440px"} width={"1300px"} height={"100vh"}>
+    <Box maxWidth={"1440px"} width={"1200px"} height={"80vh"}>
       <Box
         sx={{
           display: "flex",
           gap: "25px",
-          width: "100%",
         }}
       >
         <Box
-          sx={{
-            p: "100px",
-            width: "1200px",
-          }}
+          padding={"100px"}
           bgcolor={"white"}
           borderRadius={"5px"}
           boxShadow={"0px 12px 32px 0px #1E20261A"}
           display={"flex"}
+          width={"99%"}
           justifyContent={"center"}
         >
           {!textVisible && !imageVisible && !dropdownVisible && (
@@ -79,7 +78,7 @@ const Customize = () => {
             <Button onClick={handleText}>
               <Box
                 sx={{
-                  bgcolor: "lightblue",
+                  bgcolor: "#007F7380",
                   height: "150px",
                   width: "150px",
                   borderRadius: "5px",
@@ -94,9 +93,14 @@ const Customize = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     height: "100%",
+                    color: "white",
+                    flexDirection: "column",
                   }}
                 >
-                  Text
+                  <FontDownloadIcon fontSize="large" />
+                  <Typography fontSize={"20px"} fontWeight={550} mt={"5px"}>
+                    Text
+                  </Typography>
                 </Typography>
               </Box>
             </Button>
@@ -104,21 +108,19 @@ const Customize = () => {
             <Button onClick={handleimage}>
               <Box
                 sx={{
-                  bgcolor: "lightblue",
+                  bgcolor: "#D3D3D390",
                   height: "150px",
                   width: "150px",
                   borderRadius: "5px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "column",
                 }}
                 boxShadow={"0px 12px 32px #1E20261A"}
               >
-                <Typography
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "100%",
-                  }}
-                >
+                <img src={ImageLogo} alt="" className="w-16"></img>
+                <Typography sx={{ color: "black", fontWeight: 600 }}>
                   Image
                 </Typography>
               </Box>
@@ -127,10 +129,11 @@ const Customize = () => {
             <Button onClick={handledropdown}>
               <Box
                 sx={{
-                  bgcolor: "lightblue",
+                  bgcolor: "#E8751A50",
                   height: "150px",
                   width: "150px",
                   borderRadius: "5px",
+                  color: "white",
                 }}
                 boxShadow={"0px 12px 32px #1E20261A"}
               >
@@ -140,6 +143,8 @@ const Customize = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     height: "100%",
+                    color: "black",
+                    fontWeight: "550",
                   }}
                 >
                   Dropdown
