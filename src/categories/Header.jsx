@@ -18,7 +18,7 @@ const Header = ({
   activeUser,
 }) => {
   return (
-    <Box boxShadow={"0px 12px 32px #1E20261A"}>
+    <Box>
       <Box>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography fontSize={"32px"} fontWeight={600}>
@@ -33,7 +33,7 @@ const Header = ({
             ADD CATEGORY
           </Button>
         </Box>
-        <Box>
+        <Box boxShadow={"0px 12px 32px #1E20261A"}>
           <Box
             sx={{
               p: 2,
@@ -63,7 +63,7 @@ const Header = ({
                 onChange={handleSwitch}
                 checked={activeUser}
               />
-              <h1 className="my-auto">Active User</h1>
+              <h1 className="my-auto">Active Categories</h1>
             </Box>
             <Box className="my-auto flex gap-3 items-center">
               <h1>Total ({filteredCategories.length}) Categories</h1>

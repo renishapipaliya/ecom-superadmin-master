@@ -301,29 +301,39 @@ const General = () => {
                 >
                   Select Multiple images
                 </Typography>
-                <label htmlFor={`upload-image-2`}>
-                  <input
-                    type="file"
-                    id={`upload-image-2`}
-                    accept="image/*"
-                    onChange={handleSecondImageUpload}
-                    style={{ display: "none" }}
-                  />
-                  <img
-                    src={
-                      secondImage
-                        ? URL.createObjectURL(secondImage)
-                        : defaultImage
-                    }
-                    alt="image"
-                    style={{
-                      objectFit: "contain",
-                      width: "90%",
-                      cursor: "pointer",
-                      aspectRatio: "16/9",
-                    }}
-                  />
-                </label>
+                <Box
+                  sx={{
+                    border: "1px solid lightgray",
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <label htmlFor={`upload-image-2`}>
+                    <input
+                      type="file"
+                      id={`upload-image-2`}
+                      accept="image/*"
+                      onChange={handleSecondImageUpload}
+                      style={{ display: "none" }}
+                    />
+                    <img
+                      src={
+                        secondImage
+                          ? URL.createObjectURL(secondImage)
+                          : defaultImage
+                      }
+                      alt="image"
+                      style={{
+                        objectFit: "contain",
+                        width: "100%",
+                        height: "100%",
+                        cursor: "pointer",
+                        aspectRatio: "16/9",
+                      }}
+                    />
+                  </label>
+                </Box>
               </Box>
             </Box>
           </Box>
@@ -394,7 +404,7 @@ const General = () => {
                 message={formData.snackbarMessage}
               />
               <Button onClick={handleSave} variant="contained">
-                Save
+                Next
               </Button>
             </Box>
           </Box>
