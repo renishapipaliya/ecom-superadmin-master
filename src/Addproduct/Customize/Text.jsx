@@ -19,7 +19,6 @@ const CustomText = ({setVisible}) => {
   return (
     <Box
       sx={{
-        width: "1200px",
         mt: "20px",
         display: textFieldVisible ? "block" : "none",
       }}

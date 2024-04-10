@@ -11,10 +11,11 @@ import Shipping from "./shipping"; // Adjust casing if necessary
 import Customize from "../Customize/Customize";
 import VariantPage from "./Variant";
 import Heading from "../../CommonComponent/Heading";
+import Divider from "@mui/material/Divider";
 
 const AddProduct = () => {
   const [value, setValue] = useState("1");
-  
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -23,19 +24,34 @@ const AddProduct = () => {
     <>
       <Box>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Heading title={"Add Product"}/>
+          <Heading title={"Add Product"} />
           <Box sx={{ mx: "30px" }}>
-            <Button sx={{ m: "15px",color:"black", bgcolor:"white",border:"1px solid black",
-          }}>
+            <Button
+              sx={{
+                m: "15px",
+                color: "black",
+                bgcolor: "white",
+                border: "1px solid black",
+              }}
+            >
               Cancel
             </Button>
-            <Button sx={{color:"white", bgcolor:"black",border:"1px solid black",
-          "&:hover": {
-            bgcolor: "black",
-            color:"white",
-          }, }}>Save</Button>
+            <Button
+              sx={{
+                color: "white",
+                bgcolor: "#222831",
+                border: "1px solid black",
+                "&:hover": {
+                  bgcolor: "black",
+                  color: "white",
+                },
+              }}
+            >
+              Save
+            </Button>
           </Box>
         </Box>
+        <Divider />
         <Box
           sx={{
             width: "96%",

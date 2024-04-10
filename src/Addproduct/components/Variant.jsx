@@ -145,10 +145,27 @@ const VariantPage = () => {
             variant="outlined"
             startIcon={<Add />}
             onClick={handleAddVariant}
+            sx={{
+              color: "#222831",
+              bgcolor: "white",
+              border: "1px solid #222831",
+            }}
           >
             Add Variants
           </Button>
-          <Button variant="contained" component="span">
+          <Button
+            sx={{
+              color: "white",
+              bgcolor: "#222831",
+              border: "1px solid black",
+              "&:hover": {
+                bgcolor: "black",
+                color: "white",
+              },
+            }}
+            variant="contained"
+            component="span"
+          >
             SAVE
           </Button>
         </Box>
@@ -248,14 +265,16 @@ const VariantPage = () => {
                         placeholder="Discount"
                         sx={{ width: "150px" }}
                         InputProps={{
-                          endAdornment:<Select size="small">
-                        <MenuItem value="Percent">
-                          <Percent sx={{ fontSize: "15px" }} />
-                        </MenuItem>
-                        <MenuItem value="Currency">
-                          <CurrencyRupee sx={{ fontSize: "15px" }} />
-                        </MenuItem>
-                      </Select>
+                          endAdornment: (
+                            <Select size="small">
+                              <MenuItem value="Percent">
+                                <Percent sx={{ fontSize: "15px" }} />
+                              </MenuItem>
+                              <MenuItem value="Currency">
+                                <CurrencyRupee sx={{ fontSize: "15px" }} />
+                              </MenuItem>
+                            </Select>
+                          ),
                         }}
                       />
                     </Box>

@@ -254,7 +254,7 @@ const General = () => {
                 </Select>
               </FormControl>
             </Box>
-            <Box sx={{ display: "flex", gap: "20px" }}>
+            <Box sx={{ display: "flex", gap: "50px", mx: "10px" }}>
               <Box sx={{ my: "20px" }}>
                 <Typography
                   sx={{ fontSize: "15px", mt: "2px", color: "#707888" }}
@@ -403,12 +403,18 @@ const General = () => {
                 onClose={handleCloseSnackbar}
                 message={formData.snackbarMessage}
               />
-              <Button onClick={handleSave} sx={{
-                bgcolor:"white",color:"black",border:"1px solid black",
-                "&:hover":{bgcolor:"black", color:"white",
-
-                }
-              }}>
+              <Button
+                onClick={handleSave}
+                sx={{
+                  color: "white",
+                  bgcolor: "#222831",
+                  border: "1px solid black",
+                  "&:hover": {
+                    bgcolor: "#000000",
+                    color: "white",
+                  },
+                }}
+              >
                 Next
               </Button>
             </Box>

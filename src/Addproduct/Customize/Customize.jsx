@@ -59,7 +59,7 @@ const Customize = () => {
       <Box
         bgcolor={"white"}
         borderRadius={"5px"}
-        boxShadow={"0px 0px 100px #00000014"}
+        boxShadow={"0px 0px 10px #00000014"}
         display={"flex"}
         flexDirection={"column"}
         justifyContent={"space-between"}
@@ -98,11 +98,29 @@ const Customize = () => {
                 startIcon={<Add />}
                 variant="outlined"
                 onClick={handleDialogOpen}
+                sx={{
+                  color: "#222831",
+                  bgcolor: "white",
+                  border: "1px solid black",
+                }}
               >
                 Add Customisation
               </Button>
 
-              <Button variant="contained">save</Button>
+              <Button
+                sx={{
+                  color: "white",
+                  bgcolor: "#222831",
+                  border: "1px solid black",
+                  "&:hover": {
+                    bgcolor: "black",
+                    color: "white",
+                  },
+                }}
+                variant="contained"
+              >
+                save
+              </Button>
             </Box>
           </Box>
 

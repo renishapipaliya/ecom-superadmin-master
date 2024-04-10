@@ -106,7 +106,19 @@ const Shipping = () => {
             </MuiAlert>
           </Snackbar>
 
-          <Button sx={{ mt: "20px" }} variant="contained" onClick={handleSave}>
+          <Button
+            sx={{
+              color: "white",
+              bgcolor: "#222831",
+              border: "1px solid black",
+              "&:hover": {
+                bgcolor: "black",
+                color: "white",
+              },
+            }}
+            variant="contained"
+            onClick={handleSave}
+          >
             Save
           </Button>
         </Box>

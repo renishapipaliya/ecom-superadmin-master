@@ -216,14 +216,14 @@ const OwnerandContactinfo = () => {
             type="button"
             variant="contained"
             sx={{
+              color: "white",
+              bgcolor: "#222831",
+              border: "1px solid black",
               width: "130px",
-              border:"1px solid black",
-              mt: "25px",
-              bgcolor:"white",
-              color:"black",
+              mt:"25px",
               "&:hover": {
                 bgcolor: "black",
-                color:"white",
+                color: "white",
               },
             }}
             onClick={handleSave}
