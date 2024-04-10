@@ -56,7 +56,7 @@ const Companyinfo = () => {
   return (
     <>
       <Box>
-        <Box sx={{ width: "600px", mt: "10px" }}>
+        <Box sx={{ width: "600px", mt: "60px" }}>
           <Box sx={{ p: "40px" }} bgcolor={"white"} borderRadius={"8px"}>
             <Typography mb={"20px"} fontSize={"25px"} fontWeight={600}>
               Company Information
@@ -248,33 +248,53 @@ const Companyinfo = () => {
               <Typography sx={{ color: "#707888" }}>
                 Upload/Cancel Check
               </Typography>
+              
               <Box
                 sx={{
-                  height: "100px",
-                  width: "520px",
+                  bgcolor: "white",
+                  height: "130px",
                   border: "1px solid lightgray",
                   borderRadius: "5px",
+                  display: "flex",
+                  gap: "25px",
+                  mt:"10px"
+                  
                 }}
               >
-                <label htmlFor="upload-image">
-                  <img
-                    src={image ? image : defaultImage}
-                    alt="Course Thumbnail"
-                    style={{
-                      objectFit: "contain",
-                      height: "100%",
-                      width: "100%",
-                      cursor: "pointer",
-                    }}
-                  />
+                <Box sx={{ height: "100%", width: "60%",mt:"9px",mb:"10px" }}>
+                  <label htmlFor="upload-image">
+                    <img
+                      src={image ? image : defaultImage}
+                      alt="Course Thumbnail"
+                      style={{
+                        objectFit: "contain",
+                        height: "90%",
+                        width: "100%",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </label>
+                </Box>
+                <Box sx={{ width: "100%", mt: "10px" }}>
+                  <Typography sx={{ fontSize: "13px" }}>
+                    Upload Your course Thumbnail here.
+                    <Typography sx={{ fontWeight: 600, fontSize: "14px" }}>
+                      Important guidelines:
+                    </Typography>
+                    1200 * 800 pixels or 12:8 Ratio. Supported format:
+                    <Typography sx={{ fontWeight: 600, fontSize: "14px" }}>
+                      .jpg, .jpeg, or .png
+                    </Typography>
+                  </Typography>
                   <input
+                    accept=".jpg,.jpeg,.png"
+                    style={{ display: "none" }}
                     id="upload-image"
                     type="file"
-                    accept="image/*"
                     onChange={handleImageUpload}
-                    style={{ display: "none" }}
                   />
-                </label>
+                  
+                </Box>
               </Box>
             </Box>
           </Box>
