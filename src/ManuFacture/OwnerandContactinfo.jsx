@@ -231,6 +231,14 @@ const OwnerandContactinfo = () => {
           >
             submit
           </Button>
+          <Button
+            type="button" 
+            variant="contained"
+            sx={{ width: "600px", mt: "25px" }}
+            onClick={handleSave} 
+          >
+            submit
+          </Button>
         </Box>
       </Box>
     </>
