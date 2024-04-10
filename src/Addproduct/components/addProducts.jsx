@@ -9,6 +9,7 @@ import General from "./general";
 import Shipping from "./shipping";
 import Customize from "../Customize/Customize";
 import VariantPage from "./Variant";
+import Heading from "../../CommonComponent/Heading";
 
 const AddProduct = () => {
   const [value, setValue] = React.useState("1");
@@ -17,13 +18,9 @@ const AddProduct = () => {
   };
   return (
     <>
-      <Box sx={{ padding: "30px" }}  width={"1250px"}>
+      <Box>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography
-            sx={{ fontSize: "32px", fontWeight: "bold" }}
-          >
-            Add Products
-          </Typography>
+          <Heading title={"Add Product"} />
           <Box sx={{ marginRight: "20px" }}>
             <Button sx={{ mx: "15px" }} variant="outlined">
               Cancel
@@ -31,11 +28,21 @@ const AddProduct = () => {
             <Button variant="contained">Save</Button>
           </Box>
         </Box>
-        <Box sx={{ width: "100%", typography: "body1", mt: "10px" }}>
+        <Box
+          sx={{
+            width: "100%",
+            typography: "body1",
+            mt: "20px",
+          }}
+        >
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
               <TabList
-                sx={{ bgcolor: "white", borderRadius: "10px" }}
+                sx={{
+                  bgcolor: "white",
+                  borderRadius: "10px",
+                  boxShadow: "0px 0px 100px #00000014",
+                }}
                 onChange={handleChange}
                 aria-label="lab API tabs example"
               >
@@ -45,16 +52,16 @@ const AddProduct = () => {
                 <Tab label="shipping" value="4" />
               </TabList>
             </Box>
-            <TabPanel sx={{p:0,pt:2}} value="1">
+            <TabPanel sx={{ p: 0, pt: 2 }} value="1">
               <General />
             </TabPanel>
-            <TabPanel sx={{p:0,pt:2}} value="2">
+            <TabPanel sx={{ p: 0, pt: 2 }} value="2">
               <VariantPage />
             </TabPanel>
-            <TabPanel sx={{p:0,pt:2}} value="3">
+            <TabPanel sx={{ p: 0, pt: 2 }} value="3">
               <Customize />
             </TabPanel>
-            <TabPanel sx={{p:0,pt:2}} value="4">
+            <TabPanel sx={{ p: 0, pt: 2 }} value="4">
               <Shipping />
             </TabPanel>
           </TabContext>

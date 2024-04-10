@@ -19,15 +19,14 @@ const Shipping = () => {
   };
 
   return (
-    <Box width={"1200px"} height={"80vh"}>
+    <Box>
       <Box
         sx={{
           bgcolor: "white",
           padding: "30px",
           borderRadius: "5px",
-          width:"99%"
         }}
-        boxShadow={"0px 12px 32px 0px #1E20261A"}
+        boxShadow={"0px 0px 100px #00000014"}
       >
         <Typography fontSize={"25px"} marginBottom={"20px"} fontWeight={600}>
           Shipping

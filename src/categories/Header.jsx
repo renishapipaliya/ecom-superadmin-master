@@ -7,6 +7,7 @@ import { Button, Switch, TextField, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { Add } from "@mui/icons-material";
+import Heading from "../CommonComponent/Heading";
 
 const Header = ({
   filteredCategories,
@@ -21,19 +22,17 @@ const Header = ({
     <Box>
       <Box>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography fontSize={"32px"} fontWeight={600}>
-            Categories
-          </Typography>
-          <Button
+          <Heading title={"Categories"}/>
+          {/* <Button
             size="small"
             variant="outlined"
             onClick={handleOpen}
             startIcon={<Add />}
           >
             ADD CATEGORY
-          </Button>
+          </Button> */}
         </Box>
-        <Box boxShadow={"0px 12px 32px #1E20261A"}>
+        <Box boxShadow={"0px 0px 70px #00000014"}>
           <Box
             sx={{
               p: 2,

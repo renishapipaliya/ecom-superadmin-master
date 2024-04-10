@@ -3,6 +3,7 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import TuneIcon from "@mui/icons-material/Tune";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import Heading from "../CommonComponent/Heading";
 
 const MyProductHeader = () => {
   const [search, setSearch] = useState("");
@@ -12,9 +13,7 @@ const MyProductHeader = () => {
   return (
     <Box>
       <Box>
-        <Typography sx={{ fontSize: "30px", fontWeight: 600 }}>
-          My Product
-        </Typography>
+        <Heading title={"My Product"}/>
         <Box
           sx={{
             my: "20px",

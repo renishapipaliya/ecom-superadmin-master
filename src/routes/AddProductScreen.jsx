@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 
 const AddProductScreen = () => {
   return (
-    <Box bgcolor={"#EBF1FDE5"} padding={"20px"}>
+    <Box  padding={"20px"}>
       <AddProducts />
     </Box>
   );

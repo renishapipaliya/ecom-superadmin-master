@@ -55,14 +55,13 @@ const Customize = () => {
   };
 
   return (
-    <Box maxWidth={"1440px"} width={"1200px"} height={"100vh"}>
+    <Box>
       <Box
         bgcolor={"white"}
         borderRadius={"5px"}
-        boxShadow={"0px 12px 32px 0px #1E20261A"}
+        boxShadow={"0px 0px 100px #00000014"}
         display={"flex"}
         flexDirection={"column"}
-        width={"99%"}
         justifyContent={"space-between"}
         padding={"30px"}
       >
@@ -196,7 +195,7 @@ const Customize = () => {
                     alignItems: "center",
                     height: "100%",
                     color: "black",
-                    fontSize:"17px",
+                    fontSize: "17px",
                     flexDirection: "column",
                     fontWeight: 550,
                   }}

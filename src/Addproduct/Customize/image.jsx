@@ -60,7 +60,6 @@ const Customimage = ({ setVisible }) => {
               }}
             >
               <Box sx={{ height: "100%", width: "100%" }}>
-                <Typography></Typography>
                 <label htmlFor="upload-image">
                   <img
                     src={image ? image : defaultImage}

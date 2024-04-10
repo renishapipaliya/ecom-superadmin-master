@@ -1,13 +1,23 @@
-import { Box, Typography, alpha } from '@mui/material'
-import React from 'react'
+import { Box, Typography, alpha } from "@mui/material";
+import React from "react";
 
-const Heading = ({title,extraElements}) => {
+const Heading = ({ title, extraElements }) => {
   return (
-    <Box display={"flex"} py={2} px={4} justifyContent={"space-between"} alignItems={"center"} borderBottom={"1px solid"} borderColor={alpha("#000000",0.2)}>
-        <Typography variant='h5' fontWeight={"600"}>{title}</Typography>
-        {extraElements}
+    <Box
+      display={"flex"}
+      py={2}
+      px={4}
+      justifyContent={"space-between"}
+      alignItems={"center"}
+      borderBottom={"1px solid"}
+      borderColor={alpha("#000000", 0.2)}
+    >
+      <Typography variant="h5" fontWeight={"600"}>
+        {title}
+      </Typography>
+      {extraElements}
     </Box>
-  )
-}
+  );
+};
 
-export default Heading
+export default Heading;

@@ -117,7 +117,7 @@ const General = () => {
           bgcolor={"white"}
           borderRadius={"5px"}
           p={"30px"}
-          boxShadow={"0px 12px 32px 0px #1E20261A"}
+          boxShadow={"0px 0px 10px #00000014"}
         >
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             <Typography sx={{ fontSize: "25px", fontWeight: 600 }}>
@@ -346,7 +346,7 @@ const General = () => {
             bgcolor={"white"}
             borderRadius={"5px"}
             p={"30px"}
-            boxShadow={"0px 12px 32px 0px #1E20261A"}
+            boxShadow={"0px 0px 10px #00000014"}
           >
             <Typography sx={{ fontWeight: 600, fontSize: "20px" }}>
               Pricing
