@@ -1,20 +1,22 @@
 import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Box, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 import { Link, Route, Routes, useLocation } from "react-router-dom";
-import { Add, Factory } from "@mui/icons-material";
+import { Add, Factory, ViewList } from "@mui/icons-material";
 import AddProductScreen from "./routes/AddProductScreen";
 import ManufactureScreen from "./routes/ManuFactureScreen";
 import CategoryScreen from "./routes/categoryScreen";
 import CategoryIcon from "@mui/icons-material/Category";
 import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import MyProductList from "./routes/myProductList";
+import OrderList from "./routes/OrderList";
+import { alpha } from "@material-ui/core";
 
 const routePath = [
   {
     path: "",
     name: "AddProduct",
-    icon: <Add/>,
+    icon: <Add />,
   },
   {
     path: "categoryScreen",
@@ -31,13 +33,20 @@ const routePath = [
     name: "MyProduct",
     icon: <PlaylistAddCheckIcon />,
   },
+  {
+    path: "orderList",
+    name: "Orders",
+    icon: <ViewList />,
+  },
 ];
 
 const theme = createTheme({
   palette: {
-    primary: {
-      main: "#1F79E0",
-    },
+    text: {
+      gray: "#969696",
+      dark: "#000000",
+      light: "#ffffff"
+    }
   },
   typography: {
     fontFamily: "Poppins, sans-serif",
@@ -49,59 +58,56 @@ const Navbar = () => {
   return (
     <Box
       sx={{
-        position: "fixed",
-        width: "15%",
+        width: "13%",
         display: "flex",
         flexDirection: "column",
         height: "100vh",
         gap: 3,
         py: 5,
-        px: 2,
-        boxShadow: "5px 0px 32px #1E20261A",
-        top: "0px",
-        left: "0px",
+        bgcolor: "black"
       }}
     >
       <Typography
-        color={"primary.main"}
+        color={"white"}
         fontSize={30}
         fontWeight={600}
-        textAlign={"center"}
-        pb={2}
+        textAlign={"start"}
+        ml={2}
+        letterSpacing={2}
       >
-        GREETO
+        GREETO.
       </Typography>
+      <Divider sx={{ width: "100%", borderColor: alpha("#ffffff", 0.2) }} />
       {routePath.map((item) => (
-        <Box
-          key={item.path}
-          sx={{
-            bgcolor:
-              location.pathname === `/${item.path}` ? "#cfe5ff" : "transparent",
-            color:
-              location.pathname === `/${item.path}` ? "#1F79E0" : "#4E5566",
-            ":hover": { bgcolor: "#cfe5ff", color: "#1F79E0" },
-            p: 1,
-            borderRadius: 6,
-          }}
-        >
-          <Link
-            to={`/${item.path}`}
-            style={{
-              textDecoration: "none",
-              backgroundColor:
-                location.pathname === `/${item.path}`
-                  ? "#cfe5ff"
-                  : "transparent",
+        <>
+      
+        {item.path==="orderList" && <Divider sx={{width:"100%",borderColor:alpha("#ffffff",0.2)}}/>}
+          <Box
+            key={item.path}
+            sx={{
+              bgcolor:
+                location.pathname === `/${item.path}` ? "white" : "black",
               color:
-                location.pathname === `/${item.path}` ? "#1F79E0" : "#4E5566",
+                location.pathname === `/${item.path}` ? "black" : "white",
+              py: 1,
+              borderRadius: 6,
+              px: 2,
+              mx: 1
             }}
           >
-            <Box display={"flex"} gap={1}>
-              {item.icon}
-              <Typography>{item.name}</Typography>
-            </Box>
-          </Link>
-        </Box>
+            <Link
+              to={`/${item.path}`}
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              <Box display={"flex"} gap={1}>
+                {item.icon}
+                <Typography>{item.name}</Typography>
+              </Box>
+            </Link>
+          </Box>
+        </>
       ))}
     </Box>
   );
@@ -110,14 +116,15 @@ const Navbar = () => {
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Box display={"flex"}>
+      <Box display={"flex"} width={"100%"}>
         <Navbar />
-        <Box marginLeft={"15%"} fontFamily={"Poppins"} width={"1300px"}>
+        <Box fontFamily={"Poppins"} bgcolor={"white"} flex={1} height={"100vh"} overflow={"auto"} >
           <Routes>
             <Route path="/" element={<AddProductScreen />} />
             <Route path="/manufactureScreen" element={<ManufactureScreen />} />
             <Route path="/categoryScreen" element={<CategoryScreen />} />
             <Route path="/MyProductList" element={<MyProductList />} />
+            <Route path="/orderList" element={<OrderList />} />
           </Routes>
         </Box>
       </Box>

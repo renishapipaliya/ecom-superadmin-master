@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import UploadIcon from "@mui/icons-material/Upload";
-import defaultImage from "../../../public/image/Icon.png";
+import defaultImage from "/image/Icon.png";
 import { Delete } from "@mui/icons-material";
 
 const Customimage = ({ setVisible }) => {

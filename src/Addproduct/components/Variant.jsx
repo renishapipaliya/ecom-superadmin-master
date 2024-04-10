@@ -43,7 +43,7 @@ const VariantPage = () => {
     setSearchTerm(event.target.value);
   };
 
-  const defaultImage = "../../../public/image/Icon.png";
+  const defaultImage = "/image/Icon.png";
 
   const handleAddVariant = () => {
     const newVariant = {

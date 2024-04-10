@@ -98,7 +98,7 @@ const General = () => {
     });
   };
 
-  const defaultImage = "../../../public/image/Icon.png";
+  const defaultImage = "/image/Icon.png";
 
   const handleFirstImageUpload = (event) => {
     const file = event.target.files[0];
