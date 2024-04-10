@@ -45,8 +45,8 @@ const theme = createTheme({
     text: {
       gray: "#969696",
       dark: "#000000",
-      light: "#ffffff"
-    }
+      light: "#ffffff",
+    },
   },
   typography: {
     fontFamily: "Poppins, sans-serif",
@@ -64,7 +64,7 @@ const Navbar = () => {
         height: "100vh",
         gap: 3,
         py: 5,
-        bgcolor: "black"
+        bgcolor: "black",
       }}
     >
       <Typography
@@ -80,19 +80,21 @@ const Navbar = () => {
       <Divider sx={{ width: "100%", borderColor: alpha("#ffffff", 0.2) }} />
       {routePath.map((item) => (
         <>
-      
-        {item.path==="orderList" && <Divider sx={{width:"100%",borderColor:alpha("#ffffff",0.2)}}/>}
+          {item.path === "orderList" && (
+            <Divider
+              sx={{ width: "100%", borderColor: alpha("#ffffff", 0.2) }}
+            />
+          )}
           <Box
             key={item.path}
             sx={{
               bgcolor:
                 location.pathname === `/${item.path}` ? "white" : "black",
-              color:
-                location.pathname === `/${item.path}` ? "black" : "white",
+              color: location.pathname === `/${item.path}` ? "black" : "white",
               py: 1,
               borderRadius: 6,
               px: 2,
-              mx: 1
+              mx: 1,
             }}
           >
             <Link
@@ -118,7 +120,13 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Box display={"flex"} width={"100%"}>
         <Navbar />
-        <Box fontFamily={"Poppins"} bgcolor={"white"} flex={1} height={"100vh"} overflow={"auto"} >
+        <Box
+          fontFamily={"Poppins"}
+          bgcolor={"white"}
+          flex={1}
+          height={"100vh"}
+          overflow={"auto"}
+        >
           <Routes>
             <Route path="/" element={<AddProductScreen />} />
             <Route path="/manufactureScreen" element={<ManufactureScreen />} />

@@ -22,7 +22,7 @@ const Header = ({
     <Box>
       <Box>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Heading title={"Categories"}/>
+          <Heading title={"Categories"} />
           {/* <Button
             size="small"
             variant="outlined"
@@ -32,7 +32,7 @@ const Header = ({
             ADD CATEGORY
           </Button> */}
         </Box>
-        <Box boxShadow={"0px 0px 70px #00000014"}>
+        <Box sx={{ margin: "20px", boxShadow: "0px 0px 70px #00000014" }}>
           <Box
             sx={{
               p: 2,

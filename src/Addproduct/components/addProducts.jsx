@@ -1,28 +1,31 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import { Button, Typography } from "@mui/material";
-import General from "./general";
-import Shipping from "./shipping";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import General from "./general"; // Adjust casing if necessary
+import Shipping from "./shipping"; // Adjust casing if necessary
 import Customize from "../Customize/Customize";
 import VariantPage from "./Variant";
 import Heading from "../../CommonComponent/Heading";
 
 const AddProduct = () => {
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = useState("1");
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   return (
     <>
       <Box>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Heading title={"Add Product"} />
-          <Box sx={{ marginRight: "20px" }}>
-            <Button sx={{ mx: "15px" }} variant="outlined">
+          <Box sx={{ mx: "30px" }}>
+            <Button sx={{ m: "15px" }} variant="outlined">
               Cancel
             </Button>
             <Button variant="contained">Save</Button>
@@ -30,9 +33,10 @@ const AddProduct = () => {
         </Box>
         <Box
           sx={{
-            width: "100%",
+            width: "96%",
             typography: "body1",
             mt: "20px",
+            mx: "24px",
           }}
         >
           <TabContext value={value}>
@@ -46,10 +50,10 @@ const AddProduct = () => {
                 onChange={handleChange}
                 aria-label="lab API tabs example"
               >
-                <Tab label="general" value="1" />
-                <Tab label="variant" value="2" />
+                <Tab label="General" value="1" />
+                <Tab label="Variant" value="2" />
                 <Tab label="Customize" value="3" />
-                <Tab label="shipping" value="4" />
+                <Tab label="Shipping" value="4" />
               </TabList>
             </Box>
             <TabPanel sx={{ p: 0, pt: 2 }} value="1">
@@ -70,4 +74,5 @@ const AddProduct = () => {
     </>
   );
 };
+
 export default AddProduct;

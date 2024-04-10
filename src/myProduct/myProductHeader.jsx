@@ -13,7 +13,7 @@ const MyProductHeader = () => {
   return (
     <Box>
       <Box>
-        <Heading title={"My Product"}/>
+        <Heading title={"My Product"} />
         <Box
           sx={{
             my: "20px",

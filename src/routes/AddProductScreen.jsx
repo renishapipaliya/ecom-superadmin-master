@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 
 const AddProductScreen = () => {
   return (
-    <Box  padding={"20px"}>
+    <Box>
       <AddProducts />
     </Box>
   );

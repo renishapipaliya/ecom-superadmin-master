@@ -111,7 +111,7 @@ const CategoryScreen = () => {
     setCategories(updatedData);
   };
   return (
-    <Box sx={{padding:"20px"}}>
+    <Box>
       <Header
         filteredCategories={filteredCategories}
         searchTerm={searchTerm}
@@ -122,21 +122,23 @@ const CategoryScreen = () => {
         handleSwitch={handleSwitch}
         activeUser={activeUser}
       />
-      <CategoryTable
-        filteredCategories={filteredCategories}
-        handleClose={handleClose}
-        categories={categories}
-        formData={formData}
-        handleChange={handleChange}
-        handleOpen={handleOpen}
-        handleSearch={handleSearch}
-        searchTerm={searchTerm}
-        handleEditCategory={handleEditCategory}
-        setCategories={setCategories}
-        handleSwitchChange={handleSwitchChange}
-        handleOpenDeleteDialog={handleOpenDeleteDialog}
-        activeUser={activeUser}
-      />
+      <Box sx={{paddingX:"20px"}}>
+        <CategoryTable
+          filteredCategories={filteredCategories}
+          handleClose={handleClose}
+          categories={categories}
+          formData={formData}
+          handleChange={handleChange}
+          handleOpen={handleOpen}
+          handleSearch={handleSearch}
+          searchTerm={searchTerm}
+          handleEditCategory={handleEditCategory}
+          setCategories={setCategories}
+          handleSwitchChange={handleSwitchChange}
+          handleOpenDeleteDialog={handleOpenDeleteDialog}
+          activeUser={activeUser}
+        />
+      </Box>
       <Dialogbox
         handleClose={handleClose}
         formData={formData}
