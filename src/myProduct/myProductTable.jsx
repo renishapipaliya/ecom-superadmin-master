@@ -37,7 +37,7 @@ const MyProductTable = () => {
   ];
 
   return (
-    <Box sx={{ mt: "30px" }}>
+    <Box sx={{ mt: "30px", mx: "20px" }}>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} size="small">
           <TableHead>

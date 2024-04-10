@@ -403,7 +403,12 @@ const General = () => {
                 onClose={handleCloseSnackbar}
                 message={formData.snackbarMessage}
               />
-              <Button onClick={handleSave} variant="contained">
+              <Button onClick={handleSave} sx={{
+                bgcolor:"white",color:"black",border:"1px solid black",
+                "&:hover":{bgcolor:"black", color:"white",
+
+                }
+              }}>
                 Next
               </Button>
             </Box>

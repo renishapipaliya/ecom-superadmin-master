@@ -1,65 +1,26 @@
-import { Add, Search } from "@mui/icons-material";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, FilledInput } from "@mui/material";
 import React, { useState } from "react";
-import TuneIcon from "@mui/icons-material/Tune";
-import FilterListIcon from "@mui/icons-material/FilterList";
 import Heading from "../CommonComponent/Heading";
+import { Search } from "@mui/icons-material";
 
 const MyProductHeader = () => {
-  const [search, setSearch] = useState("");
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
+
   return (
     <Box>
       <Box>
-        <Heading title={"My Product"} />
-        <Box
-          sx={{
-            my: "20px",
-            bgcolor: "white",
-            borderRadius: "10px",
-            p: "20px",
-            boxShadow: "0px 12px 32px #1E20261A",
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
-            <TextField
-              onChange={handleSearch}
+        <Heading
+          title={"My Product"}
+          extraElements={
+            <FilledInput
               size="small"
-              value={search}
-              label={
-                <div>
-                  <Search />
-                  Search
-                </div>
-              }
-              sx={{ width: "300px" }}
+              placeholder="Search Orders"
+              hiddenLabel
+              startAdornment={<Search sx={{ mr: "4px" }} />}
+              sx={{ overflow: "hidden", borderRadius: "8px", width: "20%" }}
+              disableUnderline
             />
-            <Button variant="outlined" startIcon={<Add />}>
-              Add Product
-            </Button>
-          </Box>
-          <Box
-            sx={{
-              mt: "20px",
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
-            <Button startIcon={<TuneIcon />} variant="outlined">
-              Filter
-            </Button>
-            <Button>
-              <FilterListIcon />
-            </Button>
-          </Box>
-        </Box>
+          }
+        />
       </Box>
     </Box>
   );

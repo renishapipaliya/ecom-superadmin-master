@@ -1,20 +1,8 @@
-import {
-  Box,
-  Button,
-  FilledInput,
-  IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography,
-  alpha,
-} from "@mui/material";
+import { Box, Button, FilledInput, Typography, alpha } from "@mui/material";
 import React, { useState } from "react";
 import Heading from "../CommonComponent/Heading";
 import { MoreHoriz, Search, Tune } from "@mui/icons-material";
+import { Grid, Paper, IconButton } from "@mui/material";
 
 const OrderList = () => {
   const [status, setStatus] = useState("All");
@@ -85,7 +73,7 @@ const OrderList = () => {
           </Box>
         </Box>
 
-        <TableContainer sx={{ px: 5, maxHeight: "70vh" }}>
+        {/* <TableContainer sx={{ px: 5, maxHeight: "70vh" }}>
           <Table
             stickyHeader
             sx={{
@@ -174,7 +162,66 @@ const OrderList = () => {
               </TableRow>
             </TableBody>
           </Table>
-        </TableContainer>
+        </TableContainer> */}
+
+        <Box sx={{ mx: "40px", my: "20px" }}>
+          <Grid container spacing={2}>
+            <Grid item xs={4}>
+              <Typography>Orders</Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>Price</Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>Location</Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>Date</Typography>
+            </Grid>
+            <Grid item xs={1}>
+              <Typography>Status</Typography>
+            </Grid>
+            <Grid item xs={1}>
+              <Typography></Typography>
+            </Grid>
+          </Grid>
+        </Box>
+        <Box
+          sx={{
+            mx: "20px",
+            border: "1px solid lightgray",
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0px 0px 10px #00000020",
+          }}
+        >
+          <Grid container spacing={2} alignItems={"center"}>
+            <Grid item xs={4}>
+              <Typography>Section 1</Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>Section 2</Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>Section 3</Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>Section 4</Typography>
+            </Grid>
+            <Grid item xs={1}>
+              <Typography>Section 5</Typography>
+            </Grid>
+            <Grid
+              item
+              xs={1}
+              sx={{ alignItems: "center", justifyContent: "center" }}
+            >
+              <IconButton>
+                <MoreHoriz />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </Box>
       </Box>
     </>
   );

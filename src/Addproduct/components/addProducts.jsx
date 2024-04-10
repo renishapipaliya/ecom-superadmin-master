@@ -14,7 +14,7 @@ import Heading from "../../CommonComponent/Heading";
 
 const AddProduct = () => {
   const [value, setValue] = useState("1");
-
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -23,12 +23,17 @@ const AddProduct = () => {
     <>
       <Box>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Heading title={"Add Product"} />
+          <Heading title={"Add Product"}/>
           <Box sx={{ mx: "30px" }}>
-            <Button sx={{ m: "15px" }} variant="outlined">
+            <Button sx={{ m: "15px",color:"black", bgcolor:"white",border:"1px solid black",
+          }}>
               Cancel
             </Button>
-            <Button variant="contained">Save</Button>
+            <Button sx={{color:"white", bgcolor:"black",border:"1px solid black",
+          "&:hover": {
+            bgcolor: "black",
+            color:"white",
+          }, }}>Save</Button>
           </Box>
         </Box>
         <Box

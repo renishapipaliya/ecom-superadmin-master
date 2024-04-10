@@ -20,45 +20,38 @@ const VisuallyHiddenInput = styled("input")({
   whiteSpace: "nowrap",
   width: 1,
 });
-
 const Companyinfo = () => {
   const [image, setImage] = useState(null);
   const [gstImage, setGstImage] = useState(null);
   const [incorporationImage, setIncorporationImage] = useState(null);
-
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       setImage(URL.createObjectURL(file));
     }
   };
-
   const handleCancelUpload = () => {
     setImage(null);
   };
-
   const handleGstImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       setGstImage(URL.createObjectURL(file));
     }
   };
-
   const handleIncorporationImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       setIncorporationImage(URL.createObjectURL(file));
     }
   };
-
   const defaultImage = "./image/Icon.png";
-
   return (
     <>
       <Box>
-        <Box sx={{ width: "600px", mt: "10px" }}>
+        <Box sx={{ boxShadow: "0px 0px 10px #00000020",mt:"20px" }}>
           <Box sx={{ p: "40px" }} bgcolor={"white"} borderRadius={"8px"}>
-            <Typography mb={"20px"} fontSize={"25px"} fontWeight={600}>
+            <Typography mb={"20px"} fontSize={"20px"} fontWeight={600}>
               Company Information
             </Typography>
             <Box>
@@ -130,7 +123,7 @@ const Companyinfo = () => {
                     width: "100%",
                     border: "1px solid lightgray",
                     borderRadius: "5px",
-                    mt:"5px"
+                    mt: "5px",
                   }}
                 >
                   <label htmlFor="upload-gst-image">
@@ -154,14 +147,13 @@ const Companyinfo = () => {
                   </label>
                 </Box>
               </Box>
-
               <Box sx={{ mt: "15px" }}>
                 <Typography sx={{ color: "#707888" }}>
                   Upload Incorporation Certificate
                 </Typography>
                 <Box
                   sx={{
-                    mt:"5px",
+                    mt: "5px",
                     height: "80%",
                     width: "100%",
                     border: "1px solid lightgray",
@@ -192,7 +184,6 @@ const Companyinfo = () => {
                 </Box>
               </Box>
             </Box>
-
             <Box sx={{ mt: "15px" }}>
               <Typography sx={{ color: "#707888" }}>
                 Social media Link
@@ -207,7 +198,7 @@ const Companyinfo = () => {
             </Box>
           </Box>
         </Box>
-        <Box sx={{ width: "600px", height: "547px", mt: "25px" }}>
+        <Box sx={{ width: "600px", height: "547px", mt: "25px",boxShadow:"0px 0px 10px #00000020" }}>
           <Box
             sx={{ p: "40px", boxShadow: "0px 12px 32px 0x #1D20261A" }}
             bgcolor={"white"}
@@ -250,31 +241,48 @@ const Companyinfo = () => {
               </Typography>
               <Box
                 sx={{
-                  height: "100px",
-                  width: "520px",
+                  bgcolor: "white",
+                  height: "130px",
                   border: "1px solid lightgray",
                   borderRadius: "5px",
+                  display: "flex",
+                  gap: "25px",
+                  mt: "10px",
                 }}
               >
-                <label htmlFor="upload-image">
-                  <img
-                    src={image ? image : defaultImage}
-                    alt="Course Thumbnail"
-                    style={{
-                      objectFit: "contain",
-                      height: "100%",
-                      width: "100%",
-                      cursor: "pointer",
-                    }}
-                  />
+                <Box sx={{ height: "100%", width: "60%" }}>
+                  <label htmlFor="upload-image">
+                    <img
+                      src={image ? image : defaultImage}
+                      alt="Course Thumbnail"
+                      style={{
+                        objectFit: "contain",
+                        height: "100%",
+                        width: "100%",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </label>
+                </Box>
+                <Box sx={{ width: "100%", mt: "10px" }}>
+                  <Typography sx={{ fontSize: "13px" }}>
+                    Upload Your course Thumbnail here.
+                    <Typography sx={{ fontWeight: 600, fontSize: "14px" }}>
+                      Important guidelines:
+                    </Typography>
+                    1200 * 800 pixels or 12:8 Ratio. Supported format:
+                    <Typography sx={{ fontWeight: 600, fontSize: "14px" }}>
+                      .jpg, .jpeg, or .png
+                    </Typography>
+                  </Typography>
                   <input
+                    accept=".jpg,.jpeg,.png"
+                    style={{ display: "none" }}
                     id="upload-image"
                     type="file"
-                    accept="image/*"
                     onChange={handleImageUpload}
-                    style={{ display: "none" }}
                   />
-                </label>
+                </Box>
               </Box>
             </Box>
           </Box>
@@ -283,5 +291,4 @@ const Companyinfo = () => {
     </>
   );
 };
-
 export default Companyinfo;

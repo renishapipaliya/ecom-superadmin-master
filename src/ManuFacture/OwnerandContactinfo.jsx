@@ -1,24 +1,26 @@
 import React, { useState } from "react";
-import { Box, TextField, Typography, Checkbox, Button, Snackbar } from "@mui/material";
-
+import {
+  Box,
+  TextField,
+  Typography,
+  Checkbox,
+  Button,
+  Snackbar,
+} from "@mui/material";
 const OwnerandContactinfo = () => {
   const [contactInfo, setContactInfo] = useState({
     contactName: "",
     contactMobile: "",
     contactEmail: "",
   });
-
   const [autoFillChecked, setAutoFillChecked] = useState(false);
-
   const [contactGreetoInfo, setContactGreetoInfo] = useState({
     contactName: "",
     contactMobile: "",
     contactEmail: "",
   });
-
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
-
   const handleContactInfoChange = (e) => {
     const { name, value } = e.target;
     setContactInfo((prevState) => ({
@@ -32,7 +34,6 @@ const OwnerandContactinfo = () => {
       }));
     }
   };
-
   const handleAutoFillCheck = (e) => {
     setAutoFillChecked(e.target.checked);
     if (!e.target.checked) {
@@ -45,7 +46,6 @@ const OwnerandContactinfo = () => {
       setContactGreetoInfo(contactInfo);
     }
   };
-
   const handleGreetoInfoChange = (e) => {
     const { name, value } = e.target;
     setContactGreetoInfo((prevGreetoInfo) => ({
@@ -53,30 +53,22 @@ const OwnerandContactinfo = () => {
       [name]: value,
     }));
   };
-
   const handleSave = () => {
     setSnackbarMessage("Saved successfully!");
     setSnackbarOpen(true);
   };
-
   const handleCloseSnackbar = () => {
     setSnackbarOpen(false);
   };
-
   return (
     <>
       <Box>
-        <Box
-          sx={{
-            width: "600px",
-            mt: "10px",
-          }}
-        >
+        <Box sx={{ boxShadow: "0px 0px 10px #00000020", mt: "20px" }}>
           <Box sx={{ p: "40px" }} bgcolor={"white"} borderRadius={"8px"}>
-            <Typography pt={"2px"} fontSize={"25px"} fontWeight={700}>
+            <Typography pt={"2px"} fontSize={"20px"} fontWeight={700}>
               Owner and Contact Person Information
             </Typography>
-            <Typography sx={{ pt: "40px", fontWeight: 560, fontSize: "20px" }}>
+            <Typography sx={{ pt: "10px", fontWeight: 560, fontSize: "20px" }}>
               Owner Information
             </Typography>
             <Box>
@@ -109,7 +101,6 @@ const OwnerandContactinfo = () => {
                 />
               </Box>
             </Box>
-
             <Typography sx={{ pt: "40px", fontWeight: 560, fontSize: "20px" }}>
               Contact Information
             </Typography>
@@ -152,7 +143,6 @@ const OwnerandContactinfo = () => {
                 />
               </Box>
             </Box>
-
             <Box mt={"30px"} display="flex" alignItems="center">
               <Checkbox
                 checked={autoFillChecked}
@@ -160,7 +150,6 @@ const OwnerandContactinfo = () => {
               />
               <Typography>Same as contact</Typography>
             </Box>
-
             <Typography sx={{ fontWeight: 560, mt: "30px", fontSize: "20px" }}>
               Contact Greeto Information
             </Typography>
@@ -221,20 +210,29 @@ const OwnerandContactinfo = () => {
             autoHideDuration={6000}
             onClose={handleCloseSnackbar}
             message={snackbarMessage}
-            anchorOrigin={{vertical:"top",horizontal:"middle"}}
+            anchorOrigin={{ vertical: "top", horizontal: "middle" }}
           />
           <Button
-            type="button" 
+            type="button"
             variant="contained"
-            sx={{ width: "600px", mt: "25px" }}
-            onClick={handleSave} 
+            sx={{
+              width: "130px",
+              border:"1px solid black",
+              mt: "25px",
+              bgcolor:"white",
+              color:"black",
+              "&:hover": {
+                bgcolor: "black",
+                color:"white",
+              },
+            }}
+            onClick={handleSave}
           >
-            submit
+            Submit
           </Button>
         </Box>
       </Box>
     </>
   );
 };
-
 export default OwnerandContactinfo;

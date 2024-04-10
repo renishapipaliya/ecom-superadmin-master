@@ -1,4 +1,3 @@
-// header.jsx
 import React from "react";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import Box from "@mui/material/Box";
@@ -21,16 +20,20 @@ const Header = ({
   return (
     <Box>
       <Box>
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between",alignItems:"center", }}>
           <Heading title={"Categories"} />
-          {/* <Button
-            size="small"
-            variant="outlined"
-            onClick={handleOpen}
-            startIcon={<Add />}
-          >
-            ADD CATEGORY
-          </Button> */}
+          <Box>
+            <Button
+              onClick={handleOpen}
+              startIcon={<Add />}
+              sx={{mx:"20px",bgcolor:"white", color:"black",border:"1px solid black","&:hover":{
+                bgcolor:"black",
+                color:"white",
+              }}}
+            >
+              ADD CATEGORY
+            </Button>
+          </Box>
         </Box>
         <Box sx={{ margin: "20px", boxShadow: "0px 0px 70px #00000014" }}>
           <Box
@@ -41,7 +44,6 @@ const Header = ({
               display: "flex",
               justifyContent: "space-between",
               bgcolor: "white",
-              boxShadow: "0px 12px 32px 0x #1D20261A",
             }}
           >
             <Box className="flex" alignItems={"center"}>
