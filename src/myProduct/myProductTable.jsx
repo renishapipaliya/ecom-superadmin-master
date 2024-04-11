@@ -63,7 +63,7 @@ const MyProductTable = () => {
         {
           variantname: "Blue frame",
           variantprice: "250",
-          variantstock: "5",
+          variantstock: "2222",
         },
       ],
     },
