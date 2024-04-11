@@ -10,32 +10,64 @@ import { Box, IconButton, TextField, Typography } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-
 const MyProductTable = () => {
   const [openRow, setOpenRow] = React.useState(null);
-
   const handleClick = (index) => {
     setOpenRow((prevIndex) => (prevIndex === index ? null : index));
   };
-
   const data = [
     {
       Name: "Wallet",
       Price: "200",
       Stock: "25",
+      Variants: [
+        {
+          variantname: "Red Wallet",
+          variantprice: "300",
+          variantstock: "3",
+        },
+        {
+          variantname: "Blue Wallet",
+          variantprice: "250",
+          variantstock: "5",
+        },
+      ],
     },
     {
       Name: "Bottle",
       Price: "200",
       Stock: "25",
+      Variants: [
+        {
+          variantname: "Red bottle",
+          variantprice: "300",
+          variantstock: "3",
+        },
+        {
+          variantname: "Blue Bottle",
+          variantprice: "250",
+          variantstock: "5",
+        },
+      ],
     },
     {
       Name: "Frame",
       Price: "200",
       Stock: "25",
+      Variants: [
+        {
+          variantname: "Red frame",
+          variantprice: "300",
+          variantstock: "3",
+        },
+        {
+          variantname: "Blue frame",
+          variantprice: "250",
+          variantstock: "5",
+        },
+      ],
     },
   ];
-
   return (
     <Box sx={{ mt: "30px", mx: "20px" }}>
       <TableContainer component={Paper}>
@@ -93,15 +125,19 @@ const MyProductTable = () => {
                     </IconButton>
                   </TableCell>
                 </TableRow>
-                {openRow === index && (
-                  <TableRow>
-                    <TableCell colSpan={4}>
-                      <Box sx={{ padding: "10px", height: "100%" }}>
-                        <Typography>10</Typography>
-                      </Box>
-                    </TableCell>
-                  </TableRow>
-                )}
+                {openRow === index &&
+                  item.Variants.map((variant, variantIndex) => (
+                    <TableRow key={variantIndex}>
+                      <TableCell>{variant.variantname}</TableCell>
+                      <TableCell align="center">
+                        {variant.variantprice}
+                      </TableCell>
+                      <TableCell align="center">
+                        {variant.variantstock}
+                      </TableCell>
+                      <TableCell align="right"></TableCell>
+                    </TableRow>
+                  ))}
               </React.Fragment>
             ))}
           </TableBody>
@@ -110,5 +146,4 @@ const MyProductTable = () => {
     </Box>
   );
 };
-
 export default MyProductTable;
