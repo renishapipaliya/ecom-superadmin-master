@@ -412,11 +412,11 @@ const General = ({setValue}) => {
               <Button
                 onClick={handleSave}
                 sx={{
-                  color: "white",
-                  bgcolor: "#222831",
-                  border: "1px solid black",
+                  color: "black",
+                  bgcolor: "white",
+                  border: "1px solid #222831",
                   "&:hover": {
-                    bgcolor: "#000000",
+                    bgcolor: "#222831",
                     color: "white",
                   },
                 }}

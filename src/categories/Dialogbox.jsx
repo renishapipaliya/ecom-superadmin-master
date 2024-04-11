@@ -72,10 +72,10 @@ const Dialogbox = ({
             />
           </DialogContent>
           <DialogActions>
-            <Button variant="outlined" onClick={handleClose}>
+            <Button sx={{ bgcolor: "white", color: "black", border:"1px solid #222831"}} onClick={handleClose}>
               Cancel
             </Button>
-            <Button variant="contained" onClick={handleAddCategoryWithSnackbar}>
+            <Button sx={{ bgcolor: "#222831", color: "white", "&:hover": { bgcolor:"#222831",color:"white"}}} onClick={handleAddCategoryWithSnackbar}>
               Save
             </Button>
           </DialogActions>
@@ -108,10 +108,10 @@ const Dialogbox = ({
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDeleteDialog} variant="outlined">
+          <Button onClick={handleCloseDeleteDialog} sx={{ bgcolor: "white", color: "black", border:"1px solid #222831"}}>
             Cancel
           </Button>
-          <Button onClick={handleConfirmDelete} variant="contained">
+          <Button onClick={handleConfirmDelete} sx={{ bgcolor: "#222831" ,color: "white"}}>
             Delete
           </Button>
         </DialogActions>
