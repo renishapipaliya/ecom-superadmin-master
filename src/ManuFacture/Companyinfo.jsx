@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   FormControl,
   MenuItem,
   Select,
@@ -8,48 +7,47 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { styled } from "@mui/material/styles";
-const VisuallyHiddenInput = styled("input")({
-  clip: "rect(0 0 0 0)",
-  clipPath: "inset(50%)",
-  height: 1,
-  overflow: "hidden",
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  whiteSpace: "nowrap",
-  width: 1,
-});
+import ClearIcon from "@mui/icons-material/Clear";
+
 const Companyinfo = () => {
   const [image, setImage] = useState(null);
   const [gstImage, setGstImage] = useState(null);
   const [incorporationImage, setIncorporationImage] = useState(null);
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setImage(URL.createObjectURL(file));
-    }
-  };
+
   const handleCancelUpload = () => {
     setImage(null);
   };
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setImage(null);
+      setImage(URL.createObjectURL(file));
+    }
+  };
+
   const handleGstImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
+      setGstImage(null);
       setGstImage(URL.createObjectURL(file));
     }
   };
+
   const handleIncorporationImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
+      setIncorporationImage(null);
       setIncorporationImage(URL.createObjectURL(file));
     }
   };
+
   const defaultImage = "./image/Icon.png";
+
   return (
     <>
       <Box>
-        <Box sx={{ boxShadow: "0px 0px 10px #00000020",mt:"20px" }}>
+        <Box sx={{ boxShadow: "0px 0px 10px #00000020", mt: "20px" }}>
           <Box sx={{ p: "40px" }} bgcolor={"white"} borderRadius={"8px"}>
             <Typography mb={"20px"} fontSize={"20px"} fontWeight={600}>
               Company Information
@@ -112,58 +110,91 @@ const Companyinfo = () => {
                 variant="outlined"
               />
             </Box>
-            <Box sx={{ display: "flex", gap: "20px" }}>
-              <Box sx={{ mt: "15px" }}>
-                <Typography sx={{ color: "#707888" }}>
-                  Upload GST Certificate
+            <Box sx={{ display: "flex" }}>
+              <Box sx={{ my: "20px", width: "50%" }}>
+                <Typography
+                  sx={{ fontSize: "15px", mt: "2px", color: "#707888" }}
+                >
+                  GST Certificate
                 </Typography>
                 <Box
                   sx={{
-                    height: "80%",
-                    width: "100%",
                     border: "1px solid lightgray",
-                    borderRadius: "5px",
-                    mt: "5px",
+                    width: "80%",
+                    height: "100%",
+                    borderRadius: "10px",
+                    position: "relative",
                   }}
                 >
-                  <label htmlFor="upload-gst-image">
+                  {gstImage && (
+                    <ClearIcon
+                      sx={{
+                        position: "absolute",
+                        top: "5px",
+                        right: "5px",
+                        cursor: "pointer",
+                        color: "white",
+                      }}
+                      onClick={() => {
+                        setGstImage(null);
+                      }}
+                    />
+                  )}
+                  <label htmlFor={`upload-image-2`}>
                     <input
-                      id="upload-gst-image"
                       type="file"
+                      id={`upload-image-2`}
                       accept="image/*"
                       onChange={handleGstImageUpload}
                       style={{ display: "none" }}
                     />
                     <img
                       src={gstImage ? gstImage : defaultImage}
-                      alt="GST Certificate"
+                      alt="image"
                       style={{
                         objectFit: "cover",
-                        height: "100%",
                         width: "100%",
+                        height: "100%",
                         cursor: "pointer",
+                        aspectRatio: "16/9",
                       }}
                     />
                   </label>
                 </Box>
               </Box>
-              <Box sx={{ mt: "15px" }}>
-                <Typography sx={{ color: "#707888" }}>
+              <Box sx={{ my: "20px", width: "50%" }}>
+                <Typography
+                  sx={{ fontSize: "15px", mt: "2px", color: "#707888" }}
+                >
                   Upload Incorporation Certificate
                 </Typography>
                 <Box
                   sx={{
-                    mt: "5px",
-                    height: "80%",
-                    width: "100%",
                     border: "1px solid lightgray",
-                    borderRadius: "5px",
+                    width: "80%",
+                    height: "100%",
+                    borderRadius: "10px",
+                    position: "relative",
                   }}
                 >
-                  <label htmlFor="upload-incorporation-image">
+                  {incorporationImage && (
+                    <ClearIcon
+                      sx={{
+                        position: "absolute",
+                        top: "5px",
+                        right: "5px",
+                        cursor: "pointer",
+                        color: "white",
+                      }}
+                      onClick={() => {
+                        setIncorporationImage(null);
+                      }}
+                    />
+                  )}
+                  <label htmlFor={`upload-incorporation-image`}>
                     <input
-                      id="upload-incorporation-image"
                       type="file"
+                      id={`upload-incorporation-image`}
                       accept="image/*"
                       onChange={handleIncorporationImageUpload}
                       style={{ display: "none" }}
@@ -172,18 +203,20 @@ const Companyinfo = () => {
                       src={
                         incorporationImage ? incorporationImage : defaultImage
                       }
-                      alt="Incorporation Certificate"
+                      alt="image"
                       style={{
                         objectFit: "cover",
-                        height: "100%",
                         width: "100%",
+                        height: "100%",
                         cursor: "pointer",
+                        aspectRatio: "16/9",
                       }}
                     />
                   </label>
                 </Box>
               </Box>
             </Box>
+
             <Box sx={{ mt: "15px" }}>
               <Typography sx={{ color: "#707888" }}>
                 Social media Link
@@ -198,7 +231,14 @@ const Companyinfo = () => {
             </Box>
           </Box>
         </Box>
-        <Box sx={{ width: "600px", height: "547px", mt: "25px",boxShadow:"0px 0px 10px #00000020" }}>
+        <Box
+          sx={{
+            width: "600px",
+            height: "547px",
+            mt: "25px",
+            boxShadow: "0px 0px 10px #00000020",
+          }}
+        >
           <Box
             sx={{ p: "40px", boxShadow: "0px 12px 32px 0x #1D20261A" }}
             bgcolor={"white"}

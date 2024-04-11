@@ -3,6 +3,7 @@ import { Box, Typography, TextField, Button } from "@mui/material";
 import UploadIcon from "@mui/icons-material/Upload";
 import defaultImage from "/image/Icon.png";
 import { Delete } from "@mui/icons-material";
+import ClearIcon from '@mui/icons-material/Clear';
 
 const Customimage = ({ setVisible }) => {
   const [image, setImage] = useState(null);
@@ -52,14 +53,15 @@ const Customimage = ({ setVisible }) => {
             <Box
               sx={{
                 bgcolor: "white",
-                height: "130px",
+                height: "150px",
                 borderRadius: "5px",
                 display: "flex",
                 gap: "25px",
                 justifyContent: "center",
               }}
             >
-              <Box sx={{ height: "100%", width: "100%" }}>
+              <Box sx={{ height: "100%", width: "100%",border:"1px solid lightgray",borderRadius:"10px" }}>
+                <ClearIcon/>
                 <label htmlFor="upload-image">
                   <img
                     src={image ? image : defaultImage}

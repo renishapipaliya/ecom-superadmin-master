@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import ClearIcon from "@mui/icons-material/Clear";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -24,7 +25,7 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-const General = ({setValue}) => {
+const General = ({ setValue }) => {
   const [firstImage, setFirstImage] = useState(null);
   const [secondImage, setSecondImage] = useState(null);
 
@@ -118,7 +119,7 @@ const General = ({setValue}) => {
 
   return (
     <Grid2 container spacing={2}>
-      <Grid2 xs={7}>
+      <Grid2 item xs={7}>
         <Box
           bgcolor={"white"}
           borderRadius={"5px"}
@@ -143,7 +144,7 @@ const General = ({setValue}) => {
               id="outlined-basic"
               placeholder="Product Name"
               variant="outlined"
-              maxRows={"4"}
+              maxRows={4} // Changed maxRows={"4"} to maxRows={4}
               sx={{ mt: "2px" }}
               value={formData.productName}
               onChange={(e) => setProductName(e.target.value)}
@@ -160,9 +161,9 @@ const General = ({setValue}) => {
                 Description
               </Typography>
               <textarea
-                rows={"3"}
+                rows={3} // Changed rows={"3"} to rows={3}
                 width="100%"
-                cols={"75"}
+                cols={75} // Changed cols={"75"} to cols={75}
                 className="border border-gray-300 w-[100%] rounded p-2"
                 placeholder="Description"
                 sx={{ mt: "2px" }}
@@ -203,7 +204,7 @@ const General = ({setValue}) => {
                   color: "#707888",
                 }}
               >
-                Categorys
+                Category
               </Typography>
               <FormControl size="small" sx={{ mt: "2px", width: "100%" }}>
                 <Select
@@ -212,7 +213,7 @@ const General = ({setValue}) => {
                   displayEmpty
                 >
                   <MenuItem sx={{ bgcolor: "white" }} value="" disabled>
-                    Select Categorys
+                    Select Category
                   </MenuItem>
                   <MenuItem sx={{ bgcolor: "white" }} value={10}>
                     Wallet
@@ -234,7 +235,7 @@ const General = ({setValue}) => {
                   color: "#707888",
                 }}
               >
-                Product For...
+                Product For
               </Typography>
               <FormControl size="small" sx={{ mt: "2px", width: "100%" }}>
                 <Select
@@ -243,7 +244,7 @@ const General = ({setValue}) => {
                   displayEmpty
                 >
                   <MenuItem sx={{ bgcolor: "white" }} value="" disabled>
-                    Product For...
+                    Product For
                   </MenuItem>
                   <MenuItem sx={{ bgcolor: "white" }} value={10}>
                     Father
@@ -273,8 +274,23 @@ const General = ({setValue}) => {
                     width: "80%",
                     height: "100%",
                     borderRadius: "10px",
+                    position: "relative",
                   }}
                 >
+                  {/* Clear icon for image 1 */}
+                  {firstImage && (
+                    <ClearIcon
+                      sx={{
+                        position: "absolute",
+                        top: "5px",
+                        right: "5px",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        setFirstImage(null);
+                      }}
+                    />
+                  )}
                   <label htmlFor={`upload-image-1`}>
                     <input
                       type="file"
@@ -313,8 +329,22 @@ const General = ({setValue}) => {
                     width: "80%",
                     height: "100%",
                     borderRadius: "10px",
+                    position: "relative",
                   }}
                 >
+                  {secondImage && (
+                    <ClearIcon
+                      sx={{
+                        position: "absolute",
+                        top: "5px",
+                        right: "5px",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        setSecondImage(null);
+                      }}
+                    />
+                  )}
                   <label htmlFor={`upload-image-2`}>
                     <input
                       type="file"
