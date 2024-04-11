@@ -16,6 +16,8 @@ import ImageLogo from "../components/images/Imagelogo.png";
 import FontDownloadIcon from "@mui/icons-material/FontDownload";
 import { Add, SearchOutlined } from "@mui/icons-material";
 import ListAltIcon from "@mui/icons-material/ListAlt";
+import FieldButton from "../../CommonComponent/FieldButton";
+import OutlineButton from "../../CommonComponent/OutlineButton";
 
 const Customize = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -93,34 +95,13 @@ const Customize = () => {
                 onChange={handleSearch}
               />
             </Box>
-            <Box sx={{ display: "flex", gap: "15px" }}>
-              <Button
-                startIcon={<Add />}
-                variant="outlined"
+            <Box>
+              <OutlineButton
+                icon={<Add />}
                 onClick={handleDialogOpen}
-                sx={{
-                  color: "#222831",
-                  bgcolor: "white",
-                  border: "1px solid #222831",
-                }}
-              >
-                Add Customisation
-              </Button>
-
-              <Button
-                sx={{
-                  color: "white",
-                  bgcolor: "#222831",
-                  border: "1px solid black",
-                  "&:hover": {
-                    bgcolor: "#222831",
-                    color: "white",
-                  },
-                }}
-                variant="contained"
-              >
-                save
-              </Button>
+                title={"Add coustomize"}
+              />
+              <FieldButton title={"Save"} />
             </Box>
           </Box>
 
@@ -226,7 +207,7 @@ const Customize = () => {
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleDialogClose} sx={{color:"black"}}>
+          <Button onClick={handleDialogClose} sx={{ color: "black" }}>
             Cancel
           </Button>
         </DialogActions>

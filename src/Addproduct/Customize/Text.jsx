@@ -7,8 +7,9 @@ import {
   Button,
 } from "@mui/material";
 import { Delete } from "@mui/icons-material";
+import FieldButton from "../../CommonComponent/FieldButton";
 
-const CustomText = ({setVisible}) => {
+const CustomText = ({ setVisible }) => {
   const [textFieldVisible, setTextFieldVisible] = useState(true);
 
   const handleDelete = () => {
@@ -129,17 +130,11 @@ const CustomText = ({setVisible}) => {
             required
           />
           <Box sx={{ display: "flex", justifyContent: "end", mt: "20px" }}>
-            <Button
-              sx={{
-                bgcolor: "white", color: "#222831", border: "1px solid #222831", "&:hover": {
-                  bgcolor:"#222831", color:"white"
-              },
-                }}
-              startIcon={<Delete />}
+            <FieldButton
               onClick={handleDelete}
-            >
-              Delete
-            </Button>
+              title={"Delete"}
+              icon={<Delete />}
+            />
           </Box>
         </Box>
       </Box>

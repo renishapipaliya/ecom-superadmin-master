@@ -8,6 +8,7 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 import { Add } from "@mui/icons-material";
 import Heading from "../CommonComponent/Heading";
 import Divider from "@mui/material/Divider";
+import OutlineButton from "../CommonComponent/OutlineButton";
 
 const Header = ({
   filteredCategories,
@@ -30,22 +31,11 @@ const Header = ({
         >
           <Heading title={"Categoires"} />
           <Box>
-            <Button
+            <OutlineButton
+              title={"ADD CATEGORY"}
               onClick={handleOpen}
-              startIcon={<Add />}
-              sx={{
-                mx: "20px",
-                bgcolor: "white",
-                color: "black",
-                border: "1px solid black",
-                "&:hover": {
-                  bgcolor: "#222831",
-                  color: "white",
-                },
-              }}
-            >
-              ADD CATEGORY
-            </Button>
+              icon={<Add />}
+            />
           </Box>
         </Box>
         <Divider />

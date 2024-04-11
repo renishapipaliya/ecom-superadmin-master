@@ -12,6 +12,8 @@ import {
   TextField,
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
+import OutlineButton from "../CommonComponent/OutlineButton";
+import FieldButton from "../CommonComponent/FieldButton";
 
 const Dialogbox = ({
   handleClose,
@@ -35,7 +37,7 @@ const Dialogbox = ({
   };
 
   return (
-    <div>
+    <Box>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle> Add Category</DialogTitle>
         <Button
@@ -72,10 +74,24 @@ const Dialogbox = ({
             />
           </DialogContent>
           <DialogActions>
-            <Button sx={{ bgcolor: "white", color: "black", border:"1px solid #222831"}} onClick={handleClose}>
+            <Button
+              sx={{
+                bgcolor: "white",
+                color: "black",
+                border: "1px solid #222831",
+              }}
+              onClick={handleClose}
+            >
               Cancel
             </Button>
-            <Button sx={{ bgcolor: "#222831", color: "white", "&:hover": { bgcolor:"#222831",color:"white"}}} onClick={handleAddCategoryWithSnackbar}>
+            <Button
+              sx={{
+                bgcolor: "#222831",
+                color: "white",
+                "&:hover": { bgcolor: "#222831", color: "white" },
+              }}
+              onClick={handleAddCategoryWithSnackbar}
+            >
               Save
             </Button>
           </DialogActions>
@@ -86,7 +102,7 @@ const Dialogbox = ({
         autoHideDuration={3000}
         onClose={handleSnackbarClose}
         message="Category added successfully!"
-        anchorOrigin={{vertical: 'top', horizontal:"center"}}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
       />
       <Dialog open={deleteOpen} onClose={handleCloseDeleteDialog}>
         <DialogTitle> Delete Category</DialogTitle>
@@ -108,15 +124,11 @@ const Dialogbox = ({
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDeleteDialog} sx={{ bgcolor: "white", color: "black", border:"1px solid #222831"}}>
-            Cancel
-          </Button>
-          <Button onClick={handleConfirmDelete} sx={{ bgcolor: "#222831" ,color: "white"}}>
-            Delete
-          </Button>
+          <OutlineButton onClick={handleCloseDeleteDialog} title={"cancel"} />
+          <FieldButton title={"Delete"} onClick={handleConfirmDelete} />
         </DialogActions>
       </Dialog>
-    </div>
+    </Box>
   );
 };
 

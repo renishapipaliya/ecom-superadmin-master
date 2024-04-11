@@ -11,6 +11,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import DehazeIcon from "@mui/icons-material/Dehaze";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Delete } from "@mui/icons-material";
+import FieldButton from "../../CommonComponent/FieldButton";
+import OutlineButton from "../../CommonComponent/OutlineButton";
 
 const Customdropdown = ({ setVisible }) => {
   const [rows, setRows] = useState([]);
@@ -82,14 +84,10 @@ const Customdropdown = ({ setVisible }) => {
         </Box>
         <Box sx={{ display: "flex", gap: "15px" }}>
           <Box>
-            <Button sx={{ bgcolor: "white", color: "#222831", border: "1px solid #222831", "&:hover": { bgcolor:"#222831",color:"white"}}} startIcon={<AddIcon />}>
-              Choose as Templet
-            </Button>
+            <OutlineButton icon={<AddIcon />} title={"Choose as Templet"} />
           </Box>
           <Box>
-            <Button sx={{ bgcolor: "white", color: "#222831", border: "1px solid #222831", "&:hover": { bgcolor: "#222831", color: "white" } }} startIcon={<AddIcon />}>
-              Save as Templet
-            </Button>
+            <OutlineButton icon={<AddIcon />} title={"Save as Templet"} />
           </Box>
         </Box>
       </Box>
@@ -113,18 +111,11 @@ const Customdropdown = ({ setVisible }) => {
           />
         </Box>
         <Box sx={{ mt: "28px", display: "flex", alignItems: "center" }}>
-          <Button
-            sx={{
-              width: "180px", bgcolor: "white", color: "#222831", border:"1px solid #222831", "&:hover":{
-              bgcolor:"#222831", color:"white"
-
-            } }}
-           
-            startIcon={<AddIcon />}
+          <OutlineButton
+            title={"Add Variants"}
+            icon={<AddIcon />}
             onClick={handleAddVariant}
-          >
-            Add Variants
-          </Button>
+          />
         </Box>
       </Box>
       <Box sx={{ mt: "30px" }}>
@@ -241,17 +232,11 @@ const Customdropdown = ({ setVisible }) => {
         </DragDropContext>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "end", mt: "20px" }}>
-        <Button
-          sx={{
-            bgcolor: "white", color: "#222831", border: "1px solid #222831", "&:hover": {
-              bgcolor: "#222831", color: "white"
-            },
-          }}
-          startIcon={<Delete />}
+        <FieldButton
+          title={"Delete"}
+          icon={<Delete />}
           onClick={handleDelete}
-        >
-          Delete
-        </Button>
+        />
       </Box>
     </Box>
   );

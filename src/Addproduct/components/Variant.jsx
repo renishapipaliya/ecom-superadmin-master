@@ -22,6 +22,8 @@ import {
   Percent,
   SearchOutlined,
 } from "@mui/icons-material";
+import FieldButton from "../../CommonComponent/FieldButton";
+import OutlineButton from "../../CommonComponent/OutlineButton";
 
 const VariantPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -140,34 +142,13 @@ const VariantPage = () => {
             onChange={handleSearch}
           />
         </Box>
-        <Box sx={{ display: "flex", gap: "15px" }}>
-          <Button
-            variant="outlined"
-            startIcon={<Add />}
+        <Box>
+          <OutlineButton
             onClick={handleAddVariant}
-            sx={{
-              color: "#222831",
-              bgcolor: "white",
-              border: "1px solid #222831",
-            }}
-          >
-            Add Variants
-          </Button>
-          <Button
-            sx={{
-              color: "white",
-              bgcolor: "#222831",
-              border: "1px solid black",
-              "&:hover": {
-                bgcolor: "#222831",
-                color: "white",
-              },
-            }}
-            variant="contained"
-            component="span"
-          >
-            SAVE
-          </Button>
+            title={"Add Variant"}
+            icon={<Add />}
+          />
+          <FieldButton title={"Save"} />
         </Box>
       </Box>
       <Box

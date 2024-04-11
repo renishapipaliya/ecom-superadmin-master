@@ -3,7 +3,8 @@ import { Box, Typography, TextField, Button } from "@mui/material";
 import UploadIcon from "@mui/icons-material/Upload";
 import defaultImage from "/image/Icon.png";
 import { Delete } from "@mui/icons-material";
-import ClearIcon from '@mui/icons-material/Clear';
+import ClearIcon from "@mui/icons-material/Clear";
+import FieldButton from "../../CommonComponent/FieldButton";
 
 const Customimage = ({ setVisible }) => {
   const [image, setImage] = useState(null);
@@ -60,8 +61,15 @@ const Customimage = ({ setVisible }) => {
                 justifyContent: "center",
               }}
             >
-              <Box sx={{ height: "100%", width: "100%",border:"1px solid lightgray",borderRadius:"10px" }}>
-                <ClearIcon/>
+              <Box
+                sx={{
+                  height: "100%",
+                  width: "100%",
+                  border: "1px solid lightgray",
+                  borderRadius: "10px",
+                }}
+              >
+                <ClearIcon />
                 <label htmlFor="upload-image">
                   <img
                     src={image ? image : defaultImage}
@@ -187,17 +195,11 @@ const Customimage = ({ setVisible }) => {
           </Box>
         </Box>
         <Box sx={{ display: "flex", justifyContent: "end", mt: "20px" }}>
-          <Button
-            sx={{
-              bgcolor: "white", color: "#222831", border: "1px solid #222831", "&:hover": {
-                bgcolor: "#222831", color: "white"
-              },
-            }}
-            startIcon={<Delete />}
+          <FieldButton
+            icon={<Delete />}
             onClick={handleDelete}
-          >
-            Delete
-          </Button>
+            title={"Delete"}
+          />
         </Box>
       </Box>
     </Box>

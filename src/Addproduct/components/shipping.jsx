@@ -8,6 +8,7 @@ import {
 import React, { useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import FieldButton from "../../CommonComponent/FieldButton";
 
 const Shipping = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -106,21 +107,7 @@ const Shipping = () => {
             </MuiAlert>
           </Snackbar>
 
-          <Button
-            sx={{
-              color: "white",
-              bgcolor: "#222831",
-              border: "1px solid #222831",
-              "&:hover": {
-                bgcolor: "#222831",
-                color: "white",
-              },
-            }}
-            variant="contained"
-            onClick={handleSave}
-          >
-            Save
-          </Button>
+          <FieldButton title={"Save"}/>
         </Box>
       </Box>
     </Box>

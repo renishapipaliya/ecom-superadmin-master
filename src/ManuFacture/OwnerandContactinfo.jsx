@@ -7,6 +7,7 @@ import {
   Button,
   Snackbar,
 } from "@mui/material";
+import FieldButton from "../CommonComponent/FieldButton";
 const OwnerandContactinfo = () => {
   const [contactInfo, setContactInfo] = useState({
     contactName: "",
@@ -212,24 +213,9 @@ const OwnerandContactinfo = () => {
             message={snackbarMessage}
             anchorOrigin={{ vertical: "top", horizontal: "middle" }}
           />
-          <Button
-            type="button"
-            variant="contained"
-            sx={{
-              color: "white",
-              bgcolor: "#222831",
-              border: "1px solid black",
-              width: "130px",
-              mt:"25px",
-              "&:hover": {
-                bgcolor: "black",
-                color: "white",
-              },
-            }}
-            onClick={handleSave}
-          >
-            Submit
-          </Button>
+          <Box sx={{ mt: "25px"}}>
+            <FieldButton title={"submit"} onClick={handleSave} />
+          </Box>
         </Box>
       </Box>
     </>

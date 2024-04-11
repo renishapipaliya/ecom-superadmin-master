@@ -5,13 +5,13 @@ import {
   FormControl,
   MenuItem,
   Select,
-  Snackbar,
   TextField,
   Typography,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import ClearIcon from "@mui/icons-material/Clear";
+import FieldButton from "../../CommonComponent/FieldButton";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -79,7 +79,6 @@ const General = ({ setValue }) => {
       snackbarOpen: true,
     });
 
-    // Reset form fields
     setFormData({
       ...formData,
       productName: "",
@@ -439,20 +438,7 @@ const General = ({ setValue }) => {
                 onClose={handleCloseSnackbar}
                 message={formData.snackbarMessage}
               /> */}
-              <Button
-                onClick={handleSave}
-                sx={{
-                  color: "black",
-                  bgcolor: "white",
-                  border: "1px solid #222831",
-                  "&:hover": {
-                    bgcolor: "#222831",
-                    color: "white",
-                  },
-                }}
-              >
-                Next
-              </Button>
+              <FieldButton onClick={handleSave} title={"Next"} />
             </Box>
           </Box>
         </Box>
