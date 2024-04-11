@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { Add } from "@mui/icons-material";
 import Heading from "../CommonComponent/Heading";
+import Divider from "@mui/material/Divider";
 
 const Header = ({
   filteredCategories,
@@ -20,21 +21,34 @@ const Header = ({
   return (
     <Box>
       <Box>
-        <Box sx={{ display: "flex", justifyContent: "space-between",alignItems:"center", }}>
-          <Heading title={"Categories"} />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Heading title={"Categoires"} />
           <Box>
             <Button
               onClick={handleOpen}
               startIcon={<Add />}
-              sx={{mx:"20px",bgcolor:"white", color:"black",border:"1px solid black","&:hover":{
-                bgcolor:"black",
-                color:"white",
-              }}}
+              sx={{
+                mx: "20px",
+                bgcolor: "white",
+                color: "black",
+                border: "1px solid black",
+                "&:hover": {
+                  bgcolor: "black",
+                  color: "white",
+                },
+              }}
             >
               ADD CATEGORY
             </Button>
           </Box>
         </Box>
+        <Divider />
         <Box sx={{ margin: "20px", boxShadow: "0px 0px 70px #00000014" }}>
           <Box
             sx={{

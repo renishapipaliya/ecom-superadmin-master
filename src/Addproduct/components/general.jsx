@@ -24,7 +24,7 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-const General = () => {
+const General = ({setValue}) => {
   const [firstImage, setFirstImage] = useState(null);
   const [secondImage, setSecondImage] = useState(null);
 
@@ -89,6 +89,8 @@ const General = () => {
       discountedPrice: "",
       discount: "",
     });
+
+    handleNext();
   };
 
   const handleCloseSnackbar = () => {
@@ -108,6 +110,10 @@ const General = () => {
   const handleSecondImageUpload = (event) => {
     const file = event.target.files[0];
     setSecondImage(file);
+  };
+
+  const handleNext = () => {
+    setValue("2");
   };
 
   return (
@@ -255,7 +261,7 @@ const General = () => {
               </FormControl>
             </Box>
             <Box sx={{ display: "flex", gap: "50px", mx: "10px" }}>
-              <Box sx={{ my: "20px" }}>
+              <Box sx={{ my: "20px", width: "50%" }}>
                 <Typography
                   sx={{ fontSize: "15px", mt: "2px", color: "#707888" }}
                 >
@@ -264,7 +270,7 @@ const General = () => {
                 <Box
                   sx={{
                     border: "1px solid lightgray",
-                    width: "100%",
+                    width: "80%",
                     height: "100%",
                     borderRadius: "10px",
                   }}
@@ -285,7 +291,7 @@ const General = () => {
                       }
                       alt="image"
                       style={{
-                        objectFit: "contain",
+                        objectFit: "cover",
                         width: "100%",
                         height: "100%",
                         cursor: "pointer",
@@ -295,7 +301,7 @@ const General = () => {
                   </label>
                 </Box>
               </Box>
-              <Box sx={{ my: "20px" }}>
+              <Box sx={{ my: "20px", width: "50%" }}>
                 <Typography
                   sx={{ fontSize: "15px", mt: "2px", color: "#707888" }}
                 >
@@ -304,7 +310,7 @@ const General = () => {
                 <Box
                   sx={{
                     border: "1px solid lightgray",
-                    width: "100%",
+                    width: "80%",
                     height: "100%",
                     borderRadius: "10px",
                   }}
@@ -325,7 +331,7 @@ const General = () => {
                       }
                       alt="image"
                       style={{
-                        objectFit: "contain",
+                        objectFit: "cover",
                         width: "100%",
                         height: "100%",
                         cursor: "pointer",
@@ -396,13 +402,13 @@ const General = () => {
               />
             </Box>
             <Box sx={{ display: "flex", justifyContent: "end", mt: "30px" }}>
-              <Snackbar
+              {/* <Snackbar
                 anchorOrigin={{ vertical: "top", horizontal: "center" }}
                 open={formData.snackbarOpen}
                 autoHideDuration={3000}
                 onClose={handleCloseSnackbar}
                 message={formData.snackbarMessage}
-              />
+              /> */}
               <Button
                 onClick={handleSave}
                 sx={{

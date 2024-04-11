@@ -78,7 +78,7 @@ const AddProduct = () => {
               </TabList>
             </Box>
             <TabPanel sx={{ p: 0, pt: 2 }} value="1">
-              <General />
+              <General setValue={setValue}/>
             </TabPanel>
             <TabPanel sx={{ p: 0, pt: 2 }} value="2">
               <VariantPage />
