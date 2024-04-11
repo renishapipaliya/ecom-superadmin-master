@@ -39,7 +39,7 @@ const Header = ({
                 color: "black",
                 border: "1px solid black",
                 "&:hover": {
-                  bgcolor: "black",
+                  bgcolor: "#222831",
                   color: "white",
                 },
               }}

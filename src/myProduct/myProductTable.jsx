@@ -10,12 +10,15 @@ import { Box, IconButton, TextField, Typography } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
 const MyProductTable = () => {
   const [openRow, setOpenRow] = React.useState(null);
   const handleClick = (index) => {
     setOpenRow((prevIndex) => (prevIndex === index ? null : index));
   };
-  const data = [
+ 
+  
+  const [data, setData] = React.useState([
     {
       Name: "Wallet",
       Price: "200",
@@ -35,7 +38,7 @@ const MyProductTable = () => {
     },
     {
       Name: "Bottle",
-      Price: "200",
+      Price: "260",
       Stock: "25",
       Variants: [
         {
@@ -52,7 +55,7 @@ const MyProductTable = () => {
     },
     {
       Name: "Frame",
-      Price: "200",
+      Price: "280",
       Stock: "25",
       Variants: [
         {
@@ -67,7 +70,7 @@ const MyProductTable = () => {
         },
       ],
     },
-  ];
+  ]);
   return (
     <Box sx={{ mt: "30px", mx: "20px" }}>
       <TableContainer component={Paper}>
@@ -95,6 +98,7 @@ const MyProductTable = () => {
                     {item.Name}
                   </TableCell>
                   <TableCell align="center">
+                   
                     <TextField
                       placeholder={item.Price}
                       type="number"
@@ -119,11 +123,8 @@ const MyProductTable = () => {
                       size="small"
                     />
                   </TableCell>
-                  <TableCell align="right">
-                    <IconButton>
-                      <Delete />
-                    </IconButton>
-                  </TableCell>
+                  <TableCell align="right"></TableCell>
+                 
                 </TableRow>
                 {openRow === index &&
                   item.Variants.map((variant, variantIndex) => (
@@ -135,7 +136,18 @@ const MyProductTable = () => {
                       <TableCell align="center">
                         {variant.variantstock}
                       </TableCell>
-                      <TableCell align="right"></TableCell>
+                      <TableCell align="right">
+                        <IconButton>
+                        <ModeEditOutlineIcon />
+                        </IconButton>
+                        <IconButton>
+                        <Delete />
+                        </IconButton>
+
+                      </TableCell>
+                      
+                      
+                      
                     </TableRow>
                   ))}
               </React.Fragment>

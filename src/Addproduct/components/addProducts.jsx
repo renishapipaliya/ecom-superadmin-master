@@ -29,7 +29,7 @@ const AddProduct = () => {
             <Button
               sx={{
                 m: "15px",
-                color: "black",
+                color: "#222831",
                 bgcolor: "white",
                 border: "1px solid black",
               }}
@@ -42,7 +42,7 @@ const AddProduct = () => {
                 bgcolor: "#222831",
                 border: "1px solid black",
                 "&:hover": {
-                  bgcolor: "black",
+                  bgcolor: "#222831",
                   color: "white",
                 },
               }}

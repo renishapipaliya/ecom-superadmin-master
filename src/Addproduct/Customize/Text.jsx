@@ -130,7 +130,11 @@ const CustomText = ({setVisible}) => {
           />
           <Box sx={{ display: "flex", justifyContent: "end", mt: "20px" }}>
             <Button
-              variant="contained"
+              sx={{
+                bgcolor: "white", color: "#222831", border: "1px solid #222831", "&:hover": {
+                  bgcolor:"#222831", color:"white"
+              },
+                }}
               startIcon={<Delete />}
               onClick={handleDelete}
             >

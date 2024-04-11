@@ -110,9 +110,9 @@ const Shipping = () => {
             sx={{
               color: "white",
               bgcolor: "#222831",
-              border: "1px solid black",
+              border: "1px solid #222831",
               "&:hover": {
-                bgcolor: "black",
+                bgcolor: "#222831",
                 color: "white",
               },
             }}
