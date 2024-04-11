@@ -82,12 +82,12 @@ const Customdropdown = ({ setVisible }) => {
         </Box>
         <Box sx={{ display: "flex", gap: "15px" }}>
           <Box>
-            <Button variant="outlined" startIcon={<AddIcon />}>
+            <Button sx={{ bgcolor: "white", color: "#222831", border: "1px solid #222831", "&:hover": { bgcolor:"#222831",color:"white"}}} startIcon={<AddIcon />}>
               Choose as Templet
             </Button>
           </Box>
           <Box>
-            <Button variant="outlined" startIcon={<AddIcon />}>
+            <Button sx={{ bgcolor: "white", color: "#222831", border: "1px solid #222831", "&:hover": { bgcolor: "#222831", color: "white" } }} startIcon={<AddIcon />}>
               Save as Templet
             </Button>
           </Box>
@@ -114,8 +114,12 @@ const Customdropdown = ({ setVisible }) => {
         </Box>
         <Box sx={{ mt: "28px", display: "flex", alignItems: "center" }}>
           <Button
-            sx={{ width: "180px" }}
-            variant="outlined"
+            sx={{
+              width: "180px", bgcolor: "white", color: "#222831", border:"1px solid #222831", "&:hover":{
+              bgcolor:"#222831", color:"white"
+
+            } }}
+           
             startIcon={<AddIcon />}
             onClick={handleAddVariant}
           >
@@ -238,9 +242,13 @@ const Customdropdown = ({ setVisible }) => {
       </Box>
       <Box sx={{ display: "flex", justifyContent: "end", mt: "20px" }}>
         <Button
-          variant="contained"
-          onClick={handleDelete}
+          sx={{
+            bgcolor: "white", color: "#222831", border: "1px solid #222831", "&:hover": {
+              bgcolor: "#222831", color: "white"
+            },
+          }}
           startIcon={<Delete />}
+          onClick={handleDelete}
         >
           Delete
         </Button>

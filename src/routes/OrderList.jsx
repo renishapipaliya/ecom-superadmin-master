@@ -41,15 +41,15 @@ const OrderList = () => {
                   sx={{
                     borderRadius: 5,
                     px: 3,
-                    color: status === item ? "white" : "black",
+                    color: status === item ? "white" : "#222831",
                     border: `1.5px solid ${
-                      status === item ? "black" : alpha("#000000", 0.25)
+                      status === item ? "#222831" : alpha("#000000", 0.25)
                     }`,
-                    backgroundColor: status === item ? "black" : "transparent",
+                    backgroundColor: status === item ? "#222831" : "transparent",
                     ":hover": {
-                      backgroundColor: "black",
+                      backgroundColor: "#222831",
                       color: "white",
-                      borderColor: "black",
+                      borderColor: "#222831",
                     },
                   }}
                 >

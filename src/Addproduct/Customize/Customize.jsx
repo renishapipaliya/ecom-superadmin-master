@@ -101,7 +101,7 @@ const Customize = () => {
                 sx={{
                   color: "#222831",
                   bgcolor: "white",
-                  border: "1px solid black",
+                  border: "1px solid #222831",
                 }}
               >
                 Add Customisation
@@ -113,7 +113,7 @@ const Customize = () => {
                   bgcolor: "#222831",
                   border: "1px solid black",
                   "&:hover": {
-                    bgcolor: "black",
+                    bgcolor: "#222831",
                     color: "white",
                   },
                 }}
@@ -226,7 +226,7 @@ const Customize = () => {
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleDialogClose} color="primary">
+          <Button onClick={handleDialogClose} sx={{color:"black"}}>
             Cancel
           </Button>
         </DialogActions>
