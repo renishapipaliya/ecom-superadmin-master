@@ -10,13 +10,14 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import FieldButton from "../../CommonComponent/FieldButton";
 
-const Shipping = () => {
+const Shipping = ({ nextValue }) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const handleSave = () => {
     setOpenSnackbar(true);
     setSnackbarMessage("Save Information");
+    nextValue();
   };
 
   return (
@@ -107,7 +108,7 @@ const Shipping = () => {
             </MuiAlert>
           </Snackbar>
 
-          <FieldButton title={"Save"}/>
+          <FieldButton onClick={handleSave} title={"Save"} />
         </Box>
       </Box>
     </Box>

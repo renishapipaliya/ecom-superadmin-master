@@ -58,16 +58,16 @@ const AddProduct = () => {
               </TabList>
             </Box>
             <TabPanel sx={{ p: 0, pt: 2 }} value="1">
-              <General setValue={setValue} />
+              <General nextValue={()=>setValue("2")} />
             </TabPanel>
             <TabPanel sx={{ p: 0, pt: 2 }} value="2">
-              <VariantPage />
+              <VariantPage nextValue={()=>setValue("3")}/>
             </TabPanel>
             <TabPanel sx={{ p: 0, pt: 2 }} value="3">
-              <Customize />
+              <Customize nextValue={()=>setValue("4")}/>
             </TabPanel>
             <TabPanel sx={{ p: 0, pt: 2 }} value="4">
-              <Shipping />
+              <Shipping nextValue={()=>setValue("1")}/>
             </TabPanel>
           </TabContext>
         </Box>

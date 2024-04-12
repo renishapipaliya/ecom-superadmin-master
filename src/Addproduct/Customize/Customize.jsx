@@ -19,7 +19,7 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import FieldButton from "../../CommonComponent/FieldButton";
 import OutlineButton from "../../CommonComponent/OutlineButton";
 
-const Customize = () => {
+const Customize = ({nextValue}) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [textVisible, setTextVisible] = useState(false);
   const [imageVisible, setimageVisible] = useState(false);
@@ -56,6 +56,9 @@ const Customize = () => {
     setOpenDialog(false);
   };
 
+  const handleSave = () => {
+    nextValue();
+  };
   return (
     <Box>
       <Box
@@ -101,7 +104,7 @@ const Customize = () => {
                 onClick={handleDialogOpen}
                 title={"Add coustomize"}
               />
-              <FieldButton title={"Save"} />
+              <FieldButton onClick={handleSave} title={"Save"} />
             </Box>
           </Box>
 
@@ -117,9 +120,7 @@ const Customize = () => {
 
       <Dialog open={openDialog} onClose={handleDialogClose}>
         <DialogTitle sx={{ width: 400 }}>Add Customisation</DialogTitle>
-        <DialogContent>
-          <Typography></Typography>
-        </DialogContent>
+        <DialogContent></DialogContent>
         <DialogContent>
           <Box sx={{ display: "flex", justifyContent: "center", gap: "20px" }}>
             <Button onClick={handleText}>

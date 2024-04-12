@@ -25,7 +25,7 @@ import {
 import FieldButton from "../../CommonComponent/FieldButton";
 import OutlineButton from "../../CommonComponent/OutlineButton";
 
-const VariantPage = () => {
+const VariantPage = ({ nextValue }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [nextVariantId, setNextVariantId] = useState(2);
   const [variants, setVariants] = useState([
@@ -107,6 +107,10 @@ const VariantPage = () => {
     setVariants(updatedVariants);
   };
 
+  const handleSave = () => {
+    nextValue();
+  };
+
   return (
     <Box
       bgcolor={"white"}
@@ -148,7 +152,7 @@ const VariantPage = () => {
             title={"Add Variant"}
             icon={<Add />}
           />
-          <FieldButton title={"Save"} />
+          <FieldButton onClick={handleSave} title={"Save"} />
         </Box>
       </Box>
       <Box

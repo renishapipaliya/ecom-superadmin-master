@@ -25,7 +25,7 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-const General = ({ setValue }) => {
+const General = ({nextValue}) => {
   const [firstImage, setFirstImage] = useState(null);
   const [secondImage, setSecondImage] = useState(null);
 
@@ -90,7 +90,7 @@ const General = ({ setValue }) => {
       discount: "",
     });
 
-    handleNext();
+    nextValue();
   };
 
   const handleCloseSnackbar = () => {
