@@ -5,6 +5,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import FieldButton from "../CommonComponent/FieldButton";
+import OutlineButton from "../CommonComponent/OutlineButton";
 
 
 const editdialog = ({ open, onClose, variant, onSave }) => {
@@ -39,29 +41,31 @@ const editdialog = ({ open, onClose, variant, onSave }) => {
             <DialogContent>
                 <TextField
                     name="variantname"
-                    label="Variant Name"
+                    placeholder="Variantname"
                     value={editedVariant.variantname}
                     onChange={handleInputChange}
                     fullWidth
                 />
                 <TextField
                     name="variantprice"
-                    label="Variant Price"
+                    placeholder="Variantprice"
                     value={editedVariant.variantprice}
                     onChange={handleInputChange}
                     fullWidth
+                    sx={{marginTop: "2%"}}
                 />
                 <TextField
                     name="variantstock"
-                    label="Variant Stock"
+                    placeholder="Variantstock"
                     value={editedVariant.variantstock}
                     onChange={handleInputChange}
                     fullWidth
+                    sx={{marginTop: "2%"}}
                 />
             </DialogContent>
             <DialogActions>
-                <Button onClick={onClose}>Cancel</Button>
-                <Button onClick={handleSave} color="primary">Save</Button>
+                <OutlineButton title={"Cancel"}/>
+                <FieldButton title={"Save"}/>
             </DialogActions>
         </Dialog>
     );
