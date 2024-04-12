@@ -11,13 +11,39 @@ import { Delete } from "@mui/icons-material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
+import EditVariantDialog from "./EditVariantDialog";
+import { useState } from "react";
 const MyProductTable = () => {
   const [openRow, setOpenRow] = React.useState(null);
   const handleClick = (index) => {
     setOpenRow((prevIndex) => (prevIndex === index ? null : index));
   };
  
-  
+  const handleDeleteVariant = (itemIndex, variantIndex) => {
+    const newData = [...data];
+    newData[itemIndex].Variants.splice(variantIndex, 1);
+    setData(newData);
+  };
+ 
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [selectedVariant, setSelectedVariant] = useState(null);
+  const handleEditVariant = (itemIndex, variantIndex) => {
+    setSelectedVariant(data[itemIndex].Variants[variantIndex]);
+    setEditDialogOpen(true);
+  };
+
+  const handleCloseEditDialog = () => {
+    setEditDialogOpen(false);
+    setSelectedVariant(null);
+  };
+
+  const handleSaveVariant = (editedVariant) => {
+    // Save editedVariant to your data
+    // You can implement this based on your data structure and logic
+    console.log("Saving edited variant:", editedVariant);
+    // Close the dialog
+    handleCloseEditDialog();
+  };
   const [data, setData] = React.useState([
     {
       Name: "Wallet",
@@ -137,10 +163,10 @@ const MyProductTable = () => {
                         {variant.variantstock}
                       </TableCell>
                       <TableCell align="right">
-                        <IconButton>
+                        <IconButton onClick={() => handleEditVariant(index, variantIndex)}>
                         <ModeEditOutlineIcon />
                         </IconButton>
-                        <IconButton>
+                        <IconButton onClick={() => handleDeleteVariant(index, variantIndex)}>
                         <Delete />
                         </IconButton>
 
@@ -154,7 +180,13 @@ const MyProductTable = () => {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+      </TableContainer> <EditVariantDialog
+        open={editDialogOpen}
+        onClose={handleCloseEditDialog}
+        variant={selectedVariant}
+        onSave={handleSaveVariant}
+      />
+
     </Box>
   );
 };
