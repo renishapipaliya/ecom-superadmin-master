@@ -290,7 +290,30 @@ const Companyinfo = () => {
                   mt: "10px",
                 }}
               >
-                <Box sx={{ height: "100%", width: "60%" }}>
+                <Box
+                  sx={{ position: "relative", height: "100%", width: "60%" }}
+                >
+                  <input
+                    accept=".jpg,.jpeg,.png"
+                    style={{ display: "none" }}
+                    id="upload-image"
+                    type="file"
+                    onChange={handleImageUpload}
+                  />
+                  {image && (
+                    <ClearIcon
+                      sx={{
+                        position: "absolute",
+                        top: 0,
+                        right: 0,
+                        cursor: "pointer",
+                        zIndex: 1,
+                      }}
+                      onClick={() => {
+                        setImage(null);
+                      }}
+                    />
+                  )}
                   <label htmlFor="upload-image">
                     <img
                       src={image ? image : defaultImage}
@@ -304,6 +327,7 @@ const Companyinfo = () => {
                     />
                   </label>
                 </Box>
+
                 <Box sx={{ width: "100%", mt: "10px" }}>
                   <Typography sx={{ fontSize: "13px" }}>
                     Upload Your course Thumbnail here.
@@ -315,13 +339,6 @@ const Companyinfo = () => {
                       .jpg, .jpeg, or .png
                     </Typography>
                   </Typography>
-                  <input
-                    accept=".jpg,.jpeg,.png"
-                    style={{ display: "none" }}
-                    id="upload-image"
-                    type="file"
-                    onChange={handleImageUpload}
-                  />
                 </Box>
               </Box>
             </Box>

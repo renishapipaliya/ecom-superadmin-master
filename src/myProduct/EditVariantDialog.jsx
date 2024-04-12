@@ -64,8 +64,8 @@ const editdialog = ({ open, onClose, variant, onSave }) => {
                 />
             </DialogContent>
             <DialogActions>
-                <OutlineButton title={"Cancel"}/>
-                <FieldButton title={"Save"}/>
+                <OutlineButton onClick={onClose} title={"Cancel"}/>
+                <FieldButton  title={"Save"}/>
             </DialogActions>
         </Dialog>
     );

@@ -10,7 +10,7 @@ import { Box, IconButton, TextField, Typography } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
+import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import EditVariantDialog from "./EditVariantDialog";
 import { useState } from "react";
 const MyProductTable = () => {
@@ -18,13 +18,13 @@ const MyProductTable = () => {
   const handleClick = (index) => {
     setOpenRow((prevIndex) => (prevIndex === index ? null : index));
   };
- 
+
   const handleDeleteVariant = (itemIndex, variantIndex) => {
     const newData = [...data];
     newData[itemIndex].Variants.splice(variantIndex, 1);
     setData(newData);
   };
- 
+
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [selectedVariant, setSelectedVariant] = useState(null);
   const handleEditVariant = (itemIndex, variantIndex) => {
@@ -38,10 +38,7 @@ const MyProductTable = () => {
   };
 
   const handleSaveVariant = (editedVariant) => {
-    // Save editedVariant to your data
-    // You can implement this based on your data structure and logic
     console.log("Saving edited variant:", editedVariant);
-    // Close the dialog
     handleCloseEditDialog();
   };
   const [data, setData] = React.useState([
@@ -97,6 +94,7 @@ const MyProductTable = () => {
       ],
     },
   ]);
+  
   return (
     <Box sx={{ mt: "30px", mx: "20px" }}>
       <TableContainer component={Paper}>
@@ -124,7 +122,6 @@ const MyProductTable = () => {
                     {item.Name}
                   </TableCell>
                   <TableCell align="center">
-                   
                     <TextField
                       placeholder={item.Price}
                       type="number"
@@ -150,7 +147,6 @@ const MyProductTable = () => {
                     />
                   </TableCell>
                   <TableCell align="right"></TableCell>
-                 
                 </TableRow>
                 {openRow === index &&
                   item.Variants.map((variant, variantIndex) => (
@@ -163,30 +159,32 @@ const MyProductTable = () => {
                         {variant.variantstock}
                       </TableCell>
                       <TableCell align="right">
-                        <IconButton onClick={() => handleEditVariant(index, variantIndex)}>
-                        <ModeEditOutlineIcon />
+                        <IconButton
+                          onClick={() => handleEditVariant(index, variantIndex)}
+                        >
+                          <ModeEditOutlineIcon />
                         </IconButton>
-                        <IconButton onClick={() => handleDeleteVariant(index, variantIndex)}>
-                        <Delete />
+                        <IconButton
+                          onClick={() =>
+                            handleDeleteVariant(index, variantIndex)
+                          }
+                        >
+                          <Delete />
                         </IconButton>
-
                       </TableCell>
-                      
-                      
-                      
                     </TableRow>
                   ))}
               </React.Fragment>
             ))}
           </TableBody>
         </Table>
-      </TableContainer> <EditVariantDialog
+      </TableContainer>{" "}
+      <EditVariantDialog
         open={editDialogOpen}
         onClose={handleCloseEditDialog}
         variant={selectedVariant}
         onSave={handleSaveVariant}
       />
-
     </Box>
   );
 };
