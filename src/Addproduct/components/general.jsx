@@ -143,7 +143,7 @@ const General = ({ setValue }) => {
               id="outlined-basic"
               placeholder="Product Name"
               variant="outlined"
-              maxRows={4} // Changed maxRows={"4"} to maxRows={4}
+              maxRows={4}
               sx={{ mt: "2px" }}
               value={formData.productName}
               onChange={(e) => setProductName(e.target.value)}
@@ -160,9 +160,9 @@ const General = ({ setValue }) => {
                 Description
               </Typography>
               <textarea
-                rows={3} // Changed rows={"3"} to rows={3}
+                rows={3}
                 width="100%"
-                cols={75} // Changed cols={"75"} to cols={75}
+                cols={75}
                 className="border border-gray-300 w-[100%] rounded p-2"
                 placeholder="Description"
                 sx={{ mt: "2px" }}
@@ -276,7 +276,6 @@ const General = ({ setValue }) => {
                     position: "relative",
                   }}
                 >
-                  {/* Clear icon for image 1 */}
                   {firstImage && (
                     <ClearIcon
                       sx={{

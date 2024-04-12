@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import FieldButton from "../../CommonComponent/FieldButton";
+import { Grid } from "@mui/material";
 
 const CustomText = ({ setVisible }) => {
   const [textFieldVisible, setTextFieldVisible] = useState(true);
@@ -22,6 +23,9 @@ const CustomText = ({ setVisible }) => {
       sx={{
         mt: "20px",
         display: textFieldVisible ? "block" : "none",
+        bgcolor: "#9DBEE250",
+        padding: "20px",
+        borderRadius: "20px",
       }}
     >
       <Typography
@@ -33,109 +37,121 @@ const CustomText = ({ setVisible }) => {
       >
         Customize Text
       </Typography>
-      <Box sx={{ display: "flex", gap: "30px", mt: "20px" }}>
-        <Box>
-          <Typography>Number of line</Typography>
-          <TextField
-            id="outlined-basic"
-            placeholder="1"
-            size="small"
-            variant="outlined"
-            sx={{ width: "345px", mt: "10px" }}
-            required
-          />
-        </Box>
 
-        <Box>
-          <Typography>Character limit</Typography>
-          <TextField
-            size="small"
-            id="outlined-basic"
-            variant="outlined"
-            type="number"
-            placeholder="1"
-            sx={{ width: "345px", mt: "10px" }}
-            required
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <Typography variant="body2" color="#00000060">
-                    Min
-                  </Typography>
-                </InputAdornment>
-              ),
-            }}
-          />
-        </Box>
-        <Box>
-          <Typography></Typography>
-          <TextField
-            size="small"
-            id="outlined-basic"
-            type="number"
-            variant="outlined"
-            placeholder="100"
-            sx={{ width: "345px", mt: "32px" }}
-            required
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <Typography variant="body2" color="#00000060">
-                    Max
-                  </Typography>
-                </InputAdornment>
-              ),
-            }}
-          />
-        </Box>
-      </Box>
-
-      <Box sx={{ display: "flex", gap: "30px", mt: "20px" }}>
-        <Box>
-          <Typography>Label</Typography>
-          <TextField
-            id="outlined-basic"
-            size="small"
-            variant="outlined"
-            placeholder="Customise your Name"
-            sx={{ width: "535px", mt: "10px" }}
-            required
-          />
-        </Box>
-
-        <Box>
-          <Typography>Sample</Typography>
-          <TextField
-            size="small"
-            id="outlined-basic"
-            placeholder="Meet"
-            variant="outlined"
-            sx={{ width: "535px", mt: "10px" }}
-            required
-          />
-        </Box>
-      </Box>
-
-      <Box sx={{ display: "flex", gap: "30px", mt: "20px" }}>
-        <Box>
-          <Typography>Instruction</Typography>
-          <textarea
-            id="outlined-basic"
-            rows={"4"}
-            className="border border-gray-300 w-[1100px] rounded p-2 mt-3"
-            size="small"
-            variant="outlined"
-            placeholder="Write instruction here..."
-            sx={{ width: "960px", mt: "10px" }}
-            required
-          />
-          <Box sx={{ display: "flex", justifyContent: "end", mt: "20px" }}>
-            <FieldButton
-              onClick={handleDelete}
-              title={"Delete"}
-              icon={<Delete />}
+      <Box sx={{ mt: "20px" }}>
+        <Grid container>
+          <Grid xs={4} spacing={2}>
+            <Typography>Number of line</Typography>
+            <TextField
+              fullWidth
+              id="outlined-basic"
+              placeholder="1"
+              size="small"
+              variant="outlined"
+              required
+              sx={{ bgcolor: "white" }}
             />
-          </Box>
+          </Grid>
+          <Grid xs={8}>
+            <Typography>Character limit</Typography>
+            <Box sx={{ display: "flex" }}>
+              <TextField
+                fullWidth
+                size="small"
+                id="outlined-basic"
+                variant="outlined"
+                type="number"
+                placeholder="1"
+                required
+                sx={{ bgcolor: "white" }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <Typography variant="body2" color="#00000060">
+                        Min
+                      </Typography>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <TextField
+                fullWidth
+                size="small"
+                id="outlined-basic"
+                type="number"
+                variant="outlined"
+                placeholder="100"
+                required
+                sx={{ bgcolor: "white" }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <Typography variant="body2" color="#00000060">
+                        Max
+                      </Typography>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Box sx={{ mt: "20px" }}>
+        <Grid container>
+          <Grid xs={6}>
+            <Typography>Label</Typography>
+            <TextField
+              fullWidth
+              id="outlined-basic"
+              size="small"
+              variant="outlined"
+              placeholder="Customise your Name"
+              required
+              sx={{ bgcolor: "white" }}
+            />
+          </Grid>
+          <Grid xs={6}>
+            <Typography>Sample</Typography>
+            <TextField
+              fullWidth
+              size="small"
+              id="outlined-basic"
+              placeholder="Meet"
+              variant="outlined"
+              required
+              sx={{ bgcolor: "white" }}
+            />
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Box sx={{ mt: "15px" }}>
+        <Typography
+          sx={{
+            fontSize: "15px",
+            mt: "2px",
+            color: "#707888",
+          }}
+        >
+          Description
+        </Typography>
+        <textarea
+          rows={3}
+          width="100%"
+          cols={75}
+          className="border border-gray-300 w-[100%] rounded p-2"
+          placeholder="Description"
+          sx={{ mt: "2px" }}
+          required
+        />
+        <Box sx={{ display: "flex", justifyContent: "end", mt: "20px" }}>
+          <FieldButton
+            onClick={handleDelete}
+            title={"Delete"}
+            icon={<Delete />}
+          />
         </Box>
       </Box>
     </Box>

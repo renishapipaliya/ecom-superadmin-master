@@ -59,7 +59,10 @@ const Customdropdown = ({ setVisible }) => {
   };
 
   return (
-    <Box display={dropdownFileVisible ? "block" : "none"}>
+    <Box
+      display={dropdownFileVisible ? "block" : "none"}
+      sx={{ bgcolor: "#9DBEE250", padding: "20px", borderRadius: "20px" ,mt:"20px"}}
+    >
       <Typography sx={{ fontSize: "20px", fontWeight: 550, my: "20px" }}>
         DropDown
       </Typography>
@@ -78,7 +81,7 @@ const Customdropdown = ({ setVisible }) => {
             placeholder="Write display lable here..."
             size="small"
             variant="outlined"
-            sx={{ width: "300px", mt: "5px" }}
+            sx={{ width: "300px", mt: "5px",bgcolor: "white",}}
             required
           />
         </Box>
@@ -106,7 +109,7 @@ const Customdropdown = ({ setVisible }) => {
             placeholder="Write instruction here..."
             size="small"
             variant="outlined"
-            sx={{ width: "930px", mt: "5px" }}
+            sx={{ width: "930px", mt: "5px",bgcolor: "white",}}
             required
           />
         </Box>

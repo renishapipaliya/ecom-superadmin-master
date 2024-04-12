@@ -23,12 +23,19 @@ const Customimage = ({ setVisible }) => {
     }
   };
 
+  const handleClearImageUpload = () => {
+    setImage(null);
+  };
+
   const handleDelete = () => {
     setimageFileVisible(false);
     setVisible(false);
   };
   return (
-    <Box display={imageFileVisible ? "block" : "none"}>
+    <Box
+      display={imageFileVisible ? "block" : "none"}
+      sx={{ bgcolor: "#9DBEE250", padding: "20px", borderRadius: "20px",mt:"20px" }}
+    >
       <Box display={"flex"} flexDirection={"column"}>
         <Typography sx={{ fontSize: "20px", fontWeight: 550, mt: "20px" }}>
           Customize Image
@@ -57,25 +64,43 @@ const Customimage = ({ setVisible }) => {
                 height: "150px",
                 borderRadius: "5px",
                 display: "flex",
-                gap: "25px",
+                gap: "30px",
                 justifyContent: "center",
+                padding:"20px"
               }}
             >
               <Box
                 sx={{
                   height: "100%",
-                  width: "100%",
+                  width: "80%",
                   border: "1px solid lightgray",
                   borderRadius: "10px",
+                  position: "relative",
                 }}
               >
-                <ClearIcon />
+                {image && (
+                  <ClearIcon
+                    sx={{
+                      position: "absolute",
+                      top: "5px",
+                      right: "5px",
+                      cursor: "pointer",
+                    }}
+                    onClick={handleClearImageUpload}
+                  />
+                )}
+                <input
+                  type="file"
+                  id="upload-image"
+                  onChange={handleImageUpload}
+                  style={{ display: "none" }}
+                />
                 <label htmlFor="upload-image">
                   <img
                     src={image ? image : defaultImage}
                     alt="Course Thumbnail"
                     style={{
-                      objectFit: "contain",
+                      objectFit: "cover",
                       height: "100%",
                       width: "100%",
                       cursor: "pointer",
@@ -83,7 +108,8 @@ const Customimage = ({ setVisible }) => {
                   />
                 </label>
               </Box>
-              <Box sx={{ width: "100%" }}>
+
+              <Box sx={{ width: "100%", }}>
                 <Typography sx={{ fontSize: "14px" }}>
                   Upload Your course Thumbnail here.
                   <Typography sx={{ fontWeight: 550 }}>
@@ -94,23 +120,6 @@ const Customimage = ({ setVisible }) => {
                     .jpg, .jpeg, or .png
                   </Typography>
                 </Typography>
-                <input
-                  accept=".jpg,.jpeg,.png"
-                  style={{ display: "none" }}
-                  id="upload-image"
-                  type="file"
-                  onChange={handleImageUpload}
-                />
-                {/* <label htmlFor="upload-image">
-                  <Button
-                    component="span"
-                    endIcon={<UploadIcon />}
-                    sx={{ mt: "10px" }}
-                    variant="outlined"
-                  >
-                    Upload image
-                  </Button>
-                </label> */}
               </Box>
             </Box>
           </Box>
@@ -129,7 +138,7 @@ const Customimage = ({ setVisible }) => {
                 id="outlined-basic"
                 placeholder="Something"
                 variant="outlined"
-                sx={{ width: "430px", mt: "5px" }}
+                sx={{ width: "430px", mt: "5px",bgcolor: "white"}}
                 required
               />
             </Box>
@@ -148,7 +157,7 @@ const Customimage = ({ setVisible }) => {
                 id="outlined-basic"
                 placeholder="Write instruction here..."
                 variant="outlined"
-                sx={{ width: "430px", mt: "5px" }}
+                sx={{ width: "430px", mt: "5px",bgcolor: "white"}}
                 required
               />
             </Box>
@@ -168,7 +177,7 @@ const Customimage = ({ setVisible }) => {
                   id="outlined-basic"
                   placeholder="1"
                   variant="outlined"
-                  sx={{ width: "200px", mt: "5px" }}
+                  sx={{ width: "200px", mt: "5px",bgcolor: "white" }}
                   required
                 />
               </Box>
@@ -187,7 +196,7 @@ const Customimage = ({ setVisible }) => {
                   id="outlined-basic"
                   placeholder="Size"
                   variant="outlined"
-                  sx={{ width: "200px", mt: "5px" }}
+                  sx={{ width: "200px", mt: "5px",bgcolor: "white" }}
                   required
                 />
               </Box>
